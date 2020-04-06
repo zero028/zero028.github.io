@@ -222,7 +222,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = 'win1234542';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请关注公众号 博思奥园 回复关键字获取密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -698,7 +698,7 @@
     let gitalk = new Gitalk({
         clientID: 'b45860b395e6ad99c4fe',
         clientSecret: 'fbcdfc0e5a23989f0806becb31be0b71563b5e47',
-        repo: 'blog.lomtom.top',
+        repo: 'zero028.github.io',
         owner: 'zero028',
         admin: "zero028",
         id: '2020-03-12T17-53-41',
