@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【python人脸识别】使用opencv识别图片中的人脸, LOMTOM">
+    <meta name="keywords" content="【开发工具 idea】值得推荐的15款idea插件, LOMTOM">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【python人脸识别】使用opencv识别图片中的人脸 | LOMTOM</title>
+    <title>【开发工具 idea】值得推荐的15款idea插件 | LOMTOM</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -219,15 +219,28 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请关注公众号 博思奥园 回复关键字获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://img-blog.csdnimg.cn/20200406123641715.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【python人脸识别】使用opencv识别图片中的人脸</h1>
+                    <h1 class="description center-align post-title">【开发工具 idea】值得推荐的15款idea插件</h1>
                 </div>
             </div>
         </div>
@@ -352,8 +365,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/">
-                                <span class="chip bg-color">人脸识别</span>
+                            <a href="/tags/IntelliJ-idea/">
+                                <span class="chip bg-color">IntelliJ idea</span>
                             </a>
                         
                     </div>
@@ -364,8 +377,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/python/" class="post-category">
-                                python
+                            <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category">
+                                开发工具
                             </a>
                         
                     </div>
@@ -377,7 +390,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-04-06
+                    2020-04-05
                 </div>
                 
 
@@ -386,14 +399,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    732
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    3 Min
+                    8 Min
                 </div>
                 
 
@@ -409,18 +422,51 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h2><p><code>OpenCV</code>是一个基于BSD许可（开源）发行的跨平台计算机视觉库</p>
-<blockquote>
-<p>为什么有OpenCV？ 计算机视觉市场巨大而且持续增长，且这方面没有标准API，如今的计算机视觉软件大概有以下三种：<br>1、研究代码（慢，不稳定，独立并与其他库不兼容）<br>2、耗费很高的商业化工具（比如Halcon, MATLAB+Simulink）<br>3、依赖硬件的一些特别的解决方案（比如视频监控，制造控制系统，医疗设备）这是如今的现状，而标准的API将简化计算机视觉程序和解决方案的开发，OpenCV致力于成为这样的标准API。<br>OpenCV致力于真实世界的实时应用，通过优化的C代码的编写对其执行速度带来了可观的提升，并且可以通过购买Intel的IPP高性能多媒体函数库（Integrated<br>Performance<br>Primitives）得到更快的处理速度。右图为OpenCV与当前其他主流视觉函数库的性能比较。<br>——-百度百科</p>
-</blockquote>
-<p>所以说opencv就是做图像处理的，而我们要实现的人脸识别，<code>opencv</code>库是必不可少的。<br><strong>原理</strong>：opencv是以图片中心为初始点，以一个缩放因子进行慢慢的缩放，在范围内进行识别，缩放因子必须适宜，太大可能会导致识别不出来</p>
-<h2 id="1、下载库"><a href="#1、下载库" class="headerlink" title="1、下载库"></a>1、下载库</h2><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https:<span class="comment">//pypi.tuna.tsinghua.edu.cn/simple opencv-python</span></span><br></pre></td></tr></tbody></table></figure>
-<h2 id="2、引入依赖"><a href="#2、引入依赖" class="headerlink" title="2、引入依赖"></a>2、引入依赖</h2><p>opencv的引入不是直接引入opencv，而是引入cv2</p>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="3、代码"><a href="#3、代码" class="headerlink" title="3、代码"></a>3、代码</h2><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">my = cv2.imread('img/my.jpg')</span><br><span class="line">face_detector = cv2.CascadeClassifier(<span class="string">"haarcascade_frontalface_alt.xml"</span>)</span><br><span class="line">faces = face_detector.detectMultiScale(my)</span><br><span class="line"><span class="keyword">for</span> x,y,w,h in faces:</span><br><span class="line">    cv2.rectangle(my,pt1=(x,y),pt2=(x+w,y+h),color=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">225</span>],thickness=<span class="number">2</span>)</span><br><span class="line">cv2.imshow(<span class="string">"my"</span>,my)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></tbody></table></figure>
-<p><strong>注意:</strong> haarcascade_frontalface_alt.xml文件时python安装目录下Lib\site - packages\cv2\data，需要将该文件复制到项目内，不复制的话需要绝对路径。<br><strong>问题：</strong><br>描述:当图片太大或者分辨过高时，可能会遇到只能显示图片的部分<br>解决：加入代码<code>my = cv2.resize(my,None,fx=0.5,fy=0.5)</code>或者<code>cv2.namedWindow('my', cv2.WINDOW_NORMAL)</code> 不过有其他显示问题，可能会导致图片显示变形</p>
-<h2 id="源代码："><a href="#源代码：" class="headerlink" title="源代码："></a>源代码：</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">my = cv2.imread(<span class="string">'img/my.jpg'</span>)</span><br><span class="line">my = cv2.resize(my,<span class="literal">None</span>,fx=<span class="number">0.5</span>,fy=<span class="number">0.5</span>)</span><br><span class="line"><span class="comment"># 人脸特征数据的数据包</span></span><br><span class="line">face_detector = cv2.CascadeClassifier(<span class="string">"haarcascade_frontalface_alt.xml"</span>)</span><br><span class="line"><span class="comment"># 图片进行人脸数据对比</span></span><br><span class="line"><span class="comment"># scaleFactor:缩放因子，默认1.3，</span></span><br><span class="line"><span class="comment"># minNeighbors:最小邻居，默认为3</span></span><br><span class="line">faces = face_detector.detectMultiScale(my)</span><br><span class="line"><span class="comment"># print(faces)</span></span><br><span class="line"><span class="keyword">for</span> x,y,w,h <span class="keyword">in</span> faces:</span><br><span class="line">    <span class="comment"># pt1：人脸左上角点</span></span><br><span class="line">    <span class="comment"># pt2：人脸右下角点</span></span><br><span class="line">    cv2.rectangle(my,pt1=(x,y),pt2=(x+w,y+h),color=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">225</span>],thickness=<span class="number">2</span>)</span><br><span class="line"><span class="comment"># cv2.namedWindow('my', cv2.WINDOW_NORMAL)</span></span><br><span class="line">cv2.imshow(<span class="string">"my"</span>,my)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="效果图："><a href="#效果图：" class="headerlink" title="效果图："></a>效果图：</h2><p><img src="https://img-blog.csdnimg.cn/20200226192647121.png" alt="效果图"></p>
+                <h1 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h1><p>对于一个猿来说，工欲善其事，必先利其器，一个好的开发工具就是程序员的左膀右臂，idea作为大部分java猿的开发工具，无疑是最好用的ide了。IntelliJ在业界被公认为最好的java开发工具，尤其在智能代码助手、代码自动提示、重构、J2EE支持、各类版本工具(git、svn等)、JUnit、CVS整合、代码分析、 创新的GUI设计等方面的功能可以说是超常的。</p>
+<p>而idea的插件更是能够给我们日常开发带来很多便利，下面就是我想推荐给大家的几个插件。<br><img src="https://img-blog.csdnimg.cn/20200317160711417.png" alt="plugina"></p>
+<h1 id="壹：插件安装"><a href="#壹：插件安装" class="headerlink" title="壹：插件安装"></a>壹：插件安装</h1><p>idea的插件安装可以分为两种，第一种就是直接在idea里面下载、安装。第二种可以将压缩包先下载好，然后再在idea中导入，即可完成安装。下面所有的安装都可以通过这两种安装方式来安装。<br>注：插件安装重启idea生效</p>
+<p><a href="https://plugins.jetbrains.com/" target="_blank" rel="noopener">jetbrains插件官网</a></p>
+<h2 id="一：在线安装"><a href="#一：在线安装" class="headerlink" title="一：在线安装"></a>一：在线安装</h2><p>file -&gt; setting -&gt; plugins -&gt; search -&gt; install -&gt; restart idea<br><img src="https://img-blog.csdnimg.cn/20200317155508764.png" alt="在线安装"></p>
+<h2 id="二：本地安装"><a href="#二：本地安装" class="headerlink" title="二：本地安装"></a>二：本地安装</h2><p>file -&gt; setting -&gt; plugins -&gt; install plugins from disk-&gt; 选择压缩包 -&gt; ok -&gt; restart idea<br><img src="https://img-blog.csdnimg.cn/20200317160537509.png" alt="本地安装"></p>
+<h1 id="贰：插件："><a href="#贰：插件：" class="headerlink" title="贰：插件："></a>贰：插件：</h1><h2 id="一：炫酷"><a href="#一：炫酷" class="headerlink" title="一：炫酷"></a>一：炫酷</h2><h3 id="15、Activate-power-mode或者Intellij-power-mode-II"><a href="#15、Activate-power-mode或者Intellij-power-mode-II" class="headerlink" title="15、Activate-power-mode或者Intellij_power_mode_II"></a>15、Activate-power-mode或者Intellij_power_mode_II</h3><p>你试过在敲代码的时候像打游戏一样燃吗，当你装上这个插件的时候，每敲下一串代码，整个屏幕都在颤抖。<br>当然，这样的插件玩玩就好，在真实的开发环境要求的是速度。</p>
+<h3 id="14、background-image-plus"><a href="#14、background-image-plus" class="headerlink" title="14、background image plus"></a>14、background image plus</h3><p>你的ide是不是除了黑色就是白色，顶多就带一点灰，而对于二次元的小伙伴，如果能在敲代码的时候也能欣赏自己的老婆，是不是很赞。该插件支持给你的idea添加背景图片。<br>设置：view-&gt;set background image<br><img src="https://img-blog.csdnimg.cn/20200317145510935.png" alt="background image plus"></p>
+<h3 id="13、rainbow-brackets"><a href="#13、rainbow-brackets" class="headerlink" title="13、rainbow brackets"></a>13、rainbow brackets</h3><p>我们常常在开发中是否遇到括号太多，而找不到相应的括号，而尤其在删除代码的时候，及其困扰，是不是？而rainbow brackets恰好能解决这些问题。<br>这个插件可以实现配对括号相同颜色，并且实现选中区域代码高亮的功能。对增强写代码的有趣性和排错等都有一些帮助。<br>在这里插入图片描述<img src="https://img-blog.csdnimg.cn/20200317145927430.png" alt="rainbow brackets"></p>
+<h2 id="二：实用"><a href="#二：实用" class="headerlink" title="二：实用"></a>二：实用</h2><h3 id="12、translation"><a href="#12、translation" class="headerlink" title="12、translation"></a>12、translation</h3><p>英语不好的人的福音来了，你是不是经常在看别人的代码，遇到很多英语单词不认识，而从idea里面复制不认识的单词，再去查就很麻烦对不对，这款插件你就能直接在idea里面实现单词或者语句的翻译。<br>使用：选中你要查询的单词或语句，右键，选择translate<br><img src="https://img-blog.csdnimg.cn/20200317151341571.png" alt="translate"></p>
+<h3 id="11、statistic"><a href="#11、statistic" class="headerlink" title="11、statistic"></a>11、statistic</h3><p>显示项目统计信息。该插件显示按扩展名排序的文件以及大小，行数LOC等。用户可以使用“选择时刷新”按钮选择（项目/模块/包/文件）作用域。（此插件需要Java 1.8）<br>使用：点击控制台下方statistic按钮，再点击刷新按钮<br><img src="https://img-blog.csdnimg.cn/2020031715163414.png" alt="statistic"></p>
+<h3 id="10、RestfulToolkit"><a href="#10、RestfulToolkit" class="headerlink" title="10、RestfulToolkit"></a>10、RestfulToolkit</h3><p>RESTful服务开发的工具包。</p>
+<ul>
+<li>1.一步一步导航到服务声明。（使用：Ctrl（Command）+ \或Ctrl + Alt + N）</li>
+<li>2.显示RESTful服务结构。</li>
+<li>3.一个简单的http请求工具。</li>
+<li>4.在请求方法，生成和复制查询参数，生成和复制URL等处添加一些有用的功能。</li>
+<li>5，其他功能：转换为JSON; 转换为Java类，格式化json数据（Windows：Ctrl + Enter； Mac：Command + Enter）。</li>
+</ul>
+<p>支持Spring框架（Spring MVC / Spring Boot 1.x，2.x）<br>支持JAX-RS<br>支持Java和Kotlin语言<br><img src="https://img-blog.csdnimg.cn/20200317152033418.png" alt="RestfulToolkit"></p>
+<h3 id="9、lombok"><a href="#9、lombok" class="headerlink" title="9、lombok"></a>9、lombok</h3><p>写实体类时，我们常常需要写他的set、get、构造方法等，lombok可以使代码现在变得非常容易，只需突出显示一个块并在IDE中键入注释即可。减轻代码审查的痛苦并提高代码质量。<br>注意：它需要在项目中引入依赖（pom.xml），在使用中只要加入@Data注解就可以</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--        引入lombok--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200317152504198.png" alt="lombok"></p>
+<h3 id="8、alibaba-Java-coding-guidelines"><a href="#8、alibaba-Java-coding-guidelines" class="headerlink" title="8、alibaba Java coding guidelines"></a>8、alibaba Java coding guidelines</h3><p>我们在刚写代码时，自己书写的代码会不规范，尤其在团队合作中，会时整个项目变得非常乱，而该插件与下面的sonarLint都能解决你的问题。会在你写代码的时候提醒你，从而使你的代码变得规范。<br><img src="https://img-blog.csdnimg.cn/20200317153244625.png" alt="alibaba Java coding guidelines"></p>
+<h3 id="7、sonarLint"><a href="#7、sonarLint" class="headerlink" title="7、sonarLint"></a>7、sonarLint</h3><p>SonarLint是一个IDE扩展，可帮助您在编写代码时检测和修复质量问题。像拼写检查器一样，SonarLint可以使缺陷变形，因此可以在提交代码之前将其修复。您可以直接从IntelliJ IDEA插件存储库中获取它，然后它将在您编写代码（Java，Kotlin，Ruby，JavaScript，PHP和Python）时检测到新的错误和质量问题。</p>
+<p>如果在SonarQube或SonarCloud上分析了您的项目，SonarLint可以连接到服务器以检索该项目的适当质量配置文件和设置。运行SonarLint需要Java 8。</p>
+<p>使用：选择你要检测的文件，然后点击下方sonarLint，再点击运行按钮。<br><img src="https://img-blog.csdnimg.cn/20200317153007803.png" alt="sonarLint"></p>
+<h3 id="6、key-promoter-X"><a href="#6、key-promoter-X" class="headerlink" title="6、key promoter X"></a>6、key promoter X</h3><p>一个用于学习IntelliJ IDEA快捷方式的插件。<br>Key Promoter X可帮助您在工作时学习基本的快捷方式。当您在IDE内的按钮上使用鼠标时，Key Promoter X会显示您应该使用的键盘快捷键。这提供了一种简单的方法来学习如何用键盘按键代替繁琐的鼠标工作，并有助于过渡到更快的无鼠标开发。当前，它支持工具栏按钮，菜单按钮，工具窗口及其中的操作。</p>
+<p>Key Promoter X工具窗口显示了您最常使用的鼠标操作的命中列表，并直接为您提供了可以使用的快捷方式。对于没有快捷方式的按钮，Key Promoter X会提示您直接创建一个。<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9wbHVnaW5zLmpldGJyYWlucy5jb20vZmlsZXMvOTc5Mi9zY3JlZW5zaG90XzE3MTA1LnBuZw?x-oss-process=image/format,png" alt="Key Promoter X"></p>
+<h3 id="5、Mybatis-log-plugin"><a href="#5、Mybatis-log-plugin" class="headerlink" title="5、Mybatis-log-plugin"></a>5、Mybatis-log-plugin</h3><p>MyBatis日志插件<br>把mybatis输出的sql日志还原成完整的sql语句。<br>将日志输出的sql语句中的问号？替换成真正的参数值。<br>通过“工具- &gt; MyBatis的日志插件”。菜单或快捷键“Ctrl + Shift + ALT + O”的启用。点击窗口左边的“过滤器”按钮，可以过滤不想要输出的SQL语句<br>点击窗口左边的“格式SQL”的按钮，可以格式化输出的SQL语句。<br>选中控制台的SQL日志，右击“从选择还原SQL”菜单可以还原SQL语句。<br>前提条件：输出的SQL日志必须包含“准备”和“参数”。才能正常解析<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9wbHVnaW5zLmpldGJyYWlucy5jb20vZmlsZXMvMTAwNjUvc2NyZWVuc2hvdF8xNzM2Ny5wbmc?x-oss-process=image/format,png" alt="Mybatis-log-plugin"></p>
+<h3 id="4、Free-idea-mybatis"><a href="#4、Free-idea-mybatis" class="headerlink" title="4、Free-idea-mybatis"></a>4、Free-idea-mybatis</h3><p>free-idea-mybatis是用于支持mybatis的想法的交换插件，这是主要功能：</p>
+<ul>
+<li>生成映射器xml文件</li>
+<li>从代码导航到映射器mapper，然后从映射器mapper导航回代码</li>
+<li>自动代码和错误提示</li>
+<li>支持mybatis生成器GUI<h3 id="3、CodeGlance"><a href="#3、CodeGlance" class="headerlink" title="3、CodeGlance"></a>3、CodeGlance</h3>将类似于Sublime中的代码的微型地图嵌入到编辑器窗格中。使用您自定义的颜色突出显示语法，可同时使用浅色和深色主题。<br><img src="https://img-blog.csdnimg.cn/20200317154043841.png" alt="CodeGlance"><h3 id="2、MyBatisCodeHelperPro"><a href="#2、MyBatisCodeHelperPro" class="headerlink" title="2、MyBatisCodeHelperPro"></a>2、MyBatisCodeHelperPro</h3>他的功能非常强大，然而他并不免费（29软妹币半年），下面有传送门，土豪请随意。<br>主要特征：</li>
+<li>通过Intellij数据库表生成mybatis原始代码或添加数据库连接</li>
+<li>基于mybatis接口方法名称（例如spring data jpa）生成mybatis sql，使用此方法，无需使用if test即可为非连接查询支持generate语句编写大多数sql</li>
+<li>当您添加或删除列时，数据库generate crud可能会生成多次，插件将自动合并代码</li>
+<li>完整的mybatis sql自动完成功能，在xml中识别mybatis标记，例如修剪集包含ect的地方，在这些标记后提供sql完成</li>
+<li>从mybatis dao界面跳转到mapper xml</li>
+</ul>
+<p>介绍：<a href="https://plugins.jetbrains.com/plugin/9837-mybatiscodehelperpro" target="_blank" rel="noopener">https://plugins.jetbrains.com/plugin/9837-mybatiscodehelperpro</a><br>传送门：<a href="https://zhile.io/2019/04/23/mybatis-code-helper-pro-crack.html" target="_blank" rel="noopener">https://zhile.io/2019/04/23/mybatis-code-helper-pro-crack.html</a></p>
+<h3 id="1、aiXcode"><a href="#1、aiXcode" class="headerlink" title="1、aiXcode"></a>1、aiXcode</h3><p>AiXcoder是使用最新AI技术的代码建议生成器。开发者的模型在超过1 TB的开源代码上进行了训练，并通过您自己的计算机提供服务。<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9maWxlLmFpeGNvZGVyLmNvbS9pbWcvZGVtby9uL2phdmExLmdpZg" alt="aiXcode"></p>
+<h1 id="叁：作者有话"><a href="#叁：作者有话" class="headerlink" title="叁：作者有话"></a>叁：作者有话</h1><p>希望我的博文能够帮助到你，能够让你在开发过程中能够更加的便捷，最后，希望正在看这篇博文的你早日成为大佬，然后再来带带小菜鸡的我鸭。<br><img src="https://img-blog.csdnimg.cn/20200405094243147.png" alt=""></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -445,6 +491,56 @@
 
             
 
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.lomtom.top" rel="external nofollow noreferrer">lomtom</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.lomtom.top/2020/04/05/kai-fa-gong-ju-idea-zhi-de-tui-jian-de-15-kuan-idea-cha-jian/">https://blog.lomtom.top/2020/04/05/kai-fa-gong-ju-idea-zhi-de-tui-jian-de-15-kuan-idea-cha-jian/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://blog.lomtom.top" target="_blank">lomtom</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
 
 
             <div class="tag_share" style="display: block;">
@@ -452,8 +548,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/">
-                                    <span class="chip bg-color">人脸识别</span>
+                                <a href="/tags/IntelliJ-idea/">
+                                    <span class="chip bg-color">IntelliJ idea</span>
                                 </a>
                             
                         </div>
@@ -605,6 +701,33 @@
     </div>
 
     
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b45860b395e6ad99c4fe',
+        clientSecret: 'fbcdfc0e5a23989f0806becb31be0b71563b5e47',
+        repo: 'blog.lomtom.top',
+        owner: 'zero028',
+        admin: "zero028",
+        id: '2020-04-05T11-11-39',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
 
     
 
@@ -621,84 +744,30 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
-            <div class="card">
-                <a href="/2020/04/06/%E3%80%90python%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB%E3%80%91%E4%BD%BF%E7%94%A8opencv%E8%AF%86%E5%88%AB%E5%9B%BE%E7%89%87%E4%B8%AD%E7%9A%84%E4%BA%BA%E8%84%B8/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="【python人脸识别】使用opencv识别图片中的人脸">
-                        
-                        <span class="card-title">【python人脸识别】使用opencv识别图片中的人脸</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            概述：OpenCV是一个基于BSD许可（开源）发行的跨平台计算机视觉库
-
-为什么有OpenCV？ 计算机视觉市场巨大而且持续增长，且这方面没有标准API，如今的计算机视觉软件大概有以下三种：1、研究代码（慢，不稳定，独立并与其他库不兼容）2
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-06
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/python/" class="post-category">
-                                    python
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/">
-                        <span class="chip bg-color">人脸识别</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/04/06/%E3%80%90python%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E3%80%91%E4%BD%BF%E7%94%A8%E8%AF%8D%E4%BA%91%E5%88%86%E6%9E%90%E6%9D%A5%E5%88%86%E6%9E%90%E8%B1%86%E7%93%A3%E5%BD%B1%E8%AF%84%E6%95%B0%E6%8D%AE%20/">
+                <a href="/2020/04/06/python-pa-chong-shi-zhan-pa-qu-dou-ban-ying-ping-shu-ju/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="【python爬虫实战】使用词云分析来分析豆瓣影评数据">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="【python爬虫实战】爬取豆瓣影评数据">
                         
-                        <span class="card-title">【python爬虫实战】使用词云分析来分析豆瓣影评数据</span>
+                        <span class="card-title">【python爬虫实战】爬取豆瓣影评数据</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            概述：制作词云的步骤：1、从文件中读取数据2、根据数据追加在一个字符串里面，然后用jieba分词器将评论分开3、设置WordCloud词云参数4、保存最后的结果
-数据：使用爬取的豆瓣影评数据
-第一步：引入依赖库123456789101112
+                            概述：爬取豆瓣影评数据步骤：1、获取网页请求2、解析获取的网页3、提速数据4、保存文件
+源代码：123456789101112131415161718192021222324252627282930313233343536373839404
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-06
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-06
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -716,6 +785,61 @@
                     
                     <a href="/tags/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98/">
                         <span class="chip bg-color">爬虫实战</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/05/springmvc-thymeleaf-springmvc-zheng-he-thymeleaf/">
+                    <div class="card-image">
+                        
+                        <img src="https://img-blog.csdnimg.cn/20200405094344714.jpg" class="responsive-img" alt="【springmvc thymeleaf】springmvc整合thymeleaf">
+                        
+                        <span class="card-title">【springmvc thymeleaf】springmvc整合thymeleaf</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            概述Thymeleaf提供了一组Spring集成，使您可以将其用作Spring MVC应用程序中JSP的全功能替代品。
+这些集成将使您能够：
+
+@Controller像使用JSP一样，将Spring MVC 对象中的映射方法转发到Thyme
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/spring/" class="post-category">
+                                    spring
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/springmvc/">
+                        <span class="chip bg-color">springmvc</span>
+                    </a>
+                    
+                    <a href="/tags/thymeleaf/">
+                        <span class="chip bg-color">thymeleaf</span>
                     </a>
                     
                 </div>
@@ -898,7 +1022,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             <span id="year">2019</span>
-            <a href="http://yoursite.com" target="_blank">lomtom | </a>
+            <a href="https://blog.lomtom.top" target="_blank">lomtom | </a>
 			
             <span id="sitetime">载入运行时间...</span>
             <script>
@@ -947,7 +1071,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 			<br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">13.7k</span>&nbsp;字
+                class="white-color">15.1k</span>&nbsp;字
             
             
             

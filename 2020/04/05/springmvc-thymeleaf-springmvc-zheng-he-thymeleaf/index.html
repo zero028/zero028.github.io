@@ -219,6 +219,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请关注公众号 博思奥园 回复关键字获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -429,30 +442,161 @@
 <p>Thymeleaf具有针对Spring Framework 3.x和4.x的集成，由两个独立的库分别称为thymeleaf-spring3和提供thymeleaf-spring4。这些库打包在单独的.jar文件（thymeleaf-spring3-{version}.jar和thymeleaf-spring4-{version}.jar）中，需要添加到类路径中，以便在应用程序中使用Thymeleaf的Spring集成</p>
 </blockquote>
 <p>。</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--        thymeleaf--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.thymeleaf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>thymeleaf-spring4<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.11.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.thymeleaf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.11.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-
+<pre><code class="xml">&lt;!--        thymeleaf--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.thymeleaf&lt;/groupId&gt;
+    &lt;artifactId&gt;thymeleaf-spring4&lt;/artifactId&gt;
+    &lt;version&gt;3.0.11.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.thymeleaf&lt;/groupId&gt;
+    &lt;artifactId&gt;thymeleaf&lt;/artifactId&gt;
+    &lt;version&gt;3.0.11.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
 <h2 id="二：设置thymeleaf解析器"><a href="#二：设置thymeleaf解析器" class="headerlink" title="二：设置thymeleaf解析器"></a>二：设置thymeleaf解析器</h2><p>在springmvc配置文件中配置thymeleaf解析器，官方文档中Thymeleaf提供了上述两个接口的实现：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">org.thymeleaf.spring4.view.ThymeleafView</span><br><span class="line">org.thymeleaf.spring4.view.ThymeleafViewResolver</span><br></pre></td></tr></tbody></table></figure>
-<p>不过现在都已经被<code>org.thymeleaf.spring4.view.ThymeleafViewResolver</code>所代替，至于以上配置是否还能够生效，就要靠你来试试了。</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- thymeleaf 模板解析器 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"templateResolver"</span> <span class="attr">class</span>=<span class="string">"org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"prefix"</span> <span class="attr">value</span>=<span class="string">"/"</span> /&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".html"</span> /&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"templateMode"</span> <span class="attr">value</span>=<span class="string">"HTML"</span> /&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"cacheable"</span> <span class="attr">value</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"characterEncoding"</span> <span class="attr">value</span>=<span class="string">"UTF-8"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"templateEngine"</span> <span class="attr">class</span>=<span class="string">"org.thymeleaf.spring4.SpringTemplateEngine"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"templateResolver"</span> <span class="attr">ref</span>=<span class="string">"templateResolver"</span> /&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">&lt;!--    视图解析器--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"viewResolver"</span> <span class="attr">class</span>=<span class="string">"org.thymeleaf.spring4.view.ThymeleafViewResolver"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"templateEngine"</span> <span class="attr">ref</span>=<span class="string">"templateEngine"</span> /&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"characterEncoding"</span> <span class="attr">value</span>=<span class="string">"UTF-8"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code>org.thymeleaf.spring4.view.ThymeleafView
+org.thymeleaf.spring4.view.ThymeleafViewResolver</code></pre><p>不过现在都已经被<code>org.thymeleaf.spring4.view.ThymeleafViewResolver</code>所代替，至于以上配置是否还能够生效，就要靠你来试试了。</p>
+<pre><code class="xml"> &lt;!-- thymeleaf 模板解析器 --&gt;
+    &lt;bean id="templateResolver" class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver"&gt;
+        &lt;property name="prefix" value="/" /&gt;
+        &lt;property name="suffix" value=".html" /&gt;
+        &lt;property name="templateMode" value="HTML" /&gt;
+        &lt;property name="cacheable" value="false" /&gt;
+        &lt;property name="characterEncoding" value="UTF-8"/&gt;
+    &lt;/bean&gt;
+
+    &lt;bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine"&gt;
+        &lt;property name="templateResolver" ref="templateResolver" /&gt;
+    &lt;/bean&gt;
+
+    &lt;!--    视图解析器--&gt;
+    &lt;bean id="viewResolver" class="org.thymeleaf.spring4.view.ThymeleafViewResolver"&gt;
+        &lt;property name="templateEngine" ref="templateEngine" /&gt;
+        &lt;property name="characterEncoding" value="UTF-8"/&gt;
+    &lt;/bean&gt;</code></pre>
 <p>ViewResolvers是负责获取特定操作和语言环境的View对象的对象。通常，控制器要求ViewResolvers转发到具有特定名称的视图（由controller方法返回的String），然后应用程序中的所有视图解析器将按有序链执行，直到其中一个能够解析该视图为止。如果返回了View对象，并且将控件传递给该对象以呈现HTML。</p>
 <p><strong>注：值得注意的是</strong>，如果自己设置了spring的视图解析器，需要将其注释掉，否则thymeleaf解析器可能不会生效，我就是因为这个调试了好久，最后才发现这个问题。</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    配置视图解析器 prefix：前缀， suffix：后缀   使用thymeleaf需要将其注释掉--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"prefix"</span> <span class="attr">value</span>=<span class="string">"/"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".html"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="xml">    &lt;!--    配置视图解析器 prefix：前缀， suffix：后缀   使用thymeleaf需要将其注释掉--&gt;
+    &lt;bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"&gt;
+        &lt;property name="prefix" value="/"/&gt;
+        &lt;property name="suffix" value=".html"/&gt;
+    &lt;/bean&gt;</code></pre>
 <h2 id="三：编写控制器"><a href="#三：编写控制器" class="headerlink" title="三：编写控制器"></a>三：编写控制器</h2><p>需要从控制层传数据到视图时，我们就会使用model，常用的三种model就是：<strong>Model、ModelMap、ModelAndView</strong>。使用这三种model时，spring框架自动创建实例并作为controller的入参，用户无需自己创建</p>
-<h3 id="1、使用Model"><a href="#1、使用Model" class="headerlink" title="1、使用Model"></a>1、使用Model</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 在Model里存入一个用户信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> hello页面</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"returnModelAndView"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">returnModelAndView</span><span class="params">(Model model)</span></span>{</span><br><span class="line">    model.addAttribute(<span class="string">"userInfo"</span>,<span class="keyword">new</span> UserInfo(<span class="string">"lomtom"</span>,<span class="string">"123"</span>,<span class="keyword">new</span> Address(<span class="string">"湖南"</span>,<span class="string">"邵阳"</span>)));</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
+<h3 id="1、使用Model"><a href="#1、使用Model" class="headerlink" title="1、使用Model"></a>1、使用Model</h3><pre><code class="java">    /**
+     * 在Model里存入一个用户信息
+     * @return hello页面
+     */
+    @GetMapping("returnModelAndView")
+    public String returnModelAndView(Model model){
+        model.addAttribute("userInfo",new UserInfo("lomtom","123",new Address("湖南","邵阳")));
+        return "hello";
+    }</code></pre>
 <p>Model是一个接口，<br>Model源码：</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Model</span> </span>{</span><br><span class="line">    <span class="function">Model <span class="title">addAttribute</span><span class="params">(String var1, Object var2)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Model <span class="title">addAttribute</span><span class="params">(Object var1)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Model <span class="title">addAllAttributes</span><span class="params">(Collection&lt;?&gt; var1)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Model <span class="title">addAllAttributes</span><span class="params">(Map&lt;String, ?&gt; var1)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Model <span class="title">mergeAttributes</span><span class="params">(Map&lt;String, ?&gt; var1)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">containsAttribute</span><span class="params">(String var1)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Map&lt;String, Object&gt; <span class="title">asMap</span><span class="params">()</span></span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="2、使用ModelMap"><a href="#2、使用ModelMap" class="headerlink" title="2、使用ModelMap"></a>2、使用ModelMap</h3><p>ModelMap继承LinkedHashMap<br>ModelMap源码：</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ModelMap</span> <span class="keyword">extends</span> <span class="title">LinkedHashMap</span>&lt;<span class="title">String</span>, <span class="title">Object</span>&gt; </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ModelMap</span><span class="params">()</span> </span>{</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ModelMap</span><span class="params">(String attributeName, Object attributeValue)</span> </span>{</span><br><span class="line">        <span class="keyword">this</span>.addAttribute(attributeName, attributeValue);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ModelMap</span><span class="params">(Object attributeValue)</span> </span>{</span><br><span class="line">        <span class="keyword">this</span>.addAttribute(attributeValue);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelMap <span class="title">addAttribute</span><span class="params">(String attributeName, Object attributeValue)</span> </span>{</span><br><span class="line">        Assert.notNull(attributeName, <span class="string">"Model attribute name must not be null"</span>);</span><br><span class="line">        <span class="keyword">this</span>.put(attributeName, attributeValue);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelMap <span class="title">addAttribute</span><span class="params">(Object attributeValue)</span> </span>{</span><br><span class="line">        Assert.notNull(attributeValue, <span class="string">"Model object must not be null"</span>);</span><br><span class="line">        <span class="keyword">return</span> attributeValue <span class="keyword">instanceof</span> Collection &amp;&amp; ((Collection)attributeValue).isEmpty() ? <span class="keyword">this</span> : <span class="keyword">this</span>.addAttribute(Conventions.getVariableName(attributeValue), attributeValue);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelMap <span class="title">addAllAttributes</span><span class="params">(Collection&lt;?&gt; attributeValues)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (attributeValues != <span class="keyword">null</span>) {</span><br><span class="line">            Iterator var2 = attributeValues.iterator();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(var2.hasNext()) {</span><br><span class="line">                Object attributeValue = var2.next();</span><br><span class="line">                <span class="keyword">this</span>.addAttribute(attributeValue);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelMap <span class="title">addAllAttributes</span><span class="params">(Map&lt;String, ?&gt; attributes)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (attributes != <span class="keyword">null</span>) {</span><br><span class="line">            <span class="keyword">this</span>.putAll(attributes);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelMap <span class="title">mergeAttributes</span><span class="params">(Map&lt;String, ?&gt; attributes)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (attributes != <span class="keyword">null</span>) {</span><br><span class="line">            Iterator var2 = attributes.entrySet().iterator();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(var2.hasNext()) {</span><br><span class="line">                Entry&lt;String, ?&gt; entry = (Entry)var2.next();</span><br><span class="line">                String key = (String)entry.getKey();</span><br><span class="line">                <span class="keyword">if</span> (!<span class="keyword">this</span>.containsKey(key)) {</span><br><span class="line">                    <span class="keyword">this</span>.put(key, entry.getValue());</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsAttribute</span><span class="params">(String attributeName)</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.containsKey(attributeName);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="java">public interface Model {
+    Model addAttribute(String var1, Object var2);
 
-<h3 id="3、使用ModelAndView"><a href="#3、使用ModelAndView" class="headerlink" title="3、使用ModelAndView"></a>3、使用ModelAndView</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 在ModelAndView里存入一个用户信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> ModelAndView </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"returnModelAndView"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> ModelAndView <span class="title">returnModelAndView</span><span class="params">(ModelAndView modelAndView)</span></span>{</span><br><span class="line">    modelAndView.setViewName(<span class="string">"hello"</span>);</span><br><span class="line">    modelAndView.addObject(<span class="string">"userInfo"</span>,<span class="keyword">new</span> UserInfo(<span class="string">"lomtom"</span>,<span class="string">"123"</span>,<span class="keyword">new</span> Address(<span class="string">"湖南"</span>,<span class="string">"邵阳"</span>)));</span><br><span class="line">    <span class="keyword">return</span> modelAndView;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+    Model addAttribute(Object var1);
+
+    Model addAllAttributes(Collection&lt;?&gt; var1);
+
+    Model addAllAttributes(Map&lt;String, ?&gt; var1);
+
+    Model mergeAttributes(Map&lt;String, ?&gt; var1);
+
+    boolean containsAttribute(String var1);
+
+    Map&lt;String, Object&gt; asMap();
+}</code></pre>
+<h3 id="2、使用ModelMap"><a href="#2、使用ModelMap" class="headerlink" title="2、使用ModelMap"></a>2、使用ModelMap</h3><p>ModelMap继承LinkedHashMap<br>ModelMap源码：</p>
+<pre><code class="java">public class ModelMap extends LinkedHashMap&lt;String, Object&gt; {
+    public ModelMap() {
+    }
+
+    public ModelMap(String attributeName, Object attributeValue) {
+        this.addAttribute(attributeName, attributeValue);
+    }
+
+    public ModelMap(Object attributeValue) {
+        this.addAttribute(attributeValue);
+    }
+
+    public ModelMap addAttribute(String attributeName, Object attributeValue) {
+        Assert.notNull(attributeName, "Model attribute name must not be null");
+        this.put(attributeName, attributeValue);
+        return this;
+    }
+
+    public ModelMap addAttribute(Object attributeValue) {
+        Assert.notNull(attributeValue, "Model object must not be null");
+        return attributeValue instanceof Collection &amp;&amp; ((Collection)attributeValue).isEmpty() ? this : this.addAttribute(Conventions.getVariableName(attributeValue), attributeValue);
+    }
+
+    public ModelMap addAllAttributes(Collection&lt;?&gt; attributeValues) {
+        if (attributeValues != null) {
+            Iterator var2 = attributeValues.iterator();
+
+            while(var2.hasNext()) {
+                Object attributeValue = var2.next();
+                this.addAttribute(attributeValue);
+            }
+        }
+
+        return this;
+    }
+
+    public ModelMap addAllAttributes(Map&lt;String, ?&gt; attributes) {
+        if (attributes != null) {
+            this.putAll(attributes);
+        }
+
+        return this;
+    }
+
+    public ModelMap mergeAttributes(Map&lt;String, ?&gt; attributes) {
+        if (attributes != null) {
+            Iterator var2 = attributes.entrySet().iterator();
+
+            while(var2.hasNext()) {
+                Entry&lt;String, ?&gt; entry = (Entry)var2.next();
+                String key = (String)entry.getKey();
+                if (!this.containsKey(key)) {
+                    this.put(key, entry.getValue());
+                }
+            }
+        }
+
+        return this;
+    }
+
+    public boolean containsAttribute(String attributeName) {
+        return this.containsKey(attributeName);
+    }
+}
+</code></pre>
+<h3 id="3、使用ModelAndView"><a href="#3、使用ModelAndView" class="headerlink" title="3、使用ModelAndView"></a>3、使用ModelAndView</h3><pre><code class="java">    /**
+     * 在ModelAndView里存入一个用户信息
+     * @return ModelAndView 
+     */
+    @GetMapping("returnModelAndView")
+    public ModelAndView returnModelAndView(ModelAndView modelAndView){
+        modelAndView.setViewName("hello");
+        modelAndView.addObject("userInfo",new UserInfo("lomtom","123",new Address("湖南","邵阳")));
+        return modelAndView;
+    }</code></pre>
 <p>ModelAndView顾名思义就是模型和试图的结合。<br>ModelAndView源码：</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ModelAndView</span> </span>{</span><br><span class="line">    <span class="keyword">private</span> Object view;</span><br><span class="line">    <span class="keyword">private</span> ModelMap model;</span><br><span class="line">    <span class="keyword">private</span> HttpStatus status;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> cleared = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">	......</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="java">public class ModelAndView {
+    private Object view;
+    private ModelMap model;
+    private HttpStatus status;
+    private boolean cleared = false;
+
+    ......
+}</code></pre>
 <h2 id="四：编写html"><a href="#四：编写html" class="headerlink" title="四：编写html"></a>四：编写html</h2><p>首先，写一个链接，请求<code>returnModelAndView</code>请求。</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"returnModelAndView"</span>&gt;</span>ModelAndView<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="html">&lt;a href="returnModelAndView"&gt;ModelAndView&lt;/a&gt;</code></pre>
 <p>然后，写hello.html页面用于验证</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>你好啊，你成功了<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">"${userInfo.userName}+'来自'+${userInfo.address.province}+${userInfo.address.city}"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="html">&lt;h2&gt;你好啊，你成功了&lt;/h2&gt;
+&lt;p th:text="${userInfo.userName}+'来自'+${userInfo.address.province}+${userInfo.address.city}"&gt;&lt;/p&gt;</code></pre>
 <h2 id="五：结果"><a href="#五：结果" class="headerlink" title="五：结果"></a>五：结果</h2><p><img src="https://img-blog.csdnimg.cn/20200401143955232.png" alt=""></p>
 <h2 id="六：记录我遇到的问题"><a href="#六：记录我遇到的问题" class="headerlink" title="六：记录我遇到的问题"></a>六：记录我遇到的问题</h2><p><strong>问题1</strong>：配置好一切后，thymeleaf无法解析，所有关于thymeleaf的显示都无法生效。<br><strong>解决</strong>：由于我配置了spring的视图解析，所以导致thymeleaf的试图解析无法生效，所以去掉spring的视图解析。</p>
 <blockquote>
@@ -489,6 +633,56 @@
             <hr/>
 
             
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.lomtom.top" rel="external nofollow noreferrer">lomtom</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.lomtom.top/2020/04/05/springmvc-thymeleaf-springmvc-zheng-he-thymeleaf/">https://blog.lomtom.top/2020/04/05/springmvc-thymeleaf-springmvc-zheng-he-thymeleaf/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://blog.lomtom.top" target="_blank">lomtom</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
 
 
 
@@ -654,6 +848,33 @@
     </div>
 
     
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b45860b395e6ad99c4fe',
+        clientSecret: 'fbcdfc0e5a23989f0806becb31be0b71563b5e47',
+        repo: 'blog.lomtom.top',
+        owner: 'zero028',
+        admin: "zero028",
+        id: '2020-04-05T09-55-27',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
 
     
 
@@ -674,7 +895,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/04/05/%E3%80%90%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%20idea%E3%80%91%E5%80%BC%E5%BE%97%E6%8E%A8%E8%8D%90%E7%9A%8415%E6%AC%BEidea%E6%8F%92%E4%BB%B6/">
+                <a href="/2020/04/05/kai-fa-gong-ju-idea-zhi-de-tui-jian-de-15-kuan-idea-cha-jian/">
                     <div class="card-image">
                         
                         <img src="https://img-blog.csdnimg.cn/20200406123641715.jpg" class="responsive-img" alt="【开发工具 idea】值得推荐的15款idea插件">
@@ -722,7 +943,7 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/29/%E3%80%90spring%20springmvc%E3%80%91%E8%BF%99%E9%87%8C%E6%9C%89%E4%BD%A0%E6%83%B3%E8%A6%81%E7%9A%84SpringMVC%E7%9A%84REST%E9%A3%8E%E6%A0%BC%E7%9A%84%E5%9B%9B%E7%A7%8D%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/">
+                <a href="/2020/03/29/spring-springmvc-zhe-li-you-ni-xiang-yao-de-springmvc-de-rest-feng-ge-de-si-chong-qing-qiu-fang-shi/">
                     <div class="card-image">
                         
                         <img src="https://img-blog.csdnimg.cn/20200329130918103.png" class="responsive-img" alt="【spring springmvc】这里有你想要的SpringMVC的REST风格的四种请求方式">
@@ -940,7 +1161,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             <span id="year">2019</span>
-            <a href="http://yoursite.com" target="_blank">lomtom | </a>
+            <a href="https://blog.lomtom.top" target="_blank">lomtom | </a>
 			
             <span id="sitetime">载入运行时间...</span>
             <script>
@@ -989,7 +1210,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 			<br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">13.7k</span>&nbsp;字
+                class="white-color">15.1k</span>&nbsp;字
             
             
             

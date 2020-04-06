@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【spring springmvc】这里有你想要的SpringMVC的REST风格的四种请求方式, LOMTOM">
+    <meta name="keywords" content="【系统 win10 deepin】双系统安装（win10和deepin双系统）, LOMTOM">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【spring springmvc】这里有你想要的SpringMVC的REST风格的四种请求方式 | LOMTOM</title>
+    <title>【系统 win10 deepin】双系统安装（win10和deepin双系统） | LOMTOM</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -219,15 +219,28 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = 'win1234542';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请关注公众号 博思奥园 回复关键字获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://img-blog.csdnimg.cn/20200329130918103.png')">
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【spring springmvc】这里有你想要的SpringMVC的REST风格的四种请求方式</h1>
+                    <h1 class="description center-align post-title">【系统 win10 deepin】双系统安装（win10和deepin双系统）</h1>
                 </div>
             </div>
         </div>
@@ -352,8 +365,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/springmvc/">
-                                <span class="chip bg-color">springmvc</span>
+                            <a href="/tags/win/">
+                                <span class="chip bg-color">win</span>
+                            </a>
+                        
+                            <a href="/tags/linux/">
+                                <span class="chip bg-color">linux</span>
                             </a>
                         
                     </div>
@@ -364,8 +381,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/spring/" class="post-category">
-                                spring
+                            <a href="/categories/%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                系统
                             </a>
                         
                     </div>
@@ -377,7 +394,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-03-29
+                    2020-03-12
                 </div>
                 
 
@@ -386,14 +403,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.6k
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    6 Min
+                    5 Min
                 </div>
                 
 
@@ -409,118 +426,24 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>之前的文章<a href="https://blog.csdn.net/qq_41929184/article/details/104997012" target="_blank" rel="noopener">springmvc使用注解声明控制器与请求映射</a>有简单提到过控制器与请求映射，这一次就详细讲解一下<code>SpringMVC</code>的<code>REST</code>风格的四种请求方式及其使用方法。</p>
-<h2 id="你能get的知识点"><a href="#你能get的知识点" class="headerlink" title="你能get的知识点"></a>你能get的知识点</h2><p>1、什么是Rest风格？<br>2、基于<code>springmvc</code>实现REST风格的四种请求方式<br>3、post请求转换为<code>delete</code>与<code>put</code>请求<br>4、解决请求乱码问题<br>5、<code>RequestMapping</code>注解的属性</p>
-<h1 id="壹：rest风格"><a href="#壹：rest风格" class="headerlink" title="壹：rest风格"></a>壹：rest风格</h1><h2 id="一：什么是Rest风格？"><a href="#一：什么是Rest风格？" class="headerlink" title="一：什么是Rest风格？"></a>一：什么是Rest风格？</h2><p>REST即表述性状态传递（英文：Representational State Transfer，简称REST）是Roy Fielding博士在2000年他的博士论文中提出来的一种软件架构风格。它是一种针对网络应用的设计和开发方式，可以降低开发的复杂性，提高系统的可伸缩性。</p>
-<p>简单来说：使用URL定位资源，用HTTP动词（例如GET,POST,DELETE,DETC等）描述操作。</p>
-<h2 id="二：REST风格的四种请求方式"><a href="#二：REST风格的四种请求方式" class="headerlink" title="二：REST风格的四种请求方式"></a>二：REST风格的四种请求方式</h2><table>
-<thead>
-<tr>
-<th>请求</th>
-<th>说明</th>
-<th>用于</th>
-<th>例子</th>
-<th>例子说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>@GetMapping</td>
-<td>匹配GET方式的请求；</td>
-<td>一般用于读取数据</td>
-<td>/user/1</td>
-<td>获取一号用户信息</td>
-</tr>
-<tr>
-<td>@PostMapping</td>
-<td>匹配POST方式的请求；</td>
-<td>一般用于新增数据</td>
-<td>/user/1</td>
-<td>新增一号用户</td>
-</tr>
-<tr>
-<td>@PutMapping</td>
-<td>匹配PUT方式的请求；</td>
-<td>一般用于更新数据</td>
-<td>/user/1</td>
-<td>修改一号用户</td>
-</tr>
-<tr>
-<td>@DeleteMapping</td>
-<td>匹配DELETE方式的请求；</td>
-<td>一般用于删除数据</td>
-<td>/user/1</td>
-<td>删除一号用户</td>
-</tr>
-</tbody></table>
-<p>也就是说，我们不再使用<code>/user/getuser?user=1</code>、<code>/user/deleteuser?user=1</code>等来区分使用者的行为操作，而是使用不同的请求方式来描述行为。</p>
-<h1 id="贰：基于springmvc实现REST风格的四种请求方式"><a href="#贰：基于springmvc实现REST风格的四种请求方式" class="headerlink" title="贰：基于springmvc实现REST风格的四种请求方式"></a>贰：基于<code>springmvc</code>实现REST风格的四种请求方式</h1><p>Spring框架的4.3版本后，引入了新的组合注解，来帮助简化常用的<code>HTTP</code>方法的映射，并更好的表达被注解方法的语义。</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping = @requestMapping(method = RequestMethod.GET)。</span><br><span class="line">@PostMapping = @requestMapping(method = RequestMethod.POST)。</span><br><span class="line">@DeleteMapping = @requestMapping(method = RequestMethod.DELETE)。</span><br><span class="line">@PutMapping = @requestMapping(method = RequestMethod.PuT)。</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="一：-GetMapping请求"><a href="#一：-GetMapping请求" class="headerlink" title="一：@GetMapping请求"></a>一：@GetMapping请求</h2><p> 以<code>@GetMapping</code>为例，该组合注解是<code>@RequestMapping(method = RequestMethod.GET)</code>的缩写，它会将HTTP GET请求映射到特定的处理方法上。 </p>
-<p><code>RequestMapping</code>后所有属性都是可选的，但其默认属性是<code>value</code>。当<code>value</code>是其唯一属性时，可以省略属性名。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/rest"</span>,method = RequestMethod.GET)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">restGet</span><span class="params">()</span></span>{</span><br><span class="line">	System.out.println(<span class="string">"Get请求，hello....."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p> <code>@GetMapping</code>是一个组合注解，是<code>@RequestMapping(method = RequestMethod.GET)</code>的缩写。<br> 所以我们可以将以上代码简单的写成：</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/rest"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">restGet</span><span class="params">()</span></span>{</span><br><span class="line">    System.out.println(<span class="string">"Get请求，hello....."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="二：-PostMapping请求"><a href="#二：-PostMapping请求" class="headerlink" title="二：@PostMapping请求"></a>二：@PostMapping请求</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping</span>(<span class="string">"/rest"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">restPost</span><span class="params">()</span></span>{</span><br><span class="line">    System.out.println(<span class="string">"Post请求，hello....."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="三：-DeleteMapping请求"><a href="#三：-DeleteMapping请求" class="headerlink" title="三：@DeleteMapping请求"></a>三：@DeleteMapping请求</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DeleteMapping</span>(<span class="string">"/rest"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">restDelete</span><span class="params">()</span></span>{</span><br><span class="line">    System.out.println(<span class="string">"Delete请求，hello....."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"redirect:rest"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="四：-PutMapping请求"><a href="#四：-PutMapping请求" class="headerlink" title="四：@PutMapping请求"></a>四：@PutMapping请求</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PutMapping</span>(<span class="string">"/rest"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">restPut</span><span class="params">()</span></span>{</span><br><span class="line">    System.out.println(<span class="string">"Put请求，hello....."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"redirect:rest"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h1 id="叁：问题"><a href="#叁：问题" class="headerlink" title="叁：问题"></a>叁：问题</h1><h2 id="一：post请求转换为delete与put请求"><a href="#一：post请求转换为delete与put请求" class="headerlink" title="一：post请求转换为delete与put请求"></a>一：post请求转换为delete与put请求</h2><p>由于form表单只支持GET和POST请求，而不支持DELETE和PUT等请求方式，所以我们实现delete和put请求往往会报错找不到方法。</p>
-<p>Spring提供了一个过滤器<code>HiddenHttpMethodFilter</code>，可以将DELETE和PUT请求转换为标准的HTTP方式，即能将POST请求转为DELETE或PUT请求。 </p>
-<p><strong>具体实现</strong>：在web.xml文件中配置过滤器HiddenHttpMethodFilter</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--使用Rest风格的URI,将页面普通的post请求转为delete或者put请求--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>hiddenHttpMethodFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.HiddenHttpMethodFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>hiddenHttpMethodFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<p><strong>注意</strong>：delete和put请求最好使用Redirect(重定向)，不然会报404错误。</p>
-<h2 id="二：解决请求乱码问题"><a href="#二：解决请求乱码问题" class="headerlink" title="二：解决请求乱码问题"></a>二：解决请求乱码问题</h2><figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  解决乱码问题--&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>forceEncoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<p><strong>注意</strong>：编码的过滤器应该放在所有的过滤器前，否则不生效</p>
-<h1 id="肆：RequestMapping注解的属性"><a href="#肆：RequestMapping注解的属性" class="headerlink" title="肆：RequestMapping注解的属性"></a>肆：RequestMapping注解的属性</h1><table>
-<thead>
-<tr>
-<th>属性名</th>
-<th>类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>name</td>
-<td>String</td>
-<td>可选属性，用于为映射地址指定别名。</td>
-</tr>
-<tr>
-<td>value</td>
-<td>String[]</td>
-<td>可选属性，同时也是默认属性，用于映射一-个请求和一种方法，可以标注在一-个方法或一个类上。</td>
-</tr>
-<tr>
-<td>method</td>
-<td>RequestMethod[]</td>
-<td>可选属性，用于指定该方法用于处理哪种类型的请求方式，其请求方式包括GET、POST、HEAD、OPTIONS、PUT、PATCH、DELETE和TRACE例如method=RequestMethod.GET表示只支持GET请求，如果需要支持多个请求方式则需要通过{}写成数组的形式，并且多个请求方式之间是有英文逗号分隔。</td>
-</tr>
-<tr>
-<td>params</td>
-<td>String[]</td>
-<td>可选属性，用于指定Request中必须包含某些参数的值，.才可以通过其标注的方法处理。</td>
-</tr>
-<tr>
-<td>headers</td>
-<td>String[]</td>
-<td>可选属性,用于指定Request中必须包含某些指定的header的值，才可以通过其标注的方法处理。。</td>
-</tr>
-<tr>
-<td>consumes</td>
-<td>String[]</td>
-<td>可选属性，用于指定处理请求的提交内容类型(Content-type)，比如application/json,text/html等。</td>
-</tr>
-<tr>
-<td>produces</td>
-<td>String[]</td>
-<td>可选属性，用于指定返回的内容类型，返回的内容类型必,须是request请求头(Accept)中所包含的类型。</td>
-</tr>
-</tbody></table>
+                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>所有的事情都源自于一只蝙蝠，在这个无聊且漫长的寒假，终于能够实现躺在家里也能为国家做出贡献的时候了。<br>既然闲着也是闲着，那为何不折腾一下自己的电脑呢。<br>相信很多猿在虚拟机里已经体验过linux系统，那么怎么在实体机上怎么安装深度linux系统来实现双系统呢？</p>
 <blockquote>
-<p>表中所有属性都是可选的，但其默认属性是value。当value是其唯一属性时， 可以省略属性名。<br>例如，下面两种标注的含义相同：<br>@RequestMapping(value=”/rest”)<br>@RequestMapping(“/rest”)</p>
+<p>安装需求：<br>1、一台电脑<br>2、一个U盘（至少8G）<br>3、一双爱折腾的手</p>
 </blockquote>
-<h1 id="伍：测试"><a href="#伍：测试" class="headerlink" title="伍：测试"></a>伍：测试</h1><p>新建index.html文件，加入以下代码。新建hello.html，用于请求后的页面跳转。</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>各种请求<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"rest"</span>&gt;</span>hello Get请求<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"rest"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>hello Post请求<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"rest"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"_method"</span> <span class="attr">value</span>=<span class="string">"delete"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>hello Delete请求<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"rest"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"_method"</span> <span class="attr">value</span>=<span class="string">"put"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>hello put请求<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<p>结果：<img src="https://img-blog.csdnimg.cn/20200329124302860.png" alt=""></p>
+<p>@[TOC]</p>
+<h1 id="壹：安装win10系统"><a href="#壹：安装win10系统" class="headerlink" title="壹：安装win10系统"></a>壹：安装win10系统</h1><p>相信很多人的电脑都已经预装了win10系统，已经安装的人可以跳过这一步，但是这个也可以作为win10系统重装的记录，加入你需要给你的电脑重装win10，也可以按照这个流程来。</p>
+<p>当然，网上有很多的教程使用第三方的工具，这里使用的是windows推荐的方法来安装纯净版的win10系统。</p>
+<h2 id="一：下载win10系统制作工具"><a href="#一：下载win10系统制作工具" class="headerlink" title="一：下载win10系统制作工具"></a>一：下载win10系统制作工具</h2><p>进入windows<a href="https://www.microsoft.com/zh-cn/software-download/windows10" target="_blank" rel="noopener">官方网站</a><br><img src="https://img-blog.csdnimg.cn/20200312135855938.png" alt="下载页面"></p>
+<h2 id="二：下载系统到u盘里"><a href="#二：下载系统到u盘里" class="headerlink" title="二：下载系统到u盘里"></a>二：下载系统到u盘里</h2><p><strong>注意：此过程你的U盘会格式化，如果有资料请提前备份。</strong><br>1、打开刚刚下载的文件<br><img src="https://img-blog.csdnimg.cn/20200312140757886.png" alt="启动工具"><br>2、一切都保持默认选项就行，值得注意的几点<br>①：选择为另一台电脑创建安装介质<br><img src="https://img-blog.csdnimg.cn/20200312141015917.png" alt="选择"><br>②：选择为u盘，接下来就是一直点下一步。<br><img src="https://img-blog.csdnimg.cn/2020031214120986.png" alt="选择"></p>
+<h2 id="三：安装win10系统"><a href="#三：安装win10系统" class="headerlink" title="三：安装win10系统"></a>三：安装win10系统</h2><p>1、插入U盘，进入安装引导</p>
+<p>如果你的电脑没有任何系统，你点击开机键就可以直接进入安装引导界面。<br>如果你的电脑已经有系统，可以通过以下两个方法。<br>    方法一：<br>        我的电脑是开机时按f9进入，可以自己的电脑品牌自行百度，然后选择u盘。<br>    方法二：<br>        当然你也可以进入bios系统更改启动顺序，将u盘作为第一个启动，然后开机就可以了。<br>2、设置语言<br><img src="https://img-blog.csdnimg.cn/2020031214230457.png" alt=""><br>3、点击安装<br><img src="https://img-blog.csdnimg.cn/20200312142400995.png" alt=""><br>3、选择仅安装windows<br><img src="https://img-blog.csdnimg.cn/20200312142428815.png" alt=""><br>4、最重要的部分来了，选择自己的盘，可以根据大小来，因为我把win10作为主力系统，所以安装在固态银盘里。千万注意别选错了。<img src="https://img-blog.csdnimg.cn/20200312142520199.png" alt="选择分区"><br>5、就会达到这一步，接下来就是等待了，打把游戏，喝杯茶都可以，不过应该也不会太慢，速度根据自己电脑来。<br><img src="https://img-blog.csdnimg.cn/20200312142742415.png" alt=""><br>6、当你的电脑出现这个界面时，大功就告成了，接下来你只要设置一下就可以了<br><img src="https://img-blog.csdnimg.cn/20200312143007752.png" alt=""></p>
+<h1 id="贰：安装深度deepin系统"><a href="#贰：安装深度deepin系统" class="headerlink" title="贰：安装深度deepin系统"></a>贰：安装深度deepin系统</h1><p><strong>为什么要选择deepin系统呢？</strong><br>首先，当然是deepin系统的安装过程相当简单，其次，deepin作为linux的基础的系统，已经在某些（华为）电脑上作为主力系统了，并且，deepin作为国内开发的linux系统，能够在linux排行版上达到第十的位置，说明他是非常不错的了，所以说deepin作为日常使用的系统已经足够了。</p>
+<h2 id="一：下载deepin系统制作工具"><a href="#一：下载deepin系统制作工具" class="headerlink" title="一：下载deepin系统制作工具"></a>一：下载deepin系统制作工具</h2><p>进入deepin<a href="https://www.deepin.org/original/deepin-boot-maker/" target="_blank" rel="noopener">官网</a>，点击windows下载。<br><img src="https://img-blog.csdnimg.cn/20200312143253166.png" alt="下载工具"></p>
+<h2 id="二：下载deepin系统镜像"><a href="#二：下载deepin系统镜像" class="headerlink" title="二：下载deepin系统镜像"></a>二：下载deepin系统镜像</h2><p>进入deepin<a href="https://www.deepin.org/download/" target="_blank" rel="noopener">官网</a>，选择镜像下载，我选择的是官方下载，速度实测还是很快的，当然你也可以选择其他的源下载，值得注意的是不要选择下方的live系统，他和win的pe系统是一样的。具体是干嘛的，请自行百度。<br><img src="https://img-blog.csdnimg.cn/20200312143424158.png" alt="镜像"><br>下载好后他是一个iso文件大概2G多<br><img src="https://img-blog.csdnimg.cn/20200312143656671.png" alt="iso镜像"></p>
+<h2 id="二：用u盘制作启动盘"><a href="#二：用u盘制作启动盘" class="headerlink" title="二：用u盘制作启动盘"></a>二：用u盘制作启动盘</h2><p>1、打开之前下载的工具<br><img src="https://img-blog.csdnimg.cn/20200312170148633.png" alt="工具"><br>2、点击选择镜像，选择之前下载的镜像文件<br><img src="https://img-blog.csdnimg.cn/20200312170224682.png#pic_center" alt="工具"><br>3、选择u盘<br><img src="https://img-blog.csdnimg.cn/20200312170643521.png#pic_center" alt="选择u盘"></p>
+<h2 id="三：安装deepin系统"><a href="#三：安装deepin系统" class="headerlink" title="三：安装deepin系统"></a>三：安装deepin系统</h2><p>1、给你的电脑分一个区出来，用来装deepin系统，至少16G，建议大一点，因为我的盘比较大，我分了将近100G<br>①：点击文件管理，进入磁盘管理<br><img src="https://img-blog.csdnimg.cn/20200312171057243.png" alt=""><br>②：在你的未分配的盘中新建卷，<br><img src="https://img-blog.csdnimg.cn/20200312171213436.png" alt="新建卷"><br>③：设置卷大小，建议16G以上<br><img src="https://img-blog.csdnimg.cn/20200312171403352.png" alt="设置卷大小"><br>2、进入进入启动菜单<br>方法一：<br>我的电脑是开机时按f9进入，可以自己的电脑品牌自行百度，然后选择u盘。<br>方法二：<br>当然你也可以进入bios系统更改启动顺序，将u盘作为第一个启动，然后开机就可以了。<br>3、进入deepin引导界面，点击或者直接回车<br><img src="https://img-blog.csdnimg.cn/20200312140214433.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTI5MTg0,size_16,color_FFFFFF,t_70" alt="引导界面"><br>4、之后就是设置语言，时区，用户，一直到选择分区时要注意，一定要选择自己刚刚新建的分区，不要选择到其他位置了，因为他会格式化那个分区，选错小心资料不保。<br><img src="https://img-blog.csdnimg.cn/20200312171615558.png" alt=""><br>5、然后就是进入安装了，等待。。。。。。<br><img src="https://img-blog.csdnimg.cn/20200312171804405.png" alt="正在安装"></p>
+<h1 id="叁：作者有话"><a href="#叁：作者有话" class="headerlink" title="叁：作者有话"></a>叁：作者有话</h1><p><code>Deepin</code>深度系统作为入门linux来说，还是比较不错的系统，流畅度与界面都是非常不错的，不过生态相比windows还是差了点，日常使用可能足够了。如果你想要体验的话就动手起来吧，有任何问题可以给我留言。</p>
+<p>在最近，Deepin V20也要发布了，由于疫情的关系，往后推迟了，不过迟早会看到的。据传，Deepin V20操作系统跟由统信软件负责的国产OS系统UOS同源，UOS与Deepin V20系统是并行开发的，大部分功能及资源库都是一样的，但是两者区别UOS是面向商业用户的，Deepin v20面向社区的，个人使用不收费。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -545,6 +468,56 @@
 
             
 
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.lomtom.top" rel="external nofollow noreferrer">lomtom</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.lomtom.top/2020/03/12/xi-tong-win10-deepin-shuang-xi-tong-an-zhuang-win10-he-deepin-shuang-xi-tong/">https://blog.lomtom.top/2020/03/12/xi-tong-win10-deepin-shuang-xi-tong-an-zhuang-win10-he-deepin-shuang-xi-tong/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://blog.lomtom.top" target="_blank">lomtom</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
 
 
             <div class="tag_share" style="display: block;">
@@ -552,8 +525,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/springmvc/">
-                                    <span class="chip bg-color">springmvc</span>
+                                <a href="/tags/win/">
+                                    <span class="chip bg-color">win</span>
+                                </a>
+                            
+                                <a href="/tags/linux/">
+                                    <span class="chip bg-color">linux</span>
                                 </a>
                             
                         </div>
@@ -705,6 +682,33 @@
     </div>
 
     
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b45860b395e6ad99c4fe',
+        clientSecret: 'fbcdfc0e5a23989f0806becb31be0b71563b5e47',
+        repo: 'blog.lomtom.top',
+        owner: 'zero028',
+        admin: "zero028",
+        id: '2020-03-12T17-53-41',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
 
     
 
@@ -725,26 +729,24 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/04/05/%E3%80%90springmvc%20thymeleaf%E3%80%91springmvc%E6%95%B4%E5%90%88thymeleaf/">
+                <a href="/2020/03/19/springboot-spring-mybatis-kan-wo-zen-me-jiang-springboot-yu-spring-zheng-he-mybatis-yu-druid-shu-ju-yuan/">
                     <div class="card-image">
                         
-                        <img src="https://img-blog.csdnimg.cn/20200405094344714.jpg" class="responsive-img" alt="【springmvc thymeleaf】springmvc整合thymeleaf">
+                        <img src="https://img-blog.csdnimg.cn/20200406130116487.jpg" class="responsive-img" alt="【springboot spring mybatis】看我怎么将springboot与spring整合mybatis与druid数据源">
                         
-                        <span class="card-title">【springmvc thymeleaf】springmvc整合thymeleaf</span>
+                        <span class="card-title">【springboot spring mybatis】看我怎么将springboot与spring整合mybatis与druid数据源</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            概述Thymeleaf提供了一组Spring集成，使您可以将其用作Spring MVC应用程序中JSP的全功能替代品。
-这些集成将使您能够：
-
-@Controller像使用JSP一样，将Spring MVC 对象中的映射方法转发到Thyme
+                            概述本文分别讲述了spring与springboot是怎么整合mybatis与druid数据源的？如果你只是想实现其中一种，那你就不要把他们的配置过程搞混了。
+1、mybatisMyBatis 本是apache的一个开源项目iBatis, 
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
                         </span>
                         <span class="publish-author">
                             
@@ -761,12 +763,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/springmvc/">
-                        <span class="chip bg-color">springmvc</span>
+                    <a href="/tags/springboot/">
+                        <span class="chip bg-color">springboot</span>
                     </a>
                     
-                    <a href="/tags/thymeleaf/">
-                        <span class="chip bg-color">thymeleaf</span>
+                    <a href="/tags/mybatis/">
+                        <span class="chip bg-color">mybatis</span>
                     </a>
                     
                 </div>
@@ -777,44 +779,50 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
+                Current&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/23/%E3%80%90%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%20%E6%B5%8F%E8%A7%88%E5%99%A8%E3%80%91%E7%BB%86%E6%95%B0%E9%82%A3%E4%BA%9B%E4%BC%98%E7%A7%80%E7%9A%84%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/">
+                <a href="/2020/03/12/xi-tong-win10-deepin-shuang-xi-tong-an-zhuang-win10-he-deepin-shuang-xi-tong/">
                     <div class="card-image">
                         
-                        <img src="https://img-blog.csdnimg.cn/20200322142629494.png" class="responsive-img" alt="【开发工具 浏览器】细数那些优秀的谷歌浏览器插件">
                         
-                        <span class="card-title">【开发工具 浏览器】细数那些优秀的谷歌浏览器插件</span>
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="【系统 win10 deepin】双系统安装（win10和deepin双系统）">
+                        
+                        <span class="card-title">【系统 win10 deepin】双系统安装（win10和deepin双系统）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            概述相信所有人包括程序员都离不开浏览器，而作为猿来说，谷歌浏览器是我们必不可少的工具，开发调试，查找资料都离不开他，所以说浏览器也是一款开发工具也不为过。浏览器经过过多年的发展，诞生了无数浏览器拓展程序，也就是插件，因为插件，我们使用浏览器
+                            概述所有的事情都源自于一只蝙蝠，在这个无聊且漫长的寒假，终于能够实现躺在家里也能为国家做出贡献的时候了。既然闲着也是闲着，那为何不折腾一下自己的电脑呢。相信很多猿在虚拟机里已经体验过linux系统，那么怎么在实体机上怎么安装深度linux系
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    开发工具
+                            <a href="/categories/%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    系统
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">
-                        <span class="chip bg-color">浏览器</span>
+                    <a href="/tags/win/">
+                        <span class="chip bg-color">win</span>
+                    </a>
+                    
+                    <a href="/tags/linux/">
+                        <span class="chip bg-color">linux</span>
                     </a>
                     
                 </div>
@@ -997,7 +1005,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             <span id="year">2019</span>
-            <a href="http://yoursite.com" target="_blank">lomtom | </a>
+            <a href="https://blog.lomtom.top" target="_blank">lomtom | </a>
 			
             <span id="sitetime">载入运行时间...</span>
             <script>
@@ -1046,7 +1054,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 			<br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">13.7k</span>&nbsp;字
+                class="white-color">15.1k</span>&nbsp;字
             
             
             

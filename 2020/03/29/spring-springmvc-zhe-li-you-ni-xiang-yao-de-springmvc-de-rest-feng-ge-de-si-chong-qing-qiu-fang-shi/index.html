@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【开发工具 idea】值得推荐的15款idea插件, LOMTOM">
+    <meta name="keywords" content="【spring springmvc】这里有你想要的SpringMVC的REST风格的四种请求方式, LOMTOM">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【开发工具 idea】值得推荐的15款idea插件 | LOMTOM</title>
+    <title>【spring springmvc】这里有你想要的SpringMVC的REST风格的四种请求方式 | LOMTOM</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -219,15 +219,28 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请关注公众号 博思奥园 回复关键字获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://img-blog.csdnimg.cn/20200406123641715.jpg')">
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://img-blog.csdnimg.cn/20200329130918103.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【开发工具 idea】值得推荐的15款idea插件</h1>
+                    <h1 class="description center-align post-title">【spring springmvc】这里有你想要的SpringMVC的REST风格的四种请求方式</h1>
                 </div>
             </div>
         </div>
@@ -352,8 +365,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/IntelliJ-idea/">
-                                <span class="chip bg-color">IntelliJ idea</span>
+                            <a href="/tags/springmvc/">
+                                <span class="chip bg-color">springmvc</span>
                             </a>
                         
                     </div>
@@ -364,8 +377,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category">
-                                开发工具
+                            <a href="/categories/spring/" class="post-category">
+                                spring
                             </a>
                         
                     </div>
@@ -377,7 +390,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-04-05
+                    2020-03-29
                 </div>
                 
 
@@ -386,14 +399,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    2.2k
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    8 Min
+                    6 Min
                 </div>
                 
 
@@ -409,51 +422,118 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h1><p>对于一个猿来说，工欲善其事，必先利其器，一个好的开发工具就是程序员的左膀右臂，idea作为大部分java猿的开发工具，无疑是最好用的ide了。IntelliJ在业界被公认为最好的java开发工具，尤其在智能代码助手、代码自动提示、重构、J2EE支持、各类版本工具(git、svn等)、JUnit、CVS整合、代码分析、 创新的GUI设计等方面的功能可以说是超常的。</p>
-<p>而idea的插件更是能够给我们日常开发带来很多便利，下面就是我想推荐给大家的几个插件。<br><img src="https://img-blog.csdnimg.cn/20200317160711417.png" alt="plugina"></p>
-<h1 id="壹：插件安装"><a href="#壹：插件安装" class="headerlink" title="壹：插件安装"></a>壹：插件安装</h1><p>idea的插件安装可以分为两种，第一种就是直接在idea里面下载、安装。第二种可以将压缩包先下载好，然后再在idea中导入，即可完成安装。下面所有的安装都可以通过这两种安装方式来安装。<br>注：插件安装重启idea生效</p>
-<p><a href="https://plugins.jetbrains.com/" target="_blank" rel="noopener">jetbrains插件官网</a></p>
-<h2 id="一：在线安装"><a href="#一：在线安装" class="headerlink" title="一：在线安装"></a>一：在线安装</h2><p>file -&gt; setting -&gt; plugins -&gt; search -&gt; install -&gt; restart idea<br><img src="https://img-blog.csdnimg.cn/20200317155508764.png" alt="在线安装"></p>
-<h2 id="二：本地安装"><a href="#二：本地安装" class="headerlink" title="二：本地安装"></a>二：本地安装</h2><p>file -&gt; setting -&gt; plugins -&gt; install plugins from disk-&gt; 选择压缩包 -&gt; ok -&gt; restart idea<br><img src="https://img-blog.csdnimg.cn/20200317160537509.png" alt="本地安装"></p>
-<h1 id="贰：插件："><a href="#贰：插件：" class="headerlink" title="贰：插件："></a>贰：插件：</h1><h2 id="一：炫酷"><a href="#一：炫酷" class="headerlink" title="一：炫酷"></a>一：炫酷</h2><h3 id="15、Activate-power-mode或者Intellij-power-mode-II"><a href="#15、Activate-power-mode或者Intellij-power-mode-II" class="headerlink" title="15、Activate-power-mode或者Intellij_power_mode_II"></a>15、Activate-power-mode或者Intellij_power_mode_II</h3><p>你试过在敲代码的时候像打游戏一样燃吗，当你装上这个插件的时候，每敲下一串代码，整个屏幕都在颤抖。<br>当然，这样的插件玩玩就好，在真实的开发环境要求的是速度。</p>
-<h3 id="14、background-image-plus"><a href="#14、background-image-plus" class="headerlink" title="14、background image plus"></a>14、background image plus</h3><p>你的ide是不是除了黑色就是白色，顶多就带一点灰，而对于二次元的小伙伴，如果能在敲代码的时候也能欣赏自己的老婆，是不是很赞。该插件支持给你的idea添加背景图片。<br>设置：view-&gt;set background image<br><img src="https://img-blog.csdnimg.cn/20200317145510935.png" alt="background image plus"></p>
-<h3 id="13、rainbow-brackets"><a href="#13、rainbow-brackets" class="headerlink" title="13、rainbow brackets"></a>13、rainbow brackets</h3><p>我们常常在开发中是否遇到括号太多，而找不到相应的括号，而尤其在删除代码的时候，及其困扰，是不是？而rainbow brackets恰好能解决这些问题。<br>这个插件可以实现配对括号相同颜色，并且实现选中区域代码高亮的功能。对增强写代码的有趣性和排错等都有一些帮助。<br>在这里插入图片描述<img src="https://img-blog.csdnimg.cn/20200317145927430.png" alt="rainbow brackets"></p>
-<h2 id="二：实用"><a href="#二：实用" class="headerlink" title="二：实用"></a>二：实用</h2><h3 id="12、translation"><a href="#12、translation" class="headerlink" title="12、translation"></a>12、translation</h3><p>英语不好的人的福音来了，你是不是经常在看别人的代码，遇到很多英语单词不认识，而从idea里面复制不认识的单词，再去查就很麻烦对不对，这款插件你就能直接在idea里面实现单词或者语句的翻译。<br>使用：选中你要查询的单词或语句，右键，选择translate<br><img src="https://img-blog.csdnimg.cn/20200317151341571.png" alt="translate"></p>
-<h3 id="11、statistic"><a href="#11、statistic" class="headerlink" title="11、statistic"></a>11、statistic</h3><p>显示项目统计信息。该插件显示按扩展名排序的文件以及大小，行数LOC等。用户可以使用“选择时刷新”按钮选择（项目/模块/包/文件）作用域。（此插件需要Java 1.8）<br>使用：点击控制台下方statistic按钮，再点击刷新按钮<br><img src="https://img-blog.csdnimg.cn/2020031715163414.png" alt="statistic"></p>
-<h3 id="10、RestfulToolkit"><a href="#10、RestfulToolkit" class="headerlink" title="10、RestfulToolkit"></a>10、RestfulToolkit</h3><p>RESTful服务开发的工具包。</p>
-<ul>
-<li>1.一步一步导航到服务声明。（使用：Ctrl（Command）+ \或Ctrl + Alt + N）</li>
-<li>2.显示RESTful服务结构。</li>
-<li>3.一个简单的http请求工具。</li>
-<li>4.在请求方法，生成和复制查询参数，生成和复制URL等处添加一些有用的功能。</li>
-<li>5，其他功能：转换为JSON; 转换为Java类，格式化json数据（Windows：Ctrl + Enter； Mac：Command + Enter）。</li>
-</ul>
-<p>支持Spring框架（Spring MVC / Spring Boot 1.x，2.x）<br>支持JAX-RS<br>支持Java和Kotlin语言<br><img src="https://img-blog.csdnimg.cn/20200317152033418.png" alt="RestfulToolkit"></p>
-<h3 id="9、lombok"><a href="#9、lombok" class="headerlink" title="9、lombok"></a>9、lombok</h3><p>写实体类时，我们常常需要写他的set、get、构造方法等，lombok可以使代码现在变得非常容易，只需突出显示一个块并在IDE中键入注释即可。减轻代码审查的痛苦并提高代码质量。<br>注意：它需要在项目中引入依赖（pom.xml），在使用中只要加入@Data注解就可以</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--        引入lombok--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20200317152504198.png" alt="lombok"></p>
-<h3 id="8、alibaba-Java-coding-guidelines"><a href="#8、alibaba-Java-coding-guidelines" class="headerlink" title="8、alibaba Java coding guidelines"></a>8、alibaba Java coding guidelines</h3><p>我们在刚写代码时，自己书写的代码会不规范，尤其在团队合作中，会时整个项目变得非常乱，而该插件与下面的sonarLint都能解决你的问题。会在你写代码的时候提醒你，从而使你的代码变得规范。<br><img src="https://img-blog.csdnimg.cn/20200317153244625.png" alt="alibaba Java coding guidelines"></p>
-<h3 id="7、sonarLint"><a href="#7、sonarLint" class="headerlink" title="7、sonarLint"></a>7、sonarLint</h3><p>SonarLint是一个IDE扩展，可帮助您在编写代码时检测和修复质量问题。像拼写检查器一样，SonarLint可以使缺陷变形，因此可以在提交代码之前将其修复。您可以直接从IntelliJ IDEA插件存储库中获取它，然后它将在您编写代码（Java，Kotlin，Ruby，JavaScript，PHP和Python）时检测到新的错误和质量问题。</p>
-<p>如果在SonarQube或SonarCloud上分析了您的项目，SonarLint可以连接到服务器以检索该项目的适当质量配置文件和设置。运行SonarLint需要Java 8。</p>
-<p>使用：选择你要检测的文件，然后点击下方sonarLint，再点击运行按钮。<br><img src="https://img-blog.csdnimg.cn/20200317153007803.png" alt="sonarLint"></p>
-<h3 id="6、key-promoter-X"><a href="#6、key-promoter-X" class="headerlink" title="6、key promoter X"></a>6、key promoter X</h3><p>一个用于学习IntelliJ IDEA快捷方式的插件。<br>Key Promoter X可帮助您在工作时学习基本的快捷方式。当您在IDE内的按钮上使用鼠标时，Key Promoter X会显示您应该使用的键盘快捷键。这提供了一种简单的方法来学习如何用键盘按键代替繁琐的鼠标工作，并有助于过渡到更快的无鼠标开发。当前，它支持工具栏按钮，菜单按钮，工具窗口及其中的操作。</p>
-<p>Key Promoter X工具窗口显示了您最常使用的鼠标操作的命中列表，并直接为您提供了可以使用的快捷方式。对于没有快捷方式的按钮，Key Promoter X会提示您直接创建一个。<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9wbHVnaW5zLmpldGJyYWlucy5jb20vZmlsZXMvOTc5Mi9zY3JlZW5zaG90XzE3MTA1LnBuZw?x-oss-process=image/format,png" alt="Key Promoter X"></p>
-<h3 id="5、Mybatis-log-plugin"><a href="#5、Mybatis-log-plugin" class="headerlink" title="5、Mybatis-log-plugin"></a>5、Mybatis-log-plugin</h3><p>MyBatis日志插件<br>把mybatis输出的sql日志还原成完整的sql语句。<br>将日志输出的sql语句中的问号？替换成真正的参数值。<br>通过“工具- &gt; MyBatis的日志插件”。菜单或快捷键“Ctrl + Shift + ALT + O”的启用。点击窗口左边的“过滤器”按钮，可以过滤不想要输出的SQL语句<br>点击窗口左边的“格式SQL”的按钮，可以格式化输出的SQL语句。<br>选中控制台的SQL日志，右击“从选择还原SQL”菜单可以还原SQL语句。<br>前提条件：输出的SQL日志必须包含“准备”和“参数”。才能正常解析<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9wbHVnaW5zLmpldGJyYWlucy5jb20vZmlsZXMvMTAwNjUvc2NyZWVuc2hvdF8xNzM2Ny5wbmc?x-oss-process=image/format,png" alt="Mybatis-log-plugin"></p>
-<h3 id="4、Free-idea-mybatis"><a href="#4、Free-idea-mybatis" class="headerlink" title="4、Free-idea-mybatis"></a>4、Free-idea-mybatis</h3><p>free-idea-mybatis是用于支持mybatis的想法的交换插件，这是主要功能：</p>
-<ul>
-<li>生成映射器xml文件</li>
-<li>从代码导航到映射器mapper，然后从映射器mapper导航回代码</li>
-<li>自动代码和错误提示</li>
-<li>支持mybatis生成器GUI<h3 id="3、CodeGlance"><a href="#3、CodeGlance" class="headerlink" title="3、CodeGlance"></a>3、CodeGlance</h3>将类似于Sublime中的代码的微型地图嵌入到编辑器窗格中。使用您自定义的颜色突出显示语法，可同时使用浅色和深色主题。<br><img src="https://img-blog.csdnimg.cn/20200317154043841.png" alt="CodeGlance"><h3 id="2、MyBatisCodeHelperPro"><a href="#2、MyBatisCodeHelperPro" class="headerlink" title="2、MyBatisCodeHelperPro"></a>2、MyBatisCodeHelperPro</h3>他的功能非常强大，然而他并不免费（29软妹币半年），下面有传送门，土豪请随意。<br>主要特征：</li>
-<li>通过Intellij数据库表生成mybatis原始代码或添加数据库连接</li>
-<li>基于mybatis接口方法名称（例如spring data jpa）生成mybatis sql，使用此方法，无需使用if test即可为非连接查询支持generate语句编写大多数sql</li>
-<li>当您添加或删除列时，数据库generate crud可能会生成多次，插件将自动合并代码</li>
-<li>完整的mybatis sql自动完成功能，在xml中识别mybatis标记，例如修剪集包含ect的地方，在这些标记后提供sql完成</li>
-<li>从mybatis dao界面跳转到mapper xml</li>
-</ul>
-<p>介绍：<a href="https://plugins.jetbrains.com/plugin/9837-mybatiscodehelperpro" target="_blank" rel="noopener">https://plugins.jetbrains.com/plugin/9837-mybatiscodehelperpro</a><br>传送门：<a href="https://zhile.io/2019/04/23/mybatis-code-helper-pro-crack.html" target="_blank" rel="noopener">https://zhile.io/2019/04/23/mybatis-code-helper-pro-crack.html</a></p>
-<h3 id="1、aiXcode"><a href="#1、aiXcode" class="headerlink" title="1、aiXcode"></a>1、aiXcode</h3><p>AiXcoder是使用最新AI技术的代码建议生成器。开发者的模型在超过1 TB的开源代码上进行了训练，并通过您自己的计算机提供服务。<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9maWxlLmFpeGNvZGVyLmNvbS9pbWcvZGVtby9uL2phdmExLmdpZg" alt="aiXcode"></p>
-<h1 id="叁：作者有话"><a href="#叁：作者有话" class="headerlink" title="叁：作者有话"></a>叁：作者有话</h1><p>希望我的博文能够帮助到你，能够让你在开发过程中能够更加的便捷，最后，希望正在看这篇博文的你早日成为大佬，然后再来带带小菜鸡的我鸭。<br><img src="https://img-blog.csdnimg.cn/20200405094243147.png" alt=""></p>
+                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>之前的文章<a href="https://blog.csdn.net/qq_41929184/article/details/104997012" target="_blank" rel="noopener">springmvc使用注解声明控制器与请求映射</a>有简单提到过控制器与请求映射，这一次就详细讲解一下<code>SpringMVC</code>的<code>REST</code>风格的四种请求方式及其使用方法。</p>
+<h2 id="你能get的知识点"><a href="#你能get的知识点" class="headerlink" title="你能get的知识点"></a>你能get的知识点</h2><p>1、什么是Rest风格？<br>2、基于<code>springmvc</code>实现REST风格的四种请求方式<br>3、post请求转换为<code>delete</code>与<code>put</code>请求<br>4、解决请求乱码问题<br>5、<code>RequestMapping</code>注解的属性</p>
+<h1 id="壹：rest风格"><a href="#壹：rest风格" class="headerlink" title="壹：rest风格"></a>壹：rest风格</h1><h2 id="一：什么是Rest风格？"><a href="#一：什么是Rest风格？" class="headerlink" title="一：什么是Rest风格？"></a>一：什么是Rest风格？</h2><p>REST即表述性状态传递（英文：Representational State Transfer，简称REST）是Roy Fielding博士在2000年他的博士论文中提出来的一种软件架构风格。它是一种针对网络应用的设计和开发方式，可以降低开发的复杂性，提高系统的可伸缩性。</p>
+<p>简单来说：使用URL定位资源，用HTTP动词（例如GET,POST,DELETE,DETC等）描述操作。</p>
+<h2 id="二：REST风格的四种请求方式"><a href="#二：REST风格的四种请求方式" class="headerlink" title="二：REST风格的四种请求方式"></a>二：REST风格的四种请求方式</h2><table>
+<thead>
+<tr>
+<th>请求</th>
+<th>说明</th>
+<th>用于</th>
+<th>例子</th>
+<th>例子说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@GetMapping</td>
+<td>匹配GET方式的请求；</td>
+<td>一般用于读取数据</td>
+<td>/user/1</td>
+<td>获取一号用户信息</td>
+</tr>
+<tr>
+<td>@PostMapping</td>
+<td>匹配POST方式的请求；</td>
+<td>一般用于新增数据</td>
+<td>/user/1</td>
+<td>新增一号用户</td>
+</tr>
+<tr>
+<td>@PutMapping</td>
+<td>匹配PUT方式的请求；</td>
+<td>一般用于更新数据</td>
+<td>/user/1</td>
+<td>修改一号用户</td>
+</tr>
+<tr>
+<td>@DeleteMapping</td>
+<td>匹配DELETE方式的请求；</td>
+<td>一般用于删除数据</td>
+<td>/user/1</td>
+<td>删除一号用户</td>
+</tr>
+</tbody></table>
+<p>也就是说，我们不再使用<code>/user/getuser?user=1</code>、<code>/user/deleteuser?user=1</code>等来区分使用者的行为操作，而是使用不同的请求方式来描述行为。</p>
+<h1 id="贰：基于springmvc实现REST风格的四种请求方式"><a href="#贰：基于springmvc实现REST风格的四种请求方式" class="headerlink" title="贰：基于springmvc实现REST风格的四种请求方式"></a>贰：基于<code>springmvc</code>实现REST风格的四种请求方式</h1><p>Spring框架的4.3版本后，引入了新的组合注解，来帮助简化常用的<code>HTTP</code>方法的映射，并更好的表达被注解方法的语义。</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping = @requestMapping(method = RequestMethod.GET)。</span><br><span class="line">@PostMapping = @requestMapping(method = RequestMethod.POST)。</span><br><span class="line">@DeleteMapping = @requestMapping(method = RequestMethod.DELETE)。</span><br><span class="line">@PutMapping = @requestMapping(method = RequestMethod.PuT)。</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="一：-GetMapping请求"><a href="#一：-GetMapping请求" class="headerlink" title="一：@GetMapping请求"></a>一：@GetMapping请求</h2><p> 以<code>@GetMapping</code>为例，该组合注解是<code>@RequestMapping(method = RequestMethod.GET)</code>的缩写，它会将HTTP GET请求映射到特定的处理方法上。 </p>
+<p><code>RequestMapping</code>后所有属性都是可选的，但其默认属性是<code>value</code>。当<code>value</code>是其唯一属性时，可以省略属性名。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/rest"</span>,method = RequestMethod.GET)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">restGet</span><span class="params">()</span></span>{</span><br><span class="line">	System.out.println(<span class="string">"Get请求，hello....."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p> <code>@GetMapping</code>是一个组合注解，是<code>@RequestMapping(method = RequestMethod.GET)</code>的缩写。<br> 所以我们可以将以上代码简单的写成：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/rest"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">restGet</span><span class="params">()</span></span>{</span><br><span class="line">    System.out.println(<span class="string">"Get请求，hello....."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="二：-PostMapping请求"><a href="#二：-PostMapping请求" class="headerlink" title="二：@PostMapping请求"></a>二：@PostMapping请求</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping</span>(<span class="string">"/rest"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">restPost</span><span class="params">()</span></span>{</span><br><span class="line">    System.out.println(<span class="string">"Post请求，hello....."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="三：-DeleteMapping请求"><a href="#三：-DeleteMapping请求" class="headerlink" title="三：@DeleteMapping请求"></a>三：@DeleteMapping请求</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DeleteMapping</span>(<span class="string">"/rest"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">restDelete</span><span class="params">()</span></span>{</span><br><span class="line">    System.out.println(<span class="string">"Delete请求，hello....."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"redirect:rest"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="四：-PutMapping请求"><a href="#四：-PutMapping请求" class="headerlink" title="四：@PutMapping请求"></a>四：@PutMapping请求</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PutMapping</span>(<span class="string">"/rest"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">restPut</span><span class="params">()</span></span>{</span><br><span class="line">    System.out.println(<span class="string">"Put请求，hello....."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"redirect:rest"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="叁：问题"><a href="#叁：问题" class="headerlink" title="叁：问题"></a>叁：问题</h1><h2 id="一：post请求转换为delete与put请求"><a href="#一：post请求转换为delete与put请求" class="headerlink" title="一：post请求转换为delete与put请求"></a>一：post请求转换为delete与put请求</h2><p>由于form表单只支持GET和POST请求，而不支持DELETE和PUT等请求方式，所以我们实现delete和put请求往往会报错找不到方法。</p>
+<p>Spring提供了一个过滤器<code>HiddenHttpMethodFilter</code>，可以将DELETE和PUT请求转换为标准的HTTP方式，即能将POST请求转为DELETE或PUT请求。 </p>
+<p><strong>具体实现</strong>：在web.xml文件中配置过滤器HiddenHttpMethodFilter</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--使用Rest风格的URI,将页面普通的post请求转为delete或者put请求--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>hiddenHttpMethodFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.HiddenHttpMethodFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>hiddenHttpMethodFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p><strong>注意</strong>：delete和put请求最好使用Redirect(重定向)，不然会报404错误。</p>
+<h2 id="二：解决请求乱码问题"><a href="#二：解决请求乱码问题" class="headerlink" title="二：解决请求乱码问题"></a>二：解决请求乱码问题</h2><figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  解决乱码问题--&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>forceEncoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p><strong>注意</strong>：编码的过滤器应该放在所有的过滤器前，否则不生效</p>
+<h1 id="肆：RequestMapping注解的属性"><a href="#肆：RequestMapping注解的属性" class="headerlink" title="肆：RequestMapping注解的属性"></a>肆：RequestMapping注解的属性</h1><table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>String</td>
+<td>可选属性，用于为映射地址指定别名。</td>
+</tr>
+<tr>
+<td>value</td>
+<td>String[]</td>
+<td>可选属性，同时也是默认属性，用于映射一-个请求和一种方法，可以标注在一-个方法或一个类上。</td>
+</tr>
+<tr>
+<td>method</td>
+<td>RequestMethod[]</td>
+<td>可选属性，用于指定该方法用于处理哪种类型的请求方式，其请求方式包括GET、POST、HEAD、OPTIONS、PUT、PATCH、DELETE和TRACE例如method=RequestMethod.GET表示只支持GET请求，如果需要支持多个请求方式则需要通过{}写成数组的形式，并且多个请求方式之间是有英文逗号分隔。</td>
+</tr>
+<tr>
+<td>params</td>
+<td>String[]</td>
+<td>可选属性，用于指定Request中必须包含某些参数的值，.才可以通过其标注的方法处理。</td>
+</tr>
+<tr>
+<td>headers</td>
+<td>String[]</td>
+<td>可选属性,用于指定Request中必须包含某些指定的header的值，才可以通过其标注的方法处理。。</td>
+</tr>
+<tr>
+<td>consumes</td>
+<td>String[]</td>
+<td>可选属性，用于指定处理请求的提交内容类型(Content-type)，比如application/json,text/html等。</td>
+</tr>
+<tr>
+<td>produces</td>
+<td>String[]</td>
+<td>可选属性，用于指定返回的内容类型，返回的内容类型必,须是request请求头(Accept)中所包含的类型。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>表中所有属性都是可选的，但其默认属性是value。当value是其唯一属性时， 可以省略属性名。<br>例如，下面两种标注的含义相同：<br>@RequestMapping(value=”/rest”)<br>@RequestMapping(“/rest”)</p>
+</blockquote>
+<h1 id="伍：测试"><a href="#伍：测试" class="headerlink" title="伍：测试"></a>伍：测试</h1><p>新建index.html文件，加入以下代码。新建hello.html，用于请求后的页面跳转。</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>各种请求<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"rest"</span>&gt;</span>hello Get请求<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"rest"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>hello Post请求<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"rest"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"_method"</span> <span class="attr">value</span>=<span class="string">"delete"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>hello Delete请求<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"rest"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"_method"</span> <span class="attr">value</span>=<span class="string">"put"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>hello put请求<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>结果：<img src="https://img-blog.csdnimg.cn/20200329124302860.png" alt=""></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -478,6 +558,56 @@
 
             
 
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.lomtom.top" rel="external nofollow noreferrer">lomtom</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.lomtom.top/2020/03/29/spring-springmvc-zhe-li-you-ni-xiang-yao-de-springmvc-de-rest-feng-ge-de-si-chong-qing-qiu-fang-shi/">https://blog.lomtom.top/2020/03/29/spring-springmvc-zhe-li-you-ni-xiang-yao-de-springmvc-de-rest-feng-ge-de-si-chong-qing-qiu-fang-shi/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://blog.lomtom.top" target="_blank">lomtom</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
 
 
             <div class="tag_share" style="display: block;">
@@ -485,8 +615,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/IntelliJ-idea/">
-                                    <span class="chip bg-color">IntelliJ idea</span>
+                                <a href="/tags/springmvc/">
+                                    <span class="chip bg-color">springmvc</span>
                                 </a>
                             
                         </div>
@@ -638,6 +768,33 @@
     </div>
 
     
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b45860b395e6ad99c4fe',
+        clientSecret: 'fbcdfc0e5a23989f0806becb31be0b71563b5e47',
+        repo: 'blog.lomtom.top',
+        owner: 'zero028',
+        admin: "zero028",
+        id: '2020-03-29T13-15-51',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
 
     
 
@@ -658,57 +815,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/04/06/%E3%80%90python%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E3%80%91%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E5%BD%B1%E8%AF%84%E6%95%B0%E6%8D%AE%20/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="【python爬虫实战】爬取豆瓣影评数据">
-                        
-                        <span class="card-title">【python爬虫实战】爬取豆瓣影评数据</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            概述：爬取豆瓣影评数据步骤：1、获取网页请求2、解析获取的网页3、提速数据4、保存文件
-源代码：123456789101112131415161718192021222324252627282930313233343536373839404
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-06
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/python/" class="post-category">
-                                    python
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98/">
-                        <span class="chip bg-color">爬虫实战</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/04/05/%E3%80%90springmvc%20thymeleaf%E3%80%91springmvc%E6%95%B4%E5%90%88thymeleaf/">
+                <a href="/2020/04/05/springmvc-thymeleaf-springmvc-zheng-he-thymeleaf/">
                     <div class="card-image">
                         
                         <img src="https://img-blog.csdnimg.cn/20200405094344714.jpg" class="responsive-img" alt="【springmvc thymeleaf】springmvc整合thymeleaf">
@@ -726,9 +833,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -750,6 +857,54 @@
                     
                     <a href="/tags/thymeleaf/">
                         <span class="chip bg-color">thymeleaf</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/03/23/kai-fa-gong-ju-liu-lan-qi-xi-shu-na-xie-you-xiu-de-gu-ge-liu-lan-qi-cha-jian/">
+                    <div class="card-image">
+                        
+                        <img src="https://img-blog.csdnimg.cn/20200322142629494.png" class="responsive-img" alt="【开发工具 浏览器】细数那些优秀的谷歌浏览器插件">
+                        
+                        <span class="card-title">【开发工具 浏览器】细数那些优秀的谷歌浏览器插件</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            概述相信所有人包括程序员都离不开浏览器，而作为猿来说，谷歌浏览器是我们必不可少的工具，开发调试，查找资料都离不开他，所以说浏览器也是一款开发工具也不为过。浏览器经过过多年的发展，诞生了无数浏览器拓展程序，也就是插件，因为插件，我们使用浏览器
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    开发工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">
+                        <span class="chip bg-color">浏览器</span>
                     </a>
                     
                 </div>
@@ -932,7 +1087,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             <span id="year">2019</span>
-            <a href="http://yoursite.com" target="_blank">lomtom | </a>
+            <a href="https://blog.lomtom.top" target="_blank">lomtom | </a>
 			
             <span id="sitetime">载入运行时间...</span>
             <script>
@@ -981,7 +1136,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 			<br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">13.7k</span>&nbsp;字
+                class="white-color">15.1k</span>&nbsp;字
             
             
             

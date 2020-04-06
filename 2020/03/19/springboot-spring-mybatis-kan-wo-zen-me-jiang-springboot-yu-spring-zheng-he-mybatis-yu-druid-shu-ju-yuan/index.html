@@ -219,6 +219,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请关注公众号 博思奥园 回复关键字获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -495,6 +508,56 @@
 
             
 
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.lomtom.top" rel="external nofollow noreferrer">lomtom</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.lomtom.top/2020/03/19/springboot-spring-mybatis-kan-wo-zen-me-jiang-springboot-yu-spring-zheng-he-mybatis-yu-druid-shu-ju-yuan/">https://blog.lomtom.top/2020/03/19/springboot-spring-mybatis-kan-wo-zen-me-jiang-springboot-yu-spring-zheng-he-mybatis-yu-druid-shu-ju-yuan/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://blog.lomtom.top" target="_blank">lomtom</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
 
 
             <div class="tag_share" style="display: block;">
@@ -659,6 +722,33 @@
     </div>
 
     
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b45860b395e6ad99c4fe',
+        clientSecret: 'fbcdfc0e5a23989f0806becb31be0b71563b5e47',
+        repo: 'blog.lomtom.top',
+        owner: 'zero028',
+        admin: "zero028",
+        id: '2020-03-19T23-33-36',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
 
     
 
@@ -679,7 +769,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/03/23/%E3%80%90%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%20%E6%B5%8F%E8%A7%88%E5%99%A8%E3%80%91%E7%BB%86%E6%95%B0%E9%82%A3%E4%BA%9B%E4%BC%98%E7%A7%80%E7%9A%84%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/">
+                <a href="/2020/03/23/kai-fa-gong-ju-liu-lan-qi-xi-shu-na-xie-you-xiu-de-gu-ge-liu-lan-qi-cha-jian/">
                     <div class="card-image">
                         
                         <img src="https://img-blog.csdnimg.cn/20200322142629494.png" class="responsive-img" alt="【开发工具 浏览器】细数那些优秀的谷歌浏览器插件">
@@ -724,50 +814,49 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/19/%E3%80%90springboot%20spring%20mybatis%E3%80%91%E7%9C%8B%E6%88%91%E6%80%8E%E4%B9%88%E5%B0%86springboot%E4%B8%8Espring%E6%95%B4%E5%90%88mybatis%E4%B8%8Edruid%E6%95%B0%E6%8D%AE%E6%BA%90/">
+                <a href="/2020/03/12/xi-tong-win10-deepin-shuang-xi-tong-an-zhuang-win10-he-deepin-shuang-xi-tong/">
                     <div class="card-image">
                         
-                        <img src="https://img-blog.csdnimg.cn/20200406130116487.jpg" class="responsive-img" alt="【springboot spring mybatis】看我怎么将springboot与spring整合mybatis与druid数据源">
                         
-                        <span class="card-title">【springboot spring mybatis】看我怎么将springboot与spring整合mybatis与druid数据源</span>
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="【系统 win10 deepin】双系统安装（win10和deepin双系统）">
+                        
+                        <span class="card-title">【系统 win10 deepin】双系统安装（win10和deepin双系统）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            概述本文分别讲述了spring与springboot是怎么整合mybatis与druid数据源的？如果你只是想实现其中一种，那你就不要把他们的配置过程搞混了。
-1、mybatisMyBatis 本是apache的一个开源项目iBatis, 
+                            概述所有的事情都源自于一只蝙蝠，在这个无聊且漫长的寒假，终于能够实现躺在家里也能为国家做出贡献的时候了。既然闲着也是闲着，那为何不折腾一下自己的电脑呢。相信很多猿在虚拟机里已经体验过linux系统，那么怎么在实体机上怎么安装深度linux系
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/spring/" class="post-category">
-                                    spring
+                            <a href="/categories/%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    系统
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/springboot/">
-                        <span class="chip bg-color">springboot</span>
+                    <a href="/tags/win/">
+                        <span class="chip bg-color">win</span>
                     </a>
                     
-                    <a href="/tags/mybatis/">
-                        <span class="chip bg-color">mybatis</span>
+                    <a href="/tags/linux/">
+                        <span class="chip bg-color">linux</span>
                     </a>
                     
                 </div>
@@ -950,7 +1039,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             <span id="year">2019</span>
-            <a href="http://yoursite.com" target="_blank">lomtom | </a>
+            <a href="https://blog.lomtom.top" target="_blank">lomtom | </a>
 			
             <span id="sitetime">载入运行时间...</span>
             <script>
@@ -999,7 +1088,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 			<br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">13.7k</span>&nbsp;字
+                class="white-color">15.1k</span>&nbsp;字
             
             
             
