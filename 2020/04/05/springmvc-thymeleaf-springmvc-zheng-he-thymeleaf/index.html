@@ -439,9 +439,8 @@
 <h2 id="你能get到的知识点："><a href="#你能get到的知识点：" class="headerlink" title="你能get到的知识点："></a>你能get到的知识点：</h2><p>1、springmvc整合thymeleaf<br>2、spring提供的三种model的使用<br>3、解决html前端thymeleaf不生效问题（见问题1）<br>4、解决html前端显示乱码问题（见问题2）</p>
 <h1 id="springmvc整合thymeleaf"><a href="#springmvc整合thymeleaf" class="headerlink" title="springmvc整合thymeleaf"></a>springmvc整合thymeleaf</h1><h2 id="一：加入依赖"><a href="#一：加入依赖" class="headerlink" title="一：加入依赖"></a>一：加入依赖</h2><p>在springmvc里面，除了要加入<code>thymeleaf</code>的主依赖之外，还需要<code>thymeleaf-spring4</code>，否则会报<code>org.thymeleaf.spring4.view.ThymeleafViewResolver</code>，找不到thymeleaf解析器，所以<code>thymeleaf-spring4</code>也是必不可少的。</p>
 <blockquote>
-<p>Thymeleaf具有针对Spring Framework 3.x和4.x的集成，由两个独立的库分别称为thymeleaf-spring3和提供thymeleaf-spring4。这些库打包在单独的.jar文件（thymeleaf-spring3-{version}.jar和thymeleaf-spring4-{version}.jar）中，需要添加到类路径中，以便在应用程序中使用Thymeleaf的Spring集成</p>
+<p>Thymeleaf具有针对Spring Framework 3.x和4.x的集成，由两个独立的库分别称为thymeleaf-spring3和提供thymeleaf-spring4。这些库打包在单独的.jar文件（thymeleaf-spring3-{version}.jar和thymeleaf-spring4-{version}.jar）中，需要添加到类路径中，以便在应用程序中使用Thymeleaf的Spring集成<br>。</p>
 </blockquote>
-<p>。</p>
 <pre><code class="xml">&lt;!--        thymeleaf--&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;org.thymeleaf&lt;/groupId&gt;

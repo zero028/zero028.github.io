@@ -467,22 +467,67 @@
 </tbody></table>
 <p>也就是说，我们不再使用<code>/user/getuser?user=1</code>、<code>/user/deleteuser?user=1</code>等来区分使用者的行为操作，而是使用不同的请求方式来描述行为。</p>
 <h1 id="贰：基于springmvc实现REST风格的四种请求方式"><a href="#贰：基于springmvc实现REST风格的四种请求方式" class="headerlink" title="贰：基于springmvc实现REST风格的四种请求方式"></a>贰：基于<code>springmvc</code>实现REST风格的四种请求方式</h1><p>Spring框架的4.3版本后，引入了新的组合注解，来帮助简化常用的<code>HTTP</code>方法的映射，并更好的表达被注解方法的语义。</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping = @requestMapping(method = RequestMethod.GET)。</span><br><span class="line">@PostMapping = @requestMapping(method = RequestMethod.POST)。</span><br><span class="line">@DeleteMapping = @requestMapping(method = RequestMethod.DELETE)。</span><br><span class="line">@PutMapping = @requestMapping(method = RequestMethod.PuT)。</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="一：-GetMapping请求"><a href="#一：-GetMapping请求" class="headerlink" title="一：@GetMapping请求"></a>一：@GetMapping请求</h2><p> 以<code>@GetMapping</code>为例，该组合注解是<code>@RequestMapping(method = RequestMethod.GET)</code>的缩写，它会将HTTP GET请求映射到特定的处理方法上。 </p>
+<pre><code>@GetMapping = @requestMapping(method = RequestMethod.GET)。
+@PostMapping = @requestMapping(method = RequestMethod.POST)。
+@DeleteMapping = @requestMapping(method = RequestMethod.DELETE)。
+@PutMapping = @requestMapping(method = RequestMethod.PuT)。</code></pre><h2 id="一：-GetMapping请求"><a href="#一：-GetMapping请求" class="headerlink" title="一：@GetMapping请求"></a>一：@GetMapping请求</h2><p> 以<code>@GetMapping</code>为例，该组合注解是<code>@RequestMapping(method = RequestMethod.GET)</code>的缩写，它会将HTTP GET请求映射到特定的处理方法上。 </p>
 <p><code>RequestMapping</code>后所有属性都是可选的，但其默认属性是<code>value</code>。当<code>value</code>是其唯一属性时，可以省略属性名。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/rest"</span>,method = RequestMethod.GET)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">restGet</span><span class="params">()</span></span>{</span><br><span class="line">	System.out.println(<span class="string">"Get请求，hello....."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="java">@RequestMapping(value = "/rest",method = RequestMethod.GET)
+public String restGet(){
+    System.out.println("Get请求，hello.....");
+    return "hello";
+}</code></pre>
 <p> <code>@GetMapping</code>是一个组合注解，是<code>@RequestMapping(method = RequestMethod.GET)</code>的缩写。<br> 所以我们可以将以上代码简单的写成：</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/rest"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">restGet</span><span class="params">()</span></span>{</span><br><span class="line">    System.out.println(<span class="string">"Get请求，hello....."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="二：-PostMapping请求"><a href="#二：-PostMapping请求" class="headerlink" title="二：@PostMapping请求"></a>二：@PostMapping请求</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping</span>(<span class="string">"/rest"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">restPost</span><span class="params">()</span></span>{</span><br><span class="line">    System.out.println(<span class="string">"Post请求，hello....."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="三：-DeleteMapping请求"><a href="#三：-DeleteMapping请求" class="headerlink" title="三：@DeleteMapping请求"></a>三：@DeleteMapping请求</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DeleteMapping</span>(<span class="string">"/rest"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">restDelete</span><span class="params">()</span></span>{</span><br><span class="line">    System.out.println(<span class="string">"Delete请求，hello....."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"redirect:rest"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="四：-PutMapping请求"><a href="#四：-PutMapping请求" class="headerlink" title="四：@PutMapping请求"></a>四：@PutMapping请求</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PutMapping</span>(<span class="string">"/rest"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">restPut</span><span class="params">()</span></span>{</span><br><span class="line">    System.out.println(<span class="string">"Put请求，hello....."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"redirect:rest"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="java">@GetMapping("/rest")
+public String restGet(){
+    System.out.println("Get请求，hello.....");
+    return "hello";
+}</code></pre>
+<h2 id="二：-PostMapping请求"><a href="#二：-PostMapping请求" class="headerlink" title="二：@PostMapping请求"></a>二：@PostMapping请求</h2><pre><code class="java">    @PostMapping("/rest")
+    public String restPost(){
+        System.out.println("Post请求，hello.....");
+        return "hello";
+    }</code></pre>
+<h2 id="三：-DeleteMapping请求"><a href="#三：-DeleteMapping请求" class="headerlink" title="三：@DeleteMapping请求"></a>三：@DeleteMapping请求</h2><pre><code class="java">    @DeleteMapping("/rest")
+    public String restDelete(){
+        System.out.println("Delete请求，hello.....");
+        return "redirect:rest";
+    }</code></pre>
+<h2 id="四：-PutMapping请求"><a href="#四：-PutMapping请求" class="headerlink" title="四：@PutMapping请求"></a>四：@PutMapping请求</h2><pre><code class="java">    @PutMapping("/rest")
+    public String restPut(){
+        System.out.println("Put请求，hello.....");
+        return "redirect:rest";
+    }</code></pre>
 <h1 id="叁：问题"><a href="#叁：问题" class="headerlink" title="叁：问题"></a>叁：问题</h1><h2 id="一：post请求转换为delete与put请求"><a href="#一：post请求转换为delete与put请求" class="headerlink" title="一：post请求转换为delete与put请求"></a>一：post请求转换为delete与put请求</h2><p>由于form表单只支持GET和POST请求，而不支持DELETE和PUT等请求方式，所以我们实现delete和put请求往往会报错找不到方法。</p>
 <p>Spring提供了一个过滤器<code>HiddenHttpMethodFilter</code>，可以将DELETE和PUT请求转换为标准的HTTP方式，即能将POST请求转为DELETE或PUT请求。 </p>
 <p><strong>具体实现</strong>：在web.xml文件中配置过滤器HiddenHttpMethodFilter</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--使用Rest风格的URI,将页面普通的post请求转为delete或者put请求--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>hiddenHttpMethodFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.HiddenHttpMethodFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>hiddenHttpMethodFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="xml">&lt;!--使用Rest风格的URI,将页面普通的post请求转为delete或者put请求--&gt;
+  &lt;filter&gt;
+    &lt;filter-name&gt;hiddenHttpMethodFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.springframework.web.filter.HiddenHttpMethodFilter&lt;/filter-class&gt;
+  &lt;/filter&gt;
+  &lt;filter-mapping&gt;
+    &lt;filter-name&gt;hiddenHttpMethodFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt;</code></pre>
 <p><strong>注意</strong>：delete和put请求最好使用Redirect(重定向)，不然会报404错误。</p>
-<h2 id="二：解决请求乱码问题"><a href="#二：解决请求乱码问题" class="headerlink" title="二：解决请求乱码问题"></a>二：解决请求乱码问题</h2><figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  解决乱码问题--&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>forceEncoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="二：解决请求乱码问题"><a href="#二：解决请求乱码问题" class="headerlink" title="二：解决请求乱码问题"></a>二：解决请求乱码问题</h2><pre><code class="xml"> &lt;!--  解决乱码问题--&gt;
+  &lt;filter&gt;
+    &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;encoding&lt;/param-name&gt;
+      &lt;param-value&gt;UTF-8&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;forceEncoding&lt;/param-name&gt;
+      &lt;param-value&gt;true&lt;/param-value&gt;
+    &lt;/init-param&gt;
+  &lt;/filter&gt;
+  &lt;filter-mapping&gt;
+    &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt;</code></pre>
 <p><strong>注意</strong>：编码的过滤器应该放在所有的过滤器前，否则不生效</p>
 <h1 id="肆：RequestMapping注解的属性"><a href="#肆：RequestMapping注解的属性" class="headerlink" title="肆：RequestMapping注解的属性"></a>肆：RequestMapping注解的属性</h1><table>
 <thead>
@@ -532,7 +577,19 @@
 <p>表中所有属性都是可选的，但其默认属性是value。当value是其唯一属性时， 可以省略属性名。<br>例如，下面两种标注的含义相同：<br>@RequestMapping(value=”/rest”)<br>@RequestMapping(“/rest”)</p>
 </blockquote>
 <h1 id="伍：测试"><a href="#伍：测试" class="headerlink" title="伍：测试"></a>伍：测试</h1><p>新建index.html文件，加入以下代码。新建hello.html，用于请求后的页面跳转。</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>各种请求<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"rest"</span>&gt;</span>hello Get请求<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"rest"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>hello Post请求<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"rest"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"_method"</span> <span class="attr">value</span>=<span class="string">"delete"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>hello Delete请求<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"rest"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"_method"</span> <span class="attr">value</span>=<span class="string">"put"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>hello put请求<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="html">&lt;h2&gt;各种请求&lt;/h2&gt;
+&lt;a href="rest"&gt;hello Get请求&lt;/a&gt;
+&lt;form action="rest" method="post"&gt;
+    &lt;button type="submit"&gt;hello Post请求&lt;/button&gt;
+&lt;/form&gt;
+&lt;form action="rest" method="post"&gt;
+    &lt;input type="hidden" name="_method" value="delete"&gt;
+    &lt;button type="submit"&gt;hello Delete请求&lt;/button&gt;
+&lt;/form&gt;
+&lt;form action="rest" method="post"&gt;
+    &lt;input type="hidden" name="_method" value="put"&gt;
+    &lt;button type="submit"&gt;hello put请求&lt;/button&gt;
+&lt;/form&gt;</code></pre>
 <p>结果：<img src="https://img-blog.csdnimg.cn/20200329124302860.png" alt=""></p>
 <script>
         document.querySelectorAll('.github-emoji')

@@ -450,38 +450,328 @@
 </ul>
 <p><strong>注</strong>：我的<code>mybatis-config.xml</code>直接就是放在<code>spring-config.xml</code>，归根到地，他们都是spring的配置文件，只是命名不同而已。<br><img src="https://img-blog.csdnimg.cn/20200303122542580.png" alt="目录结构"></p>
 <h2 id="二：配置文件"><a href="#二：配置文件" class="headerlink" title="二：配置文件"></a>二：配置文件</h2><h3 id="1、pom-xml"><a href="#1、pom-xml" class="headerlink" title="1、pom.xml"></a>1、pom.xml</h3><p><code>pom.xml</code>文件，有了这个文件之后，我们不需要像以前一样去找jar包，找到还不一定兼容，<code>maven</code>项目里，你直接在你的<code>pom.xml</code>文件里写相关依赖，他就会自动导入，<code>jar</code>包也会自动下载好，下面就是我们整合mybatis所需要的的相关依赖。</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--        数据库  start--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--        引入jdbc与mysql依赖--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.5.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.0.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--引入druid数据源--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--        mybatis--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.mybatis/mybatis --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- spring整合mybatis --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        数据库 end--&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="2、jdbc-properties"><a href="#2、jdbc-properties" class="headerlink" title="2、jdbc.properties"></a>2、jdbc.properties</h3><p>这个文件主要用于存放我们mybatis连接的数据库参数，依次为<strong>驱动、url、用户名、密码</strong>参数，你只需要换成你自己的就好了，设置好之后，我们需要下一个配置文件来加载。</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://localhost:3306/world?characterEncoding=UTF-8</span><br><span class="line">jdbc.username=root</span><br><span class="line">jdbc.password=qwer1234</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="xml">&lt;!--        数据库  start--&gt;
+&lt;!--        引入jdbc与mysql依赖--&gt;
+&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+    &lt;version&gt;5.1.5.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
 
-<h3 id="3、mybatis-config-xml"><a href="#3、mybatis-config-xml" class="headerlink" title="3、mybatis-config.xml"></a>3、mybatis-config.xml</h3><p>这时，你会疑问，咦，上面的文件结构图中没有这个文件啊？<br>我的<code>mybatis-config.xml</code>直接就是放在<code>spring-config.xml</code>，归根到地，他们都是<code>spring</code>的配置文件，只是命名不同而已。当然，也可以单独配置一个，只需要在启动的时候加载他就可以了。</p>
+&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;version&gt;5.0.8&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!--引入druid数据源--&gt;
+&lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+    &lt;artifactId&gt;druid&lt;/artifactId&gt;
+    &lt;version&gt;1.1.8&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!--        mybatis--&gt;
+&lt;!-- https://mvnrepository.com/artifact/org.mybatis/mybatis --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+    &lt;version&gt;3.4.6&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!-- spring整合mybatis --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;
+    &lt;version&gt;1.3.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!--        数据库 end--&gt;</code></pre>
+<h3 id="2、jdbc-properties"><a href="#2、jdbc-properties" class="headerlink" title="2、jdbc.properties"></a>2、jdbc.properties</h3><p>这个文件主要用于存放我们mybatis连接的数据库参数，依次为<strong>驱动、url、用户名、密码</strong>参数，你只需要换成你自己的就好了，设置好之后，我们需要下一个配置文件来加载。</p>
+<pre><code>jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://localhost:3306/world?characterEncoding=UTF-8
+jdbc.username=root
+jdbc.password=qwer1234</code></pre><h3 id="3、mybatis-config-xml"><a href="#3、mybatis-config-xml" class="headerlink" title="3、mybatis-config.xml"></a>3、mybatis-config.xml</h3><p>这时，你会疑问，咦，上面的文件结构图中没有这个文件啊？<br>我的<code>mybatis-config.xml</code>直接就是放在<code>spring-config.xml</code>，归根到地，他们都是<code>spring</code>的配置文件，只是命名不同而已。当然，也可以单独配置一个，只需要在启动的时候加载他就可以了。</p>
 <p>整合druid数据源，就在这个文件里配置即可。</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- 这个是加载下面的mapper与service注入到容器中，这样你才能使用，注意你自己的包名--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:annotation-config</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.lomtom"</span>/&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 配置 读取properties文件 jdbc.properties --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>=<span class="string">"classpath:jdbc.properties"</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        &lt;bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            &lt;property name="location" value="classpath:jdbc.properties"/&gt;--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        &lt;/bean&gt;--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 配置 数据源 整合druid--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"com.alibaba.druid.pool.DruidDataSource"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span> <span class="attr">value</span>=<span class="string">"${jdbc.driverClassName}"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"${jdbc.url}"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"${jdbc.username}"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"${jdbc.password}"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--    spring和MyBatis完美整合，不需要mybatis的配置映射文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"sqlSessionFactory"</span> <span class="attr">class</span>=<span class="string">"org.mybatis.spring.SqlSessionFactoryBean"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"mapperLocations"</span> <span class="attr">value</span>=<span class="string">"classpath:com/lomtom/mapper/*.java"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- DAO接口所在包名，Spring会自动查找其下的类 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.mybatis.spring.mapper.MapperScannerConfigurer"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"basePackage"</span> <span class="attr">value</span>=<span class="string">"com.lomtom.mapper"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sqlSessionFactoryBeanName"</span> <span class="attr">value</span>=<span class="string">"sqlSessionFactory"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="xml">
+  &lt;!-- 这个是加载下面的mapper与service注入到容器中，这样你才能使用，注意你自己的包名--&gt;
+    &lt;context:annotation-config/&gt;
+    &lt;context:component-scan base-package="com.lomtom"/&gt;
+
+    &lt;!-- 配置 读取properties文件 jdbc.properties --&gt;
+    &lt;context:property-placeholder location="classpath:jdbc.properties" /&gt;
+&lt;!--        &lt;bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;--&gt;
+&lt;!--            &lt;property name="location" value="classpath:jdbc.properties"/&gt;--&gt;
+&lt;!--        &lt;/bean&gt;--&gt;
+
+    &lt;!-- 配置 数据源 整合druid--&gt;
+    &lt;bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"&gt;
+        &lt;property name="driverClassName" value="${jdbc.driverClassName}" /&gt;
+        &lt;property name="url" value="${jdbc.url}" /&gt;
+        &lt;property name="username" value="${jdbc.username}" /&gt;
+        &lt;property name="password" value="${jdbc.password}" /&gt;
+    &lt;/bean&gt;
+
+&lt;!--    spring和MyBatis完美整合，不需要mybatis的配置映射文件 --&gt;
+    &lt;bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"&gt;
+        &lt;property name="dataSource" ref="dataSource"/&gt;
+        &lt;property name="mapperLocations" value="classpath:com/lomtom/mapper/*.java"/&gt;
+    &lt;/bean&gt;
+
+
+    &lt;!-- DAO接口所在包名，Spring会自动查找其下的类 --&gt;
+    &lt;bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"&gt;
+        &lt;property name="basePackage" value="com.lomtom.mapper" /&gt;
+        &lt;property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/&gt;
+    &lt;/bean&gt;
+</code></pre>
 <h2 id="二：java代码"><a href="#二：java代码" class="headerlink" title="二：java代码"></a>二：java代码</h2><h3 id="1、mapper"><a href="#1、mapper" class="headerlink" title="1、mapper"></a>1、mapper</h3><p>在<code>mybatis</code>里，支持两种写法，一种是注解版，一种是<code>xml</code>版，这里推荐使用注解版。<br><code>mybatis</code>我使用的是注解版，注解版简单。如果使用<code>xml</code>版，需要配置<code>maven</code>的静态资源访问。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lomtom.mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.lomtom.model.User;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * User: lomtom</span></span><br><span class="line"><span class="comment"> * Date: 2020/3/2</span></span><br><span class="line"><span class="comment"> * Time: 16:45</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserInfoMapper</span> </span>{</span><br><span class="line">    <span class="meta">@Select</span>(<span class="string">"select * from user where username = #{username} and password = #{password}"</span>)</span><br><span class="line">    <span class="function">User <span class="title">login</span><span class="params">(@Param(<span class="string">"username"</span>)</span> String username,@<span class="title">Param</span><span class="params">(<span class="string">"password"</span>)</span> String password)</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="java">package com.lomtom.mapper;
+
+import com.lomtom.model.User;
+import org.apache.ibatis.annotations.*;
+
+/**
+ * User: lomtom
+ * Date: 2020/3/2
+ * Time: 16:45
+ */
+@Mapper
+public interface UserInfoMapper {
+    @Select("select * from user where username = #{username} and password = #{password}")
+    User login(@Param("username") String username,@Param("password") String password);
+}
+</code></pre>
 <h3 id="2、service"><a href="#2、service" class="headerlink" title="2、service"></a>2、service</h3><p>一般来说，我们为了规范，还是建一个<code>service</code>层。这里是实现service接口，你还需要自己写<code>UserInfoService</code>接口，加上<code>login();</code>函数即可，不是很难，就不板述了。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lomtom.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.lomtom.mapper.UserInfoMapper;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * User: lomtom</span></span><br><span class="line"><span class="comment"> * Date: 2020/3/2</span></span><br><span class="line"><span class="comment"> * Time: 17:21</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserInfoServiceImpl</span> <span class="keyword">implements</span> <span class="title">UserInfoService</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserInfoMapper userInfoMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">login</span><span class="params">(String username, String password)</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> userInfoMapper.login(username, password) != <span class="keyword">null</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="java">package com.lomtom.service;
+
+import com.lomtom.mapper.UserInfoMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ * User: lomtom
+ * Date: 2020/3/2
+ * Time: 17:21
+ */
+@Service
+public class UserInfoServiceImpl implements UserInfoService {
+
+    @Autowired
+    UserInfoMapper userInfoMapper;
+
+    @Override
+    public boolean login(String username, String password) {
+        return userInfoMapper.login(username, password) != null;
+    }
+}
+</code></pre>
 <h3 id="3、测试"><a href="#3、测试" class="headerlink" title="3、测试"></a>3、测试</h3><p>我使用的是<code>spring</code>测试单元测试的，需要在<code>pom.xml</code>引入<code>JUNIT</code>依赖，当然，你也可以直接写一个main函数调用。</p>
 <p>最后的结果就不展示了，他无非就是一句登陆成功，或者登陆失败。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.lomtom.model.HelloWorld;</span><br><span class="line"><span class="keyword">import</span> com.lomtom.service.UserInfoService;</span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * User: lomtom</span></span><br><span class="line"><span class="comment"> * Date: 2020/3/2</span></span><br><span class="line"><span class="comment"> * Time: 19:45</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//测试类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ApplicationContext context;</span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>{</span><br><span class="line"><span class="comment">//        加载配置文件</span></span><br><span class="line">        context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"spring-config.xml"</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Test2</span><span class="params">()</span></span>{</span><br><span class="line">        UserInfoService userInfoService =  context.getBean(UserInfoService<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        <span class="keyword">boolean</span> flag = userInfoService.login(<span class="string">"admin"</span>,<span class="string">"123456"</span>);</span><br><span class="line">        <span class="keyword">if</span> (flag){</span><br><span class="line">            System.out.println(<span class="string">"登录成功。。。。"</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span>{</span><br><span class="line">            System.out.println(<span class="string">"登陆失败。。。"</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="java">import com.lomtom.model.HelloWorld;
+import com.lomtom.service.UserInfoService;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+/**
+ * User: lomtom
+ * Date: 2020/3/2
+ * Time: 19:45
+ */
+
+//测试类
+public class test {
+
+    private ApplicationContext context;
+    @Before
+    public void setUp() throws Exception {
+//        加载配置文件
+        context = new ClassPathXmlApplicationContext("spring-config.xml");
+    }
+
+    @Test
+    public void Test2(){
+        UserInfoService userInfoService =  context.getBean(UserInfoService.class);
+        boolean flag = userInfoService.login("admin","123456");
+        if (flag){
+            System.out.println("登录成功。。。。");
+        }
+        else{
+            System.out.println("登陆失败。。。");
+        }
+    }
+}</code></pre>
 <blockquote>
 <p>参考：<br><a href="https://blog.csdn.net/xqhys/article/details/53994740?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">spring与mybatis四种整合方法</a></p>
 </blockquote>
 <h1 id="贰：springboot整合"><a href="#贰：springboot整合" class="headerlink" title="贰：springboot整合"></a>贰：springboot整合</h1><p>相对于<code>spring</code>，<code>springboot</code>的整合就简单的多，因为在springboot里，很多都是自动配置的，相当于就是对spring的再一次封装，所以在springboot里，很多东西就变得简单很多。<br>相比spring，我们不需要配置麻烦的spring配置xml文件，只需要在<code>application.yml</code>文件中配置即可。当然，pom.xml时maven所需要的，所以他也是必不可少的。<br>建立项目的时候，选择<code>spring initializr</code>就可以快速建立一个springboot项目，当然如果你想自己配置，那我也是无法阻拦的。</p>
 <h2 id="1、pom-xml-1"><a href="#1、pom-xml-1" class="headerlink" title="1、pom.xml"></a>1、pom.xml</h2><p>springboot与spring引入mybatis所需依赖，是不同的，所以你最好还是复制这里的，这里我也是吸取了教训的。哈哈哈</p>
-<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--        引入jdbc与mysql依赖--&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt;</span><br><span class="line">       &lt;/dependency&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">       &lt;/dependency&gt;</span><br><span class="line">       &lt;!--引入druid数据源--&gt;</span><br><span class="line">       &lt;!-- https:<span class="comment">//mvnrepository.com/artifact/com.alibaba/druid --&gt;</span></span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;druid&lt;/artifactId&gt;</span><br><span class="line">           &lt;version&gt;1.1.8&lt;/version&gt;</span><br><span class="line">       &lt;/dependency&gt;</span><br><span class="line">       </span><br><span class="line">       &lt;!--日志打印--&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;log4j&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;log4j&lt;/artifactId&gt;</span><br><span class="line">           &lt;version&gt;1.2.17&lt;/version&gt;</span><br><span class="line">       &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">       &lt;!--        mybatis--&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">           &lt;version&gt;1.3.1&lt;/version&gt;</span><br><span class="line">       &lt;/dependency&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="java"> &lt;!--        引入jdbc与mysql依赖--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;!--引入druid数据源--&gt;
+        &lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+            &lt;artifactId&gt;druid&lt;/artifactId&gt;
+            &lt;version&gt;1.1.8&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!--日志打印--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;log4j&lt;/groupId&gt;
+            &lt;artifactId&gt;log4j&lt;/artifactId&gt;
+            &lt;version&gt;1.2.17&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!--        mybatis--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;
+            &lt;version&gt;1.3.1&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
 <h2 id="2、application-yml（resources下）"><a href="#2、application-yml（resources下）" class="headerlink" title="2、application.yml（resources下）"></a>2、application.yml（resources下）</h2><p>与spring不同的是，在<code>springboot</code>里，不需要建很多的配置文件，你所有的配置参数全部卸载这里面即可。<br>在springboot里面，配置文件有两种，一种是<code>properties</code>，另一种是<code>yml</code>，两种语法有点不同，不过都可以作为springboot的配置文件，</p>
-<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">	<span class="attr">datasource:</span></span><br><span class="line">	    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">	    <span class="attr">password:</span> <span class="string">qwer1234</span></span><br><span class="line">	    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/world?serverTimezone=UTC&amp;characterEncoding=utf-8</span></span><br><span class="line">	    <span class="comment">#    不写driver-class-name则自动分配</span></span><br><span class="line">	    <span class="comment">#    driver-class-name: com.mysql.cj.jdbc.Driver</span></span><br><span class="line">	    <span class="comment">#    配置druid数据源</span></span><br><span class="line">	    <span class="attr">type:</span> <span class="string">com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line"><span class="attr">mybatis:</span></span><br><span class="line">  <span class="comment">#注解版与xml版不能共同使用</span></span><br><span class="line">  <span class="comment">##  指定全局配置的路径（xml版配置）</span></span><br><span class="line">  <span class="comment">#  config-location: classpath::mybatis/mybatis-config.xml</span></span><br><span class="line">  <span class="comment">##  指定sql映射文件的位置（xml版配置）</span></span><br><span class="line">  <span class="comment">#  mapper-locations: classpath:mybatis/mapper/*.xml</span></span><br><span class="line">  <span class="attr">configuration:</span></span><br><span class="line">    <span class="comment">#    开启驼峰命名法</span></span><br><span class="line">    <span class="attr">map-underscore-to-camel-case:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">logging:</span></span><br><span class="line">  <span class="comment">#  开启com.lomtom.blog.mapper包下所有的日志（在调用时）</span></span><br><span class="line">  <span class="attr">level:</span></span><br><span class="line">    <span class="attr">com.lomtom.myblog1.mapper:</span> <span class="string">debug</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="yml">spring:
+    datasource:
+        username: root
+        password: qwer1234
+        url: jdbc:mysql://localhost:3306/world?serverTimezone=UTC&amp;characterEncoding=utf-8
+        #    不写driver-class-name则自动分配
+        #    driver-class-name: com.mysql.cj.jdbc.Driver
+        #    配置druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+mybatis:
+  #注解版与xml版不能共同使用
+  ##  指定全局配置的路径（xml版配置）
+  #  config-location: classpath::mybatis/mybatis-config.xml
+  ##  指定sql映射文件的位置（xml版配置）
+  #  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    #    开启驼峰命名法
+    map-underscore-to-camel-case: true
+logging:
+  #  开启com.lomtom.blog.mapper包下所有的日志（在调用时）
+  level:
+    com.lomtom.myblog1.mapper: debug</code></pre>
 <h2 id="3、druid配置"><a href="#3、druid配置" class="headerlink" title="3、druid配置"></a>3、druid配置</h2><p>虽然说在<code>springboot</code>里面配置数据源，但是如果我们想要通过网页端访问的话，需要配置以下内容，我们就可以通过访问<code>druid</code>的来查看web的数据状态。<br>访问地址：<code>http://localhost:8080/druid</code>，然后输入账号密码就可以访问。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lomtom.myblog1.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.pool.DruidDataSource;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.support.http.StatViewServlet;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.support.http.WebStatFilter;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.servlet.FilterRegistrationBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.servlet.ServletRegistrationBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.sql.DataSource;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * User: lomtom</span></span><br><span class="line"><span class="comment"> * Date: 2020/1/4</span></span><br><span class="line"><span class="comment"> * Time: 21:09</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DruidConfig</span> </span>{</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"spring.datasource"</span>)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DataSource <span class="title">druid</span><span class="params">()</span></span>{</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DruidDataSource();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置druid监控</span></span><br><span class="line">    <span class="comment">//1、设置管理后台的servlet</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServletRegistrationBean <span class="title">statViewServlet</span><span class="params">()</span></span>{</span><br><span class="line">        ServletRegistrationBean registrationBean = <span class="keyword">new</span> ServletRegistrationBean(<span class="keyword">new</span> StatViewServlet(), <span class="string">"/druid/*"</span>);</span><br><span class="line">        Map&lt;String,String&gt; initParams=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        initParams.put(<span class="string">"loginUsername"</span>,<span class="string">"admin"</span>);</span><br><span class="line">        initParams.put(<span class="string">"loginPassword"</span>,<span class="string">"admin"</span>);</span><br><span class="line">        initParams.put(<span class="string">"allow"</span>,<span class="string">""</span>);</span><br><span class="line"><span class="comment">//        initParams.put("deny","");</span></span><br><span class="line"></span><br><span class="line">        registrationBean.setInitParameters(initParams);</span><br><span class="line">        <span class="keyword">return</span>  registrationBean;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">//2、设置web的监控filter</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> FilterRegistrationBean <span class="title">webStatFilter</span><span class="params">()</span></span>{</span><br><span class="line">        FilterRegistrationBean registrationBean = <span class="keyword">new</span> FilterRegistrationBean();</span><br><span class="line">        registrationBean.setFilter(<span class="keyword">new</span> WebStatFilter());</span><br><span class="line">        Map&lt;String,String&gt; initParams=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        initParams.put(<span class="string">"exclusion"</span>,<span class="string">"*.js,*.css,/druid/*"</span>);</span><br><span class="line"></span><br><span class="line">        registrationBean.setInitParameters(initParams);</span><br><span class="line">        <span class="comment">//添加过滤规则</span></span><br><span class="line">        registrationBean.setUrlPatterns(Arrays.asList(<span class="string">"/*"</span>));</span><br><span class="line">        <span class="keyword">return</span>  registrationBean;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="java">package com.lomtom.myblog1.config;
+
+import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.support.http.StatViewServlet;
+import com.alibaba.druid.support.http.WebStatFilter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import javax.sql.DataSource;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * User: lomtom
+ * Date: 2020/1/4
+ * Time: 21:09
+ */
+
+@Configuration
+public class DruidConfig {
+
+
+    @ConfigurationProperties(prefix = "spring.datasource")
+    @Bean
+    public DataSource druid(){
+        return new DruidDataSource();
+    }
+
+    //设置druid监控
+    //1、设置管理后台的servlet
+    @Bean
+    public ServletRegistrationBean statViewServlet(){
+        ServletRegistrationBean registrationBean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
+        Map&lt;String,String&gt; initParams=new HashMap&lt;&gt;();
+        initParams.put("loginUsername","admin");
+        initParams.put("loginPassword","admin");
+        initParams.put("allow","");
+//        initParams.put("deny","");
+
+        registrationBean.setInitParameters(initParams);
+        return  registrationBean;
+    }
+    //2、设置web的监控filter
+    @Bean
+    public FilterRegistrationBean webStatFilter(){
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        registrationBean.setFilter(new WebStatFilter());
+        Map&lt;String,String&gt; initParams=new HashMap&lt;&gt;();
+        initParams.put("exclusion","*.js,*.css,/druid/*");
+
+        registrationBean.setInitParameters(initParams);
+        //添加过滤规则
+        registrationBean.setUrlPatterns(Arrays.asList("/*"));
+        return  registrationBean;
+    }
+}</code></pre>
 <p>访问<code>http://localhost:端口名/druid</code><br><img src="https://img-blog.csdnimg.cn/20200303170955151.png" alt="druid"></p>
 <h2 id="4、mapper"><a href="#4、mapper" class="headerlink" title="4、mapper"></a>4、mapper</h2><p>在spring里面，还要配置文件进行包扫面，而在springboot里面直接加<code>@Mapper</code>注解即可，springboot会自动注册的。然后直接调用即可。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.lomtom.myblog1.entity.User;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * User: lomtom</span></span><br><span class="line"><span class="comment"> * Date: 2020/1/30</span></span><br><span class="line"><span class="comment"> * Time: 17:49</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用户的mapper类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Select</span>(<span class="string">"select * from user where userName=#{username} or email=#{username}"</span>)</span><br><span class="line">    <span class="function">User <span class="title">getUserByUsername</span><span class="params">(String username)</span></span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="java">import com.lomtom.myblog1.entity.User;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
+
+/**
+ * User: lomtom
+ * Date: 2020/1/30
+ * Time: 17:49
+ */
+
+/**
+ * 用户的mapper类
+ */
+@Mapper
+public interface UserMapper {
+
+    @Select("select * from user where userName=#{username} or email=#{username}")
+    User getUserByUsername(String username);
+}</code></pre>
 <h2 id="5、测试"><a href="#5、测试" class="headerlink" title="5、测试"></a>5、测试</h2><p>在spring boot里，在启动的时候不需要手动配置加载文件，所有的一切，他都会自动配置完成，你只管调用就可以了。</p>
 <p>当然，最后的结果就不展示了，他无非就是一句登陆成功，或者登陆失败。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lomtom.myblog1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.lomtom.myblog1.mapper.UserMapper;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.Test;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Myblog1ApplicationTests</span> </span>{</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">boolean</span> flag = userMapper.login(<span class="string">"admin"</span>,<span class="string">"123456"</span>);</span><br><span class="line">        <span class="keyword">if</span> (flag){</span><br><span class="line">            System.out.println(<span class="string">"登录成功。。。。"</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span>{</span><br><span class="line">            System.out.println(<span class="string">"登陆失败。。。"</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="java">package com.lomtom.myblog1;
 
+import com.lomtom.myblog1.mapper.UserMapper;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class Myblog1ApplicationTests {
+
+
+    @Autowired
+    UserMapper userMapper;
+
+    @Test
+    void contextLoads() {
+        boolean flag = userMapper.login("admin","123456");
+        if (flag){
+            System.out.println("登录成功。。。。");
+        }
+        else{
+            System.out.println("登陆失败。。。");
+        }
+    }
+}
+</code></pre>
 <h1 id="作者有话"><a href="#作者有话" class="headerlink" title="作者有话"></a>作者有话</h1><p>本文主要介绍了<strong>spring</strong>与<strong>springboot</strong>分别怎么整合mybatis的，相信你看了之后，如果你还是初学者，那么问题是免不了的，但是谁不是这么过来的呢，你唯一能做的就是发现问题-找到问题-解决问题，当然，如果你在配置过程中有问题，笔者还是很乐意为你解答的。</p>
 <p>而谈及spring与spring boot，spring boot就是spring的拓展，他主要消除了spring复杂繁多的xml配置文件，实现极大程度的自动化配置，所以看到我们在整合<code>mybatis</code>时，配置变得相当简单，当然，最为笔者的建议，你要是会<code>spring boot</code>，一定要明白他其中的自动配置原理，然后再去回顾spring时，你就会惊讶的发现，哦~，原来他是这样的。很多东西就会豁然开朗。</p>
 <script>

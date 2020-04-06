@@ -443,7 +443,12 @@
 </ul>
 <p>支持Spring框架（Spring MVC / Spring Boot 1.x，2.x）<br>支持JAX-RS<br>支持Java和Kotlin语言<br><img src="https://img-blog.csdnimg.cn/20200317152033418.png" alt="RestfulToolkit"></p>
 <h3 id="9、lombok"><a href="#9、lombok" class="headerlink" title="9、lombok"></a>9、lombok</h3><p>写实体类时，我们常常需要写他的set、get、构造方法等，lombok可以使代码现在变得非常容易，只需突出显示一个块并在IDE中键入注释即可。减轻代码审查的痛苦并提高代码质量。<br>注意：它需要在项目中引入依赖（pom.xml），在使用中只要加入@Data注解就可以</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--        引入lombok--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="xml">&lt;!--        引入lombok--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+    &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+    &lt;version&gt;1.18.10&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200317152504198.png" alt="lombok"></p>
 <h3 id="8、alibaba-Java-coding-guidelines"><a href="#8、alibaba-Java-coding-guidelines" class="headerlink" title="8、alibaba Java coding guidelines"></a>8、alibaba Java coding guidelines</h3><p>我们在刚写代码时，自己书写的代码会不规范，尤其在团队合作中，会时整个项目变得非常乱，而该插件与下面的sonarLint都能解决你的问题。会在你写代码的时候提醒你，从而使你的代码变得规范。<br><img src="https://img-blog.csdnimg.cn/20200317153244625.png" alt="alibaba Java coding guidelines"></p>
 <h3 id="7、sonarLint"><a href="#7、sonarLint" class="headerlink" title="7、sonarLint"></a>7、sonarLint</h3><p>SonarLint是一个IDE扩展，可帮助您在编写代码时检测和修复质量问题。像拼写检查器一样，SonarLint可以使缺陷变形，因此可以在提交代码之前将其修复。您可以直接从IntelliJ IDEA插件存储库中获取它，然后它将在您编写代码（Java，Kotlin，Ruby，JavaScript，PHP和Python）时检测到新的错误和质量问题。</p>
@@ -761,7 +766,11 @@
                     <div class="summary block-with-text">
                         
                             概述：爬取豆瓣影评数据步骤：1、获取网页请求2、解析获取的网页3、提速数据4、保存文件
-源代码：123456789101112131415161718192021222324252627282930313233343536373839404
+源代码：# 1、导入需要的库
+import urllib.request
+from bs4 import BeautifulSoup
+# 随机数的库
+i
                         
                     </div>
                     <div class="publish-info">

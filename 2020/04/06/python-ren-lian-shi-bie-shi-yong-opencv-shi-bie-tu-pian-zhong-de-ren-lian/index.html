@@ -399,7 +399,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    732
+                    733
                 </div>
                 
 
@@ -427,12 +427,35 @@
 <p>为什么有OpenCV？ 计算机视觉市场巨大而且持续增长，且这方面没有标准API，如今的计算机视觉软件大概有以下三种：<br>1、研究代码（慢，不稳定，独立并与其他库不兼容）<br>2、耗费很高的商业化工具（比如Halcon, MATLAB+Simulink）<br>3、依赖硬件的一些特别的解决方案（比如视频监控，制造控制系统，医疗设备）这是如今的现状，而标准的API将简化计算机视觉程序和解决方案的开发，OpenCV致力于成为这样的标准API。<br>OpenCV致力于真实世界的实时应用，通过优化的C代码的编写对其执行速度带来了可观的提升，并且可以通过购买Intel的IPP高性能多媒体函数库（Integrated<br>Performance<br>Primitives）得到更快的处理速度。右图为OpenCV与当前其他主流视觉函数库的性能比较。<br>——-百度百科</p>
 </blockquote>
 <p>所以说opencv就是做图像处理的，而我们要实现的人脸识别，<code>opencv</code>库是必不可少的。<br><strong>原理</strong>：opencv是以图片中心为初始点，以一个缩放因子进行慢慢的缩放，在范围内进行识别，缩放因子必须适宜，太大可能会导致识别不出来</p>
-<h2 id="1、下载库"><a href="#1、下载库" class="headerlink" title="1、下载库"></a>1、下载库</h2><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https:<span class="comment">//pypi.tuna.tsinghua.edu.cn/simple opencv-python</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="1、下载库"><a href="#1、下载库" class="headerlink" title="1、下载库"></a>1、下载库</h2><pre><code class="c">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple opencv-python</code></pre>
 <h2 id="2、引入依赖"><a href="#2、引入依赖" class="headerlink" title="2、引入依赖"></a>2、引入依赖</h2><p>opencv的引入不是直接引入opencv，而是引入cv2</p>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="3、代码"><a href="#3、代码" class="headerlink" title="3、代码"></a>3、代码</h2><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">my = cv2.imread('img/my.jpg')</span><br><span class="line">face_detector = cv2.CascadeClassifier(<span class="string">"haarcascade_frontalface_alt.xml"</span>)</span><br><span class="line">faces = face_detector.detectMultiScale(my)</span><br><span class="line"><span class="keyword">for</span> x,y,w,h in faces:</span><br><span class="line">    cv2.rectangle(my,pt1=(x,y),pt2=(x+w,y+h),color=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">225</span>],thickness=<span class="number">2</span>)</span><br><span class="line">cv2.imshow(<span class="string">"my"</span>,my)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="c">import cv2</code></pre>
+<h2 id="3、代码"><a href="#3、代码" class="headerlink" title="3、代码"></a>3、代码</h2><pre><code class="c">my = cv2.imread('img/my.jpg')
+face_detector = cv2.CascadeClassifier("haarcascade_frontalface_alt.xml")
+faces = face_detector.detectMultiScale(my)
+for x,y,w,h in faces:
+    cv2.rectangle(my,pt1=(x,y),pt2=(x+w,y+h),color=[0,0,225],thickness=2)
+cv2.imshow("my",my)
+cv2.waitKey(0)
+cv2.destroyAllWindows()</code></pre>
 <p><strong>注意:</strong> haarcascade_frontalface_alt.xml文件时python安装目录下Lib\site - packages\cv2\data，需要将该文件复制到项目内，不复制的话需要绝对路径。<br><strong>问题：</strong><br>描述:当图片太大或者分辨过高时，可能会遇到只能显示图片的部分<br>解决：加入代码<code>my = cv2.resize(my,None,fx=0.5,fy=0.5)</code>或者<code>cv2.namedWindow('my', cv2.WINDOW_NORMAL)</code> 不过有其他显示问题，可能会导致图片显示变形</p>
-<h2 id="源代码："><a href="#源代码：" class="headerlink" title="源代码："></a>源代码：</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">my = cv2.imread(<span class="string">'img/my.jpg'</span>)</span><br><span class="line">my = cv2.resize(my,<span class="literal">None</span>,fx=<span class="number">0.5</span>,fy=<span class="number">0.5</span>)</span><br><span class="line"><span class="comment"># 人脸特征数据的数据包</span></span><br><span class="line">face_detector = cv2.CascadeClassifier(<span class="string">"haarcascade_frontalface_alt.xml"</span>)</span><br><span class="line"><span class="comment"># 图片进行人脸数据对比</span></span><br><span class="line"><span class="comment"># scaleFactor:缩放因子，默认1.3，</span></span><br><span class="line"><span class="comment"># minNeighbors:最小邻居，默认为3</span></span><br><span class="line">faces = face_detector.detectMultiScale(my)</span><br><span class="line"><span class="comment"># print(faces)</span></span><br><span class="line"><span class="keyword">for</span> x,y,w,h <span class="keyword">in</span> faces:</span><br><span class="line">    <span class="comment"># pt1：人脸左上角点</span></span><br><span class="line">    <span class="comment"># pt2：人脸右下角点</span></span><br><span class="line">    cv2.rectangle(my,pt1=(x,y),pt2=(x+w,y+h),color=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">225</span>],thickness=<span class="number">2</span>)</span><br><span class="line"><span class="comment"># cv2.namedWindow('my', cv2.WINDOW_NORMAL)</span></span><br><span class="line">cv2.imshow(<span class="string">"my"</span>,my)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="源代码："><a href="#源代码：" class="headerlink" title="源代码："></a>源代码：</h2><pre><code class="python">my = cv2.imread('img/my.jpg')
+my = cv2.resize(my,None,fx=0.5,fy=0.5)
+# 人脸特征数据的数据包
+face_detector = cv2.CascadeClassifier("haarcascade_frontalface_alt.xml")
+# 图片进行人脸数据对比
+# scaleFactor:缩放因子，默认1.3，
+# minNeighbors:最小邻居，默认为3
+faces = face_detector.detectMultiScale(my)
+# print(faces)
+for x,y,w,h in faces:
+    # pt1：人脸左上角点
+    # pt2：人脸右下角点
+    cv2.rectangle(my,pt1=(x,y),pt2=(x+w,y+h),color=[0,0,225],thickness=2)
+# cv2.namedWindow('my', cv2.WINDOW_NORMAL)
+cv2.imshow("my",my)
+cv2.waitKey(0)
+cv2.destroyAllWindows()</code></pre>
 <h2 id="效果图："><a href="#效果图：" class="headerlink" title="效果图："></a>效果图：</h2><p><img src="https://img-blog.csdnimg.cn/20200226192647121.png" alt="效果图"></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -782,7 +805,8 @@
                         
                             概述：制作词云的步骤：1、从文件中读取数据2、根据数据追加在一个字符串里面，然后用jieba分词器将评论分开3、设置WordCloud词云参数4、保存最后的结果
 数据：使用爬取的豆瓣影评数据
-第一步：引入依赖库123456789101112
+第一步：引入依赖库# 1、表格库
+import 
                         
                     </div>
                     <div class="publish-info">

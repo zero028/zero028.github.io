@@ -399,7 +399,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    823
+                    825
                 </div>
                 
 
@@ -424,12 +424,123 @@
             <div id="articleContent">
                 <h2 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h2><p>制作词云的步骤：<br>1、从文件中读取数据<br>2、根据数据追加在一个字符串里面，然后用jieba分词器将评论分开<br>3、设置WordCloud词云参数<br>4、保存最后的结果</p>
 <p>数据：<a href="https://blog.csdn.net/qq_41929184/article/details/104522680" target="_blank" rel="noopener">使用爬取的豆瓣影评数据</a></p>
-<h3 id="第一步：引入依赖库"><a href="#第一步：引入依赖库" class="headerlink" title="第一步：引入依赖库"></a>第一步：引入依赖库</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、表格库</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、jieba分词器</span></span><br><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3、算法运算库</span></span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4、图像库</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5、词云库</span></span><br><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="第二步：读取数据"><a href="#第二步：读取数据" class="headerlink" title="第二步：读取数据"></a>第二步：读取数据</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">stars = (<span class="string">"很差"</span>,<span class="string">"较差"</span>,<span class="string">"还行"</span>,<span class="string">"推荐"</span>,<span class="string">"力荐"</span>)</span><br><span class="line">   comments = []</span><br><span class="line">   <span class="keyword">with</span> open(<span class="string">"files/douban.csv"</span>,<span class="string">"r"</span>,encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> file:</span><br><span class="line">       reader = csv.reader(file)</span><br><span class="line">       <span class="keyword">for</span> i <span class="keyword">in</span> reader:</span><br><span class="line">           <span class="keyword">if</span> i[<span class="number">1</span>] <span class="keyword">not</span> <span class="keyword">in</span> stars:</span><br><span class="line">               <span class="keyword">pass</span></span><br><span class="line">           <span class="keyword">else</span>:</span><br><span class="line">               comments.append(i)</span><br><span class="line">       file.close()</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="第三步：解析数据并保存"><a href="#第三步：解析数据并保存" class="headerlink" title="第三步：解析数据并保存"></a>第三步：解析数据并保存</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> data:</span><br><span class="line">        str+=i[<span class="number">2</span>]</span><br><span class="line">    cutWord = <span class="string">" "</span>.join(jieba.cut(str))</span><br><span class="line">    bgImg = numpy.array(Image.open(<span class="string">"files/a.jpg"</span>))</span><br><span class="line">    cloud = WordCloud(</span><br><span class="line">        font_path=<span class="string">"C:\Windows\Fonts\STZHONGS.TTF"</span>,</span><br><span class="line">        background_color=<span class="string">"white"</span>,</span><br><span class="line">        mask=bgImg</span><br><span class="line">    ).generate(cutWord)</span><br><span class="line">    cloud.to_file(<span class="string">"ciyun.png"</span>)</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="效果图："><a href="#效果图：" class="headerlink" title="效果图："></a>效果图：</h2><p>模型：<br><img src="https://img-blog.csdnimg.cn/20200226185716995.jpg" alt="模型"><br>效果：<img src="https://img-blog.csdnimg.cn/20200226185748680.png" alt="效果"></p>
-<h2 id="源代码："><a href="#源代码：" class="headerlink" title="源代码："></a>源代码：</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、表格库</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="comment"># 2、jieba分词器，将一句话的词语分离出来</span></span><br><span class="line"><span class="comment"># 1)、控制台输入：pip install jieba</span></span><br><span class="line"><span class="comment"># 2)、左上角 file--&gt;settings---&gt;项目</span></span><br><span class="line"><span class="comment"># 3)、清华园下载方式（在控制台）</span></span><br><span class="line"><span class="comment"># pip install -i https://pypi.tuna.tsinghua.edu.cn/simple jieba</span></span><br><span class="line"><span class="comment"># 阿里</span></span><br><span class="line"><span class="comment"># pip install jieba -i  http://mirrors.aliyun.com/pypi/simple/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3、算法运算库</span></span><br><span class="line"><span class="comment"># 控制台输入：pip install numpy</span></span><br><span class="line"><span class="comment"># pip install -i https://pypi.tuna.tsinghua.edu.cn/simple numpy</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4、图像库</span></span><br><span class="line"><span class="comment"># 控制台输入：pip install pillow</span></span><br><span class="line"><span class="comment"># pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pillow</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5、词云库</span></span><br><span class="line"><span class="comment"># 控制台输入：pip install WordCloud</span></span><br><span class="line"><span class="comment"># pip install -i https://pypi.tuna.tsinghua.edu.cn/simple WordCloud</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义函数，将数据从表格里读取出来</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getDataFromCsv</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 设置星级等级</span></span><br><span class="line">    stars = (<span class="string">"很差"</span>,<span class="string">"较差"</span>,<span class="string">"还行"</span>,<span class="string">"推荐"</span>,<span class="string">"力荐"</span>)</span><br><span class="line">    <span class="comment"># 设置空列表，装从表格里面读出来的所有数据</span></span><br><span class="line">    comments = []</span><br><span class="line">    <span class="comment"># 打开表格，"r"读取模式  读取数据</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"files/douban.csv"</span>,<span class="string">"r"</span>,encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> file:</span><br><span class="line">        <span class="comment"># 表格操作读数据</span></span><br><span class="line">        reader = csv.reader(file)</span><br><span class="line">        <span class="comment"># 遍历表格里得到所有数据     [用户名,星级,评论]</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> reader:</span><br><span class="line">            <span class="comment"># 如果没有星级</span></span><br><span class="line">            <span class="keyword">if</span> i[<span class="number">1</span>] <span class="keyword">not</span> <span class="keyword">in</span> stars:</span><br><span class="line">                <span class="comment"># 数据无效，忽略不处理</span></span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 数据有效，装入数组</span></span><br><span class="line">                comments.append(i)</span><br><span class="line">        <span class="comment"># print(comments)</span></span><br><span class="line">        file.close()</span><br><span class="line">    <span class="comment"># 将装有数据的列表返回出来</span></span><br><span class="line">    <span class="keyword">return</span> comments</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义函数，将解析的评论做成词云</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getWordCloud</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 调用函数：得到表格中所有的数据</span></span><br><span class="line">    data = getDataFromCsv()</span><br><span class="line">    <span class="comment"># 定义空的字符串，把所有的评论装进来</span></span><br><span class="line">    str = <span class="string">""</span></span><br><span class="line">    <span class="comment"># 遍历所有的数据</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> data:</span><br><span class="line">        <span class="comment"># [用户名, 星级, 评论]</span></span><br><span class="line">        str+=i[<span class="number">2</span>]</span><br><span class="line">    <span class="comment"># print(str)</span></span><br><span class="line">    <span class="comment"># 通过jieba分词器将评论里面的词语用空格分离出来</span></span><br><span class="line">    cutWord = <span class="string">" "</span>.join(jieba.cut(str))</span><br><span class="line">    <span class="comment"># print(cutWord)</span></span><br><span class="line">    <span class="comment"># 读取图片模型</span></span><br><span class="line">    bgImg = numpy.array(Image.open(<span class="string">"files/a.jpg"</span>))</span><br><span class="line">    <span class="comment"># 准备词云参数</span></span><br><span class="line">    cloud = WordCloud(</span><br><span class="line">        <span class="comment"># 文字的路径：本地的系统文件路径</span></span><br><span class="line">        font_path=<span class="string">"C:\Windows\Fonts\STZHONGS.TTF"</span>,</span><br><span class="line">        <span class="comment"># 生成词云的图片背景</span></span><br><span class="line">        background_color=<span class="string">"white"</span>,</span><br><span class="line">        <span class="comment"># 参考图片（参数，没有引号）</span></span><br><span class="line">        mask=bgImg</span><br><span class="line">    ).generate(cutWord)</span><br><span class="line">    <span class="comment"># 将做成的结果生成图片</span></span><br><span class="line">    cloud.to_file(<span class="string">"ciyun.png"</span>)</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="第一步：引入依赖库"><a href="#第一步：引入依赖库" class="headerlink" title="第一步：引入依赖库"></a>第一步：引入依赖库</h3><pre><code class="python"># 1、表格库
+import csv
 
+# 2、jieba分词器
+import jieba
+
+# 3、算法运算库
+import numpy
+
+# 4、图像库
+from PIL import Image
+
+# 5、词云库
+from wordcloud import WordCloud</code></pre>
+<h3 id="第二步：读取数据"><a href="#第二步：读取数据" class="headerlink" title="第二步：读取数据"></a>第二步：读取数据</h3><pre><code class="python"> stars = ("很差","较差","还行","推荐","力荐")
+    comments = []
+    with open("files/douban.csv","r",encoding="utf-8") as file:
+        reader = csv.reader(file)
+        for i in reader:
+            if i[1] not in stars:
+                pass
+            else:
+                comments.append(i)
+        file.close()</code></pre>
+<h3 id="第三步：解析数据并保存"><a href="#第三步：解析数据并保存" class="headerlink" title="第三步：解析数据并保存"></a>第三步：解析数据并保存</h3><pre><code class="python">str = ""
+    for i in data:
+        str+=i[2]
+    cutWord = " ".join(jieba.cut(str))
+    bgImg = numpy.array(Image.open("files/a.jpg"))
+    cloud = WordCloud(
+        font_path="C:\Windows\Fonts\STZHONGS.TTF",
+        background_color="white",
+        mask=bgImg
+    ).generate(cutWord)
+    cloud.to_file("ciyun.png")</code></pre>
+<h2 id="效果图："><a href="#效果图：" class="headerlink" title="效果图："></a>效果图：</h2><p>模型：<br><img src="https://img-blog.csdnimg.cn/20200226185716995.jpg" alt="模型"><br>效果：<img src="https://img-blog.csdnimg.cn/20200226185748680.png" alt="效果"></p>
+<h2 id="源代码："><a href="#源代码：" class="headerlink" title="源代码："></a>源代码：</h2><pre><code class="python"># 1、表格库
+import csv
+# 2、jieba分词器，将一句话的词语分离出来
+# 1)、控制台输入：pip install jieba
+# 2)、左上角 file--&gt;settings---&gt;项目
+# 3)、清华园下载方式（在控制台）
+# pip install -i https://pypi.tuna.tsinghua.edu.cn/simple jieba
+# 阿里
+# pip install jieba -i  http://mirrors.aliyun.com/pypi/simple/
+
+import jieba
+
+# 3、算法运算库
+# 控制台输入：pip install numpy
+# pip install -i https://pypi.tuna.tsinghua.edu.cn/simple numpy
+
+import numpy
+
+# 4、图像库
+# 控制台输入：pip install pillow
+# pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pillow
+
+from PIL import Image
+
+# 5、词云库
+# 控制台输入：pip install WordCloud
+# pip install -i https://pypi.tuna.tsinghua.edu.cn/simple WordCloud
+
+from wordcloud import WordCloud
+
+# 定义函数，将数据从表格里读取出来
+def getDataFromCsv():
+    # 设置星级等级
+    stars = ("很差","较差","还行","推荐","力荐")
+    # 设置空列表，装从表格里面读出来的所有数据
+    comments = []
+    # 打开表格，"r"读取模式  读取数据
+    with open("files/douban.csv","r",encoding="utf-8") as file:
+        # 表格操作读数据
+        reader = csv.reader(file)
+        # 遍历表格里得到所有数据     [用户名,星级,评论]
+        for i in reader:
+            # 如果没有星级
+            if i[1] not in stars:
+                # 数据无效，忽略不处理
+                pass
+            else:
+                # 数据有效，装入数组
+                comments.append(i)
+        # print(comments)
+        file.close()
+    # 将装有数据的列表返回出来
+    return comments
+
+# 定义函数，将解析的评论做成词云
+def getWordCloud():
+    # 调用函数：得到表格中所有的数据
+    data = getDataFromCsv()
+    # 定义空的字符串，把所有的评论装进来
+    str = ""
+    # 遍历所有的数据
+    for i in data:
+        # [用户名, 星级, 评论]
+        str+=i[2]
+    # print(str)
+    # 通过jieba分词器将评论里面的词语用空格分离出来
+    cutWord = " ".join(jieba.cut(str))
+    # print(cutWord)
+    # 读取图片模型
+    bgImg = numpy.array(Image.open("files/a.jpg"))
+    # 准备词云参数
+    cloud = WordCloud(
+        # 文字的路径：本地的系统文件路径
+        font_path="C:\Windows\Fonts\STZHONGS.TTF",
+        # 生成词云的图片背景
+        background_color="white",
+        # 参考图片（参数，没有引号）
+        mask=bgImg
+    ).generate(cutWord)
+    # 将做成的结果生成图片
+    cloud.to_file("ciyun.png")</code></pre>
 <blockquote>
 <p>问题：安装wordcloud出错，离线安装也出错，<br>参考：<a href="https://blog.csdn.net/xiuxiuen_michelle/article/details/81080694" target="_blank" rel="noopener">https://blog.csdn.net/xiuxiuen_michelle/article/details/81080694</a><br>解决：在 <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#wordcloud" target="_blank" rel="noopener">https://www.lfd.uci.edu/~gohlke/pythonlibs/#wordcloud</a> 下载对应版本的库</p>
 </blockquote>
@@ -778,7 +889,11 @@
                     <div class="summary block-with-text">
                         
                             概述：爬取豆瓣影评数据步骤：1、获取网页请求2、解析获取的网页3、提速数据4、保存文件
-源代码：123456789101112131415161718192021222324252627282930313233343536373839404
+源代码：# 1、导入需要的库
+import urllib.request
+from bs4 import BeautifulSoup
+# 随机数的库
+i
                         
                     </div>
                     <div class="publish-info">

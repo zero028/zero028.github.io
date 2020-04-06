@@ -423,7 +423,125 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h2><p>爬取豆瓣影评数据步骤：<br>1、获取网页请求<br>2、解析获取的网页<br>3、提速数据<br>4、保存文件</p>
-<h2 id="源代码："><a href="#源代码：" class="headerlink" title="源代码："></a>源代码：</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、导入需要的库</span></span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="comment"># 随机数的库</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="comment"># 时间库</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="comment"># 表格库</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、分多个浏览器访问豆瓣网，防止访问多页时被拒绝</span></span><br><span class="line"><span class="comment"># 每个浏览器在请求数据的时候，请求头是不一样</span></span><br><span class="line"><span class="comment"># 计算机命名规则：驼峰命名法</span></span><br><span class="line"><span class="comment"># url：传值过来的访问地址</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getRequest</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="comment"># 谷歌浏览器</span></span><br><span class="line">    header1 = {</span><br><span class="line">        <span class="string">"Host"</span>:<span class="string">"movie.douban.com"</span>,</span><br><span class="line">        <span class="string">"User-Agent"</span>:<span class="string">"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"</span></span><br><span class="line">    }</span><br><span class="line">    <span class="comment"># 火狐浏览器</span></span><br><span class="line">    header2 = {</span><br><span class="line">        <span class="string">"Host"</span>: <span class="string">"movie.douban.com"</span>,</span><br><span class="line">        <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 6.1; rv:73.0) Gecko/20100101 Firefox/73.0"</span></span><br><span class="line">    }</span><br><span class="line">    <span class="comment"># 将浏览器装入列表里</span></span><br><span class="line">    list = [header1,header2]</span><br><span class="line">    <span class="comment"># 随机取一个请求头  len(list)-1：列表长度-1</span></span><br><span class="line">    index = random.randint(<span class="number">0</span>,len(list)<span class="number">-1</span>)</span><br><span class="line">    <span class="comment"># 随机用一个请求头，开始访问地址</span></span><br><span class="line">    req = urllib.request.Request(url=url,headers=list[index])</span><br><span class="line">    <span class="comment"># 返回结果</span></span><br><span class="line">    <span class="keyword">return</span> req</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 封装函数，爬取数据</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getData</span><span class="params">(url,commentAll)</span>:</span></span><br><span class="line">    <span class="comment"># 获取处理后的请求</span></span><br><span class="line">    req = getRequest(url)</span><br><span class="line">    <span class="comment"># 打开网址</span></span><br><span class="line">    html = urllib.request.urlopen(req)</span><br><span class="line">    <span class="comment"># 读取数据(data得到所有数据)</span></span><br><span class="line">    data = html.read()</span><br><span class="line">    <span class="comment"># 输出爬取到的所有数据，进制形式显示</span></span><br><span class="line">    <span class="comment"># print(data)</span></span><br><span class="line">    <span class="comment"># 定义soup对象，解析网页</span></span><br><span class="line">    soup = BeautifulSoup(data,<span class="string">"html.parser"</span>)</span><br><span class="line">    <span class="comment"># 找到装有所有评论的id名为comments的div</span></span><br><span class="line">    <span class="comment"># ["数据"]  数组里只有一个元素----数据</span></span><br><span class="line">    comments = soup.select(<span class="string">"#comments"</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># print(comments)</span></span><br><span class="line">    <span class="comment"># 读取到每一条评论，div的class名为comment-item</span></span><br><span class="line">    items = comments.select(<span class="string">".comment-item"</span>)</span><br><span class="line">    <span class="comment"># print(items)</span></span><br><span class="line">    <span class="comment"># 循环遍历每一条评论</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> items:</span><br><span class="line">        <span class="comment"># 找到装着用户名和星级的span标签，class名为comment-info</span></span><br><span class="line">        info = i.select(<span class="string">".comment-info"</span>)[<span class="number">0</span>]</span><br><span class="line">        <span class="comment"># print(info)</span></span><br><span class="line">        <span class="comment"># 读出用户名的a标签里面的字符串用户名 [&lt;a&gt;&lt;/a&gt;]</span></span><br><span class="line">        <span class="comment"># author = info.select("a")[0].string  数据在列表里</span></span><br><span class="line">        author = info.find(<span class="string">"a"</span>).string</span><br><span class="line">        <span class="comment"># print(author)</span></span><br><span class="line">        <span class="comment"># 取星级，找到装着星级的span标签，读取title值</span></span><br><span class="line">        <span class="comment"># ["看过"，星级，时间]</span></span><br><span class="line">        star = info.select(<span class="string">"span"</span>)[<span class="number">1</span>][<span class="string">"title"</span>]</span><br><span class="line">        <span class="comment"># print(star)</span></span><br><span class="line">        <span class="comment"># 取评论，找到class名为short的p标签</span></span><br><span class="line">        short = i.select(<span class="string">".short"</span>)[<span class="number">0</span>].string</span><br><span class="line">        <span class="comment"># print(short)</span></span><br><span class="line">        <span class="comment"># 将 用户名、星级、评论 装入在字典里面</span></span><br><span class="line">        talk = {<span class="string">"author"</span>:author,<span class="string">"star"</span>:star,<span class="string">"short"</span>:short}</span><br><span class="line">        <span class="comment"># print(talk)</span></span><br><span class="line">        <span class="comment"># 将字典类型的数据，加到列表里面</span></span><br><span class="line">        commentAll.append(talk)</span><br><span class="line">    <span class="comment"># 返回整个列表</span></span><br><span class="line">    <span class="keyword">return</span> commentAll</span><br><span class="line"></span><br><span class="line"><span class="comment"># 封装函数，把数据装入表格中</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">writeInto</span><span class="params">(commentAll)</span>:</span></span><br><span class="line">    <span class="comment"># 打开表格  as从命名 file</span></span><br><span class="line">    <span class="comment"># 参数1：表格名称</span></span><br><span class="line">    <span class="comment"># 参数2："a+"追加模式  "w"写入模式   "r"读取模式</span></span><br><span class="line">    <span class="comment"># w：writer   r：read  a：append</span></span><br><span class="line">    <span class="comment"># wb二进制，不带b就是文本</span></span><br><span class="line">    <span class="comment"># 参数3：数据格式为utf-8</span></span><br><span class="line">    <span class="comment"># 参数4：newline 新行，空行</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"douban.csv"</span>,<span class="string">"a+"</span>,encoding=<span class="string">"utf-8"</span>,newline=<span class="string">""</span>) <span class="keyword">as</span> file:</span><br><span class="line">        <span class="comment"># 向表格写入数据</span></span><br><span class="line">        writer = csv.writer(file)</span><br><span class="line">        <span class="comment"># 数据在commentAll列表，循环遍历列表，读取数据</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> commentAll:</span><br><span class="line">            <span class="comment"># 读取每一个字段  用户名、星级、评论</span></span><br><span class="line">            info = [i[<span class="string">"author"</span>],i[<span class="string">"star"</span>],i[<span class="string">"short"</span>]]</span><br><span class="line">            <span class="comment"># 把数据写入表格</span></span><br><span class="line">            writer.writerow(info)</span><br><span class="line">        <span class="comment"># 关闭表格</span></span><br><span class="line">        file.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 函数的入口</span></span><br><span class="line"><span class="comment"># 直接输入main，有提示</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 初始化一个空列表,将得到的所有数据</span></span><br><span class="line">    commentAll = []</span><br><span class="line">    <span class="comment"># range()产生序列 0.1.2,爬取3页</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">3</span>):</span><br><span class="line">        <span class="comment"># 爬取的网页地址</span></span><br><span class="line">        <span class="comment"># limit=20 每一页读取20条数据</span></span><br><span class="line">        <span class="comment"># start = 80  从第几条读取数据 20-39  40-59  60-79 80-99</span></span><br><span class="line">        url = <span class="string">"https://movie.douban.com/subject/25931446/comments?start=%d&amp;limit=20&amp;sort=new_score&amp;status=P"</span>%(i*<span class="number">20</span>)</span><br><span class="line">        <span class="comment"># 调用函数，爬取数据</span></span><br><span class="line">        getData(url,commentAll)</span><br><span class="line">        <span class="comment"># 每爬取一个页面数据，休息10秒，防止被封号</span></span><br><span class="line">        time.sleep(<span class="number">10</span>)</span><br><span class="line">    <span class="comment"># 调用函数，爬取完数据，装入表格</span></span><br><span class="line">    writeInto(commentAll)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将表格用 记事本 打开，另存为ANSI格式</span></span><br><span class="line">    <span class="comment"># 如果你要操作数据，还要转回utf-8</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="源代码："><a href="#源代码：" class="headerlink" title="源代码："></a>源代码：</h2><pre><code class="python"># 1、导入需要的库
+import urllib.request
+from bs4 import BeautifulSoup
+# 随机数的库
+import random
+# 时间库
+import time
+# 表格库
+import csv
+
+# 2、分多个浏览器访问豆瓣网，防止访问多页时被拒绝
+# 每个浏览器在请求数据的时候，请求头是不一样
+# 计算机命名规则：驼峰命名法
+# url：传值过来的访问地址
+def getRequest(url):
+    # 谷歌浏览器
+    header1 = {
+        "Host":"movie.douban.com",
+        "User-Agent":"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"
+    }
+    # 火狐浏览器
+    header2 = {
+        "Host": "movie.douban.com",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; rv:73.0) Gecko/20100101 Firefox/73.0"
+    }
+    # 将浏览器装入列表里
+    list = [header1,header2]
+    # 随机取一个请求头  len(list)-1：列表长度-1
+    index = random.randint(0,len(list)-1)
+    # 随机用一个请求头，开始访问地址
+    req = urllib.request.Request(url=url,headers=list[index])
+    # 返回结果
+    return req
+
+
+# 封装函数，爬取数据
+def getData(url,commentAll):
+    # 获取处理后的请求
+    req = getRequest(url)
+    # 打开网址
+    html = urllib.request.urlopen(req)
+    # 读取数据(data得到所有数据)
+    data = html.read()
+    # 输出爬取到的所有数据，进制形式显示
+    # print(data)
+    # 定义soup对象，解析网页
+    soup = BeautifulSoup(data,"html.parser")
+    # 找到装有所有评论的id名为comments的div
+    # ["数据"]  数组里只有一个元素----数据
+    comments = soup.select("#comments")[0]
+    # print(comments)
+    # 读取到每一条评论，div的class名为comment-item
+    items = comments.select(".comment-item")
+    # print(items)
+    # 循环遍历每一条评论
+    for i in items:
+        # 找到装着用户名和星级的span标签，class名为comment-info
+        info = i.select(".comment-info")[0]
+        # print(info)
+        # 读出用户名的a标签里面的字符串用户名 [&lt;a&gt;&lt;/a&gt;]
+        # author = info.select("a")[0].string  数据在列表里
+        author = info.find("a").string
+        # print(author)
+        # 取星级，找到装着星级的span标签，读取title值
+        # ["看过"，星级，时间]
+        star = info.select("span")[1]["title"]
+        # print(star)
+        # 取评论，找到class名为short的p标签
+        short = i.select(".short")[0].string
+        # print(short)
+        # 将 用户名、星级、评论 装入在字典里面
+        talk = {"author":author,"star":star,"short":short}
+        # print(talk)
+        # 将字典类型的数据，加到列表里面
+        commentAll.append(talk)
+    # 返回整个列表
+    return commentAll
+
+# 封装函数，把数据装入表格中
+def writeInto(commentAll):
+    # 打开表格  as从命名 file
+    # 参数1：表格名称
+    # 参数2："a+"追加模式  "w"写入模式   "r"读取模式
+    # w：writer   r：read  a：append
+    # wb二进制，不带b就是文本
+    # 参数3：数据格式为utf-8
+    # 参数4：newline 新行，空行
+    with open("douban.csv","a+",encoding="utf-8",newline="") as file:
+        # 向表格写入数据
+        writer = csv.writer(file)
+        # 数据在commentAll列表，循环遍历列表，读取数据
+        for i in commentAll:
+            # 读取每一个字段  用户名、星级、评论
+            info = [i["author"],i["star"],i["short"]]
+            # 把数据写入表格
+            writer.writerow(info)
+        # 关闭表格
+        file.close()
+
+# 函数的入口
+# 直接输入main，有提示
+if __name__ == '__main__':
+    # 初始化一个空列表,将得到的所有数据
+    commentAll = []
+    # range()产生序列 0.1.2,爬取3页
+    for i in range(0,3):
+        # 爬取的网页地址
+        # limit=20 每一页读取20条数据
+        # start = 80  从第几条读取数据 20-39  40-59  60-79 80-99
+        url = "https://movie.douban.com/subject/25931446/comments?start=%d&amp;limit=20&amp;sort=new_score&amp;status=P"%(i*20)
+        # 调用函数，爬取数据
+        getData(url,commentAll)
+        # 每爬取一个页面数据，休息10秒，防止被封号
+        time.sleep(10)
+    # 调用函数，爬取完数据，装入表格
+    writeInto(commentAll)
+
+    # 将表格用 记事本 打开，另存为ANSI格式
+    # 如果你要操作数据，还要转回utf-8</code></pre>
 <h2 id="效果图："><a href="#效果图：" class="headerlink" title="效果图："></a>效果图：</h2><p><img src="https://img-blog.csdnimg.cn/20200226190737397.png" alt="效果图"></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -720,7 +838,8 @@
                         
                             概述：制作词云的步骤：1、从文件中读取数据2、根据数据追加在一个字符串里面，然后用jieba分词器将评论分开3、设置WordCloud词云参数4、保存最后的结果
 数据：使用爬取的豆瓣影评数据
-第一步：引入依赖库123456789101112
+第一步：引入依赖库# 1、表格库
+import 
                         
                     </div>
                     <div class="publish-info">
