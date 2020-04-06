@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="LOMTOM">
+    <meta name="keywords" content="Category: python, LOMTOM">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>LOMTOM</title>
+    <title>Category: python | LOMTOM</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -218,56 +218,9 @@
 
 </header>
 
-    
-<style>
-    .carousel-control {
-        width: 45px;
-        height: 45px;
-        line-height: 55px;
-        border-radius: 45px;
-        background: transparent;
-        cursor: pointer;
-        z-index: 100;
-    }
-
-    #prev-cover {
-        position: absolute;
-        top: 48%;
-        left: 8px;
-    }
-
-    #next-cover {
-        position: absolute;
-        top: 48%;
-        right: 8px;;
-    }
-
-    #prev-cover i {
-        margin-right: 3px;
-    }
-
-    #next-cover i {
-        margin-left: 3px;
-    }
-
-    .carousel-control:hover {
-        background-color: rgba(0, 0, 0, .4);
-    }
-
-    .carousel-control i {
-        color: #fff;
-        font-size: 2.4rem;
-    }
-</style>
-
-
-
-<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
-    
-
-    <div class="carousel-item red white-text bg-cover about-cover">
-        <div class="container">
-            <div class="row">
+    <div class="bg-cover pd-header about-cover">
+    <div class="container">
+    <div class="row">
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
         <div class="brand">
             <div class="title center-align">
@@ -303,167 +256,64 @@
 </script>
 
 
-
-            <div class="cover-btns">
-                <a href="#indexCard" class="waves-effect waves-light btn">
-                    <i class="fa fa-angle-double-down"></i>Start
-                </a>
-
-                
-                    <a href="https://blog.csdn.net/qq_41929184" class="waves-effect waves-light btn" target="_blank">
-                        <i class="fab fa-CSDN-alt"></i>CSDN
-                    </a>
-                
-            </div>
-            <div class="cover-social-link">
-
-
-    <a href="mailto:lomtom@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2208518676" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2208518676" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
-        </div>
     </div>
-
-    
 </div>
-
-<script>
-    // TODO 此处的轮播尚需优化，PC/Mobile 在触摸切换时都感觉相当不灵活
-    $(function () {
-        let coverSlider = $('.carousel');
-
-        //用户触摸轮播自动 restartPlay 是否生效
-        let initUserPressedOrDraggedActive = false
-
-        //用户触摸轮播自动 restartPlay
-        function initUserPressedOrDragged(instance) {
-            setInterval(() => {
-                if (instance.pressed || instance.dragged) {
-                    // console.log('initUserPressedOrDragged: ',instance.pressed,instance.dragged)
-                    restartPlay()
-                }
-            }, 1000)
-        }
-
-        coverSlider.carousel({
-            duration: Number('120'),
-            fullWidth: true,
-            indicators: 'true' === 'true',
-            onCycleTo() {
-                if (!initUserPressedOrDraggedActive) {
-                    // console.log('initUserPressedOrDraggedActive')
-                    initUserPressedOrDragged(this)
-                    initUserPressedOrDraggedActive = true
-                }
-            },
-        })
-
-        let carouselIntervalId;
-        
-        // Loop to call the next cover article picture.
-        let autoCarousel = function () {
-            carouselIntervalId = setInterval(function () {
-                coverSlider.carousel('next');
-            }, 5000);
-        };
-        autoCarousel();
-        
-
-        function restartPlay() {
-            
-            clearInterval(carouselIntervalId);
-            autoCarousel();
-            
-        };
-
-        
-        // prev and next cover post.
-        $('#prev-cover').click(function () {
-            coverSlider.carousel('prev');
-            restartPlay();
-        });
-        $('#next-cover').click(function () {
-            coverSlider.carousel('next');
-            restartPlay();
-        });
-        
-    });
-</script>
-
-
 
 <main class="content">
 
     
-    <div id="indexCard" class="index-card">
-        <div class="container ">
-            <div class="card">
-                <div class="card-content">
-                    
-                        <div class="dream">
-    
-    <div class="title center-align">
-        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;为每天多博学一点而奋斗
-    </div>
-    
-    <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
-            我不想成为一个庸俗的人。十年百年后，当我们死去，质疑我们的人同样死去，后人看到的是裹足不前、原地打转的你，还是一直奔跑、走到远方的我？
-        </div>
-    </div>
-</div>
-                    
 
-                    
-
-                    
-
-                    
-                    <div id="recommend-sections" class="recommend">
-                        
-
-
-
-                    </div>
-                    
-                </div>
+<div id="category-cloud" class="container chip-container">
+    <div class="card">
+        <div class="card-content">
+            <div class="tag-title center-align">
+                <i class="fas fa-bookmark"></i>&nbsp;&nbsp;Post Categories
+            </div>
+            <div class="tag-chips">
+                
+                
+                
+                <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" title="开发工具: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">开发工具
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/spring/" title="spring: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F5EEF8;">spring
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/python/" title="python: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            style="background-color: #D5F5E3;">python
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
             </div>
         </div>
     </div>
-    
+</div>
 
     
 
-    <!-- 所有文章卡片 -->
     <article id="articles" class="container articles">
-        <div class="row article-row">
+        <div class="row tags-posts">
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2020/04/06/%E3%80%90python%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB%E3%80%91%E4%BD%BF%E7%94%A8opencv%E8%AF%86%E5%88%AB%E5%9B%BE%E7%89%87%E4%B8%AD%E7%9A%84%E4%BA%BA%E8%84%B8/">
-                        <div class="card-image">
+                        <div class="card-image tag-image">
                             
                             
                             <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="【python人脸识别】使用opencv识别图片中的人脸">
@@ -471,7 +321,6 @@
                             <span class="card-title">【python人脸识别】使用opencv识别图片中的人脸</span>
                         </div>
                     </a>
-
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
@@ -509,10 +358,10 @@
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2020/04/06/%E3%80%90python%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E3%80%91%E4%BD%BF%E7%94%A8%E8%AF%8D%E4%BA%91%E5%88%86%E6%9E%90%E6%9D%A5%E5%88%86%E6%9E%90%E8%B1%86%E7%93%A3%E5%BD%B1%E8%AF%84%E6%95%B0%E6%8D%AE%20/">
-                        <div class="card-image">
+                        <div class="card-image tag-image">
                             
                             
                             <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="【python爬虫实战】使用词云分析来分析豆瓣影评数据">
@@ -520,7 +369,6 @@
                             <span class="card-title">【python爬虫实战】使用词云分析来分析豆瓣影评数据</span>
                         </div>
                     </a>
-
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
@@ -558,10 +406,10 @@
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2020/04/06/%E3%80%90python%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E3%80%91%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E5%BD%B1%E8%AF%84%E6%95%B0%E6%8D%AE%20/">
-                        <div class="card-image">
+                        <div class="card-image tag-image">
                             
                             
                             <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="【python爬虫实战】爬取豆瓣影评数据">
@@ -569,7 +417,6 @@
                             <span class="card-title">【python爬虫实战】爬取豆瓣影评数据</span>
                         </div>
                     </a>
-
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
@@ -606,252 +453,8 @@
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/04/05/%E3%80%90%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%20idea%E3%80%91%E5%80%BC%E5%BE%97%E6%8E%A8%E8%8D%90%E7%9A%8415%E6%AC%BEidea%E6%8F%92%E4%BB%B6/">
-                        <div class="card-image">
-                            
-                            <img src="https://img-blog.csdnimg.cn/20200406123641715.jpg" class="responsive-img" alt="【开发工具 idea】值得推荐的15款idea插件">
-                            
-                            <span class="card-title">【开发工具 idea】值得推荐的15款idea插件</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                概述：对于一个猿来说，工欲善其事，必先利其器，一个好的开发工具就是程序员的左膀右臂，idea作为大部分java猿的开发工具，无疑是最好用的ide了。IntelliJ在业界被公认为最好的java开发工具，尤其在智能代码助手、代码自动提示、重构
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    开发工具
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/IntelliJ-idea/">
-                            <span class="chip bg-color">IntelliJ idea</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/04/05/%E3%80%90springmvc%20thymeleaf%E3%80%91springmvc%E6%95%B4%E5%90%88thymeleaf/">
-                        <div class="card-image">
-                            
-                            <img src="https://img-blog.csdnimg.cn/20200405094344714.jpg" class="responsive-img" alt="【springmvc thymeleaf】springmvc整合thymeleaf">
-                            
-                            <span class="card-title">【springmvc thymeleaf】springmvc整合thymeleaf</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                概述Thymeleaf提供了一组Spring集成，使您可以将其用作Spring MVC应用程序中JSP的全功能替代品。
-这些集成将使您能够：
-
-@Controller像使用JSP一样，将Spring MVC 对象中的映射方法转发到Thyme
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/spring/" class="post-category">
-                                    spring
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/springmvc/">
-                            <span class="chip bg-color">springmvc</span>
-                        </a>
-                        
-                        <a href="/tags/thymeleaf/">
-                            <span class="chip bg-color">thymeleaf</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/03/29/%E3%80%90spring%20springmvc%E3%80%91%E8%BF%99%E9%87%8C%E6%9C%89%E4%BD%A0%E6%83%B3%E8%A6%81%E7%9A%84SpringMVC%E7%9A%84REST%E9%A3%8E%E6%A0%BC%E7%9A%84%E5%9B%9B%E7%A7%8D%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/">
-                        <div class="card-image">
-                            
-                            <img src="https://img-blog.csdnimg.cn/20200329130918103.png" class="responsive-img" alt="【spring springmvc】这里有你想要的SpringMVC的REST风格的四种请求方式">
-                            
-                            <span class="card-title">【spring springmvc】这里有你想要的SpringMVC的REST风格的四种请求方式</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                概述之前的文章springmvc使用注解声明控制器与请求映射有简单提到过控制器与请求映射，这一次就详细讲解一下SpringMVC的REST风格的四种请求方式及其使用方法。
-你能get的知识点1、什么是Rest风格？2、基于springmvc
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-29
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/spring/" class="post-category">
-                                    spring
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/springmvc/">
-                            <span class="chip bg-color">springmvc</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/03/23/%E3%80%90%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%20%E6%B5%8F%E8%A7%88%E5%99%A8%E3%80%91%E7%BB%86%E6%95%B0%E9%82%A3%E4%BA%9B%E4%BC%98%E7%A7%80%E7%9A%84%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/">
-                        <div class="card-image">
-                            
-                            <img src="https://img-blog.csdnimg.cn/20200322142629494.png" class="responsive-img" alt="【开发工具 浏览器】细数那些优秀的谷歌浏览器插件">
-                            
-                            <span class="card-title">【开发工具 浏览器】细数那些优秀的谷歌浏览器插件</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                概述相信所有人包括程序员都离不开浏览器，而作为猿来说，谷歌浏览器是我们必不可少的工具，开发调试，查找资料都离不开他，所以说浏览器也是一款开发工具也不为过。浏览器经过过多年的发展，诞生了无数浏览器拓展程序，也就是插件，因为插件，我们使用浏览器
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-23
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    开发工具
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">
-                            <span class="chip bg-color">浏览器</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/03/19/%E3%80%90springboot%20spring%20mybatis%E3%80%91%E7%9C%8B%E6%88%91%E6%80%8E%E4%B9%88%E5%B0%86springboot%E4%B8%8Espring%E6%95%B4%E5%90%88mybatis%E4%B8%8Edruid%E6%95%B0%E6%8D%AE%E6%BA%90/">
-                        <div class="card-image">
-                            
-                            <img src="https://img-blog.csdnimg.cn/20200406130116487.jpg" class="responsive-img" alt="【springboot spring mybatis】看我怎么将springboot与spring整合mybatis与druid数据源">
-                            
-                            <span class="card-title">【springboot spring mybatis】看我怎么将springboot与spring整合mybatis与druid数据源</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                概述本文分别讲述了spring与springboot是怎么整合mybatis与druid数据源的？如果你只是想实现其中一种，那你就不要把他们的配置过程搞混了。
-1、mybatisMyBatis 本是apache的一个开源项目iBatis, 
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/spring/" class="post-category">
-                                    spring
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/springboot/">
-                            <span class="chip bg-color">springboot</span>
-                        </a>
-                        
-                        <a href="/tags/mybatis/">
-                            <span class="chip bg-color">mybatis</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
-
 </main>
 
 
