@@ -1,5 +1,10 @@
 /* Here is your custom css styles. */
 
+#navContainer{
+	max-width: 100%;
+}
+
+
 /* hexo-filter-github-emojis */
 .github-emoji{
     height: 2em;

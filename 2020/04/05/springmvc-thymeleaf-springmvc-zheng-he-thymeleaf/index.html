@@ -40,7 +40,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    <img src="/favicon.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">LOMTOM</span>
                 </a>
@@ -107,11 +107,22 @@
   
   <li class="hide-on-med-and-down nav-item">
     
+    <a href="https://lomtom.top" target="_blank" rel="noopener" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>Another</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
     <a href="/friends" class="waves-effect waves-light">
       
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
-      <span>Friends</span>
+      <span>document</span>
     </a>
     
   </li>
@@ -127,7 +138,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/favicon.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">LOMTOM</div>
         <div class="logo-desc">
@@ -198,11 +209,22 @@
         
         <li class="m-nav-item">
 	  
+		<a href="https://lomtom.top" target="_blank" rel="noopener" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Another
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
 		<a href="/friends" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-address-book"></i>
 			
-			Friends
+			document
 		</a>
           
         </li>
@@ -847,33 +869,6 @@ org.thymeleaf.spring4.view.ThymeleafViewResolver</code></pre><p>不过现在都�
     </div>
 
     
-        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
-    </div>
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: 'b45860b395e6ad99c4fe',
-        clientSecret: 'fbcdfc0e5a23989f0806becb31be0b71563b5e47',
-        repo: 'zero028.github.io',
-        owner: 'zero028',
-        admin: "zero028",
-        id: '2020-04-05T09-55-27',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-
-    
 
     
 
@@ -1162,6 +1157,11 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <span id="year">2019</span>
             <a href="https://blog.lomtom.top" target="_blank">lomtom | </a>
 			
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">湘ICP备19023870号 | </a>
+            </span>
+            
+			
             <span id="sitetime">载入运行时间...</span>
             <script>
                 function siteTime() {
@@ -1193,13 +1193,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                         minutes);
                     var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
                         diffMinutes * minutes) / seconds);
-                    if (startYear == todayYear) {
+                    if (startYear == todayYear || diffDays < 365) {
                         document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                        document.getElementById("sitetime").innerHTML = "经历风雨 " + diffDays + " 天 " + diffHours +
                             " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
                     } else {
                         document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                        document.getElementById("sitetime").innerHTML = "经历风雨 " + diffYears + " 年 " + diffDays +
                             " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
                     }
                 }
@@ -1230,7 +1230,6 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             <br>
-            
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
 
@@ -1305,7 +1304,7 @@ $(function () {
     var _hmt = _hmt || [];
     (function () {
         var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?3dd6eaad89a44329b8c6d556051955af";
+        hm.src = "https://hm.baidu.com/hm.js?ffce1f5fc0b433827847790d2d1b35ee";
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
@@ -1327,8 +1326,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
