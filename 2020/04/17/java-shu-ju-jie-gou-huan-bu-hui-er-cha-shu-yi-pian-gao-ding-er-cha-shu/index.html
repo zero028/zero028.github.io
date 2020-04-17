@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【springmvc thymeleaf】springmvc整合thymeleaf, LOMTOM">
+    <meta name="keywords" content="【java 数据结构】还不会二叉树？一篇搞定二叉树, LOMTOM">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【springmvc thymeleaf】springmvc整合thymeleaf | LOMTOM</title>
+    <title>【java 数据结构】还不会二叉树？一篇搞定二叉树 | LOMTOM</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -257,12 +257,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://img-blog.csdnimg.cn/20200405094344714.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://img-blog.csdnimg.cn/20200417095221714.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【springmvc thymeleaf】springmvc整合thymeleaf</h1>
+                    <h1 class="description center-align post-title">【java 数据结构】还不会二叉树？一篇搞定二叉树</h1>
                 </div>
             </div>
         </div>
@@ -387,12 +387,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/springmvc/">
-                                <span class="chip bg-color">springmvc</span>
-                            </a>
-                        
-                            <a href="/tags/thymeleaf/">
-                                <span class="chip bg-color">thymeleaf</span>
+                            <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                                <span class="chip bg-color">二叉树</span>
                             </a>
                         
                     </div>
@@ -403,8 +399,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/spring/" class="post-category">
-                                spring
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                数据结构
                             </a>
                         
                     </div>
@@ -416,7 +412,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-04-05
+                    2020-04-17
                 </div>
                 
 
@@ -425,14 +421,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.7k
+                    2.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    7 Min
+                    11 Min
                 </div>
                 
 
@@ -448,189 +444,358 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Thymeleaf提供了一组Spring集成，使您可以将其用作Spring MVC应用程序中JSP的全功能替代品。</p>
-<p>这些集成将使您能够：</p>
-<ul>
-<li>@Controller像使用JSP一样，将Spring MVC 对象中的映射方法转发到Thymeleaf管理的模板。</li>
-<li>在模板中使用Spring表达式语言（Spring EL）代替OGNL。</li>
-<li>在与表单支持Bean和结果绑定完全集成的模板中创建表单，包括使用属性编辑器，转换服务和验证错误处理。</li>
-<li>显示Spring管理的消息文件中的国际化消息（通过常规MessageSource对象）。</li>
-<li>使用Spring自己的资源解析机制解析您的模板。</li>
+                <p>二叉树是我们常见的数据结构之一，在学习二叉树之前我们需要知道什么是树，什么是二叉树，本篇主要讲述了二叉树，以及二叉树的遍历。</p>
+<h2 id="你能get到的知识点？"><a href="#你能get到的知识点？" class="headerlink" title="你能get到的知识点？"></a>你能get到的知识点？</h2><p>1、树的介绍<br>2、二叉树的介绍<br>3、二叉树遍历的四种方法<br>4、牛客题目：反转二叉树</p>
+<p>@[TOC]</p>
+<p><img src="https://img-blog.csdnimg.cn/20200417095221714.jpg" alt=""></p>
+<h2 id="一、知识预备"><a href="#一、知识预备" class="headerlink" title="一、知识预备"></a>一、知识预备</h2><h3 id="1、树"><a href="#1、树" class="headerlink" title="1、树"></a>1、树</h3><p><strong>树</strong>（Tree）是n（n&gt;=0)个结点的有限集。</p>
+<p>数据结构中的树可以看作一个倒立的树，他的‘根’在上面，他的’叶子’在下面。</p>
+<pre><code class="mermaid">graph TD
+4--&gt;2
+4--&gt;7
+2--&gt;1
+2--&gt;3
+7--&gt;6
+7--&gt;9 </code></pre>
+<h3 id="2、树的相关术语介绍"><a href="#2、树的相关术语介绍" class="headerlink" title="2、树的相关术语介绍"></a>2、树的相关术语介绍</h3><ul>
+<li>1、树的结点（node）：包含一个数据元素及若干指向子树的分支；</li>
+<li>2、孩子结点（child node）：结点的子树的根称为该结点的孩子，对于结点4来说，结点2和结点7就是结点4的孩子结点；</li>
+<li>3、双亲结点：B 结点是A 结点的孩子，则A结点是B 结点的双亲；</li>
+<li>4、兄弟结点：同一双亲的孩子结点； 堂兄结点：同一层上结点；</li>
+<li>5、祖先结点: 从根到该结点的所经分支上的所有结点</li>
+<li>6、子孙结点：以某结点为根的子树中任一结点都称为该结点的子孙</li>
+<li>7、结点层：根结点的层定义为1；根的孩子为第二层结点，依此类推；</li>
+<li>8、树的深度：树中最大的结点层，该树的深度为三，因为他只有三层。</li>
+<li>9、结点的度：结点子树的个数</li>
+<li>10、树的度： 树中最大的结点度。</li>
+<li>11、叶子结点：也叫终端结点，是度为 0 的结点，例如结点1、2、6、9，都是叶子结点；</li>
+<li>12、分枝结点：度不为0的结点；</li>
+<li>13、有序树：子树有序的树，如：家族树；</li>
+<li>14、无序树：不考虑子树的顺序；</li>
 </ul>
-<p>thymeleaf自己也做了spring的集成，所以我们并不需要做太多的配置，就可以达到我们想要的结果。thymeleaf提供了两种集成方法：①、注解配置，也就是java代码，②、xml文件配配置，本文主要介绍第二种xml配置。</p>
-<h2 id="你能get到的知识点："><a href="#你能get到的知识点：" class="headerlink" title="你能get到的知识点："></a>你能get到的知识点：</h2><p>1、springmvc整合thymeleaf<br>2、spring提供的三种model的使用<br>3、解决html前端thymeleaf不生效问题（见问题1）<br>4、解决html前端显示乱码问题（见问题2）</p>
-<h1 id="springmvc整合thymeleaf"><a href="#springmvc整合thymeleaf" class="headerlink" title="springmvc整合thymeleaf"></a>springmvc整合thymeleaf</h1><h2 id="一：加入依赖"><a href="#一：加入依赖" class="headerlink" title="一：加入依赖"></a>一：加入依赖</h2><p>在springmvc里面，除了要加入<code>thymeleaf</code>的主依赖之外，还需要<code>thymeleaf-spring4</code>，否则会报<code>org.thymeleaf.spring4.view.ThymeleafViewResolver</code>，找不到thymeleaf解析器，所以<code>thymeleaf-spring4</code>也是必不可少的。</p>
+<h3 id="1、二叉树"><a href="#1、二叉树" class="headerlink" title="1、二叉树"></a>1、二叉树</h3><p><strong>二叉树</strong>（Binary Tree）是每个结点最多有两个子树的树结构。所以二叉树也是一种特殊的树。</p>
+<p>通常我们将二叉树的子树被称作“左子树”（left subtree）和“右子树”（right subtree）。</p>
+<p>二叉树常被用于实现二叉查找树和二叉堆。<br><img src="https://img-blog.csdnimg.cn/20200415095939408.png" alt=""><br>由此可以看出，一棵二叉树，他的每个节点最多只有两个结点，也就是结点的度小于等于二，即取0、1、2。</p>
+<h3 id="2、二叉树类型"><a href="#2、二叉树类型" class="headerlink" title="2、二叉树类型"></a>2、二叉树类型</h3><ol>
+<li>满二叉树：除了叶结点外每一个结点都有左右子叶且叶子结点都处在最底层的二叉树。<br><img src="https://img-blog.csdnimg.cn/20200415100335118.png#pic_center" alt=""></li>
+<li>完全二叉树：若设二叉树的高度为h，除第 h 层外，其它各层 (1～h-1) 的结点数都达到最大个数，第h层有叶子结点，并且叶子结点都是从左到右依次排布，这就是完全二叉树。<br>简单来说：如果二叉树中除去最后一层节点为满二叉树，且最后一层的结点依次从左到右分布，则此二叉树被称为完全二叉树。<br><img src="https://img-blog.csdnimg.cn/20200415100407802.png#pic_center" alt=""></li>
+</ol>
+<ol start="3">
+<li><p>平衡二叉树：平衡二叉树又被称为AVL树（区别于AVL算法），它是一棵二叉排序树，且具有以下性质：它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。</p>
+<h2 id="二、二叉树实操（我没有说脏话）"><a href="#二、二叉树实操（我没有说脏话）" class="headerlink" title="二、二叉树实操（我没有说脏话）"></a>二、二叉树实操（我没有说脏话）</h2><h3 id="1、定义二叉树的结点"><a href="#1、定义二叉树的结点" class="headerlink" title="1、定义二叉树的结点"></a>1、定义二叉树的结点</h3><p>定义二叉树每一个节点的结构，他拥有左右子叶，并且本身拥有一个值val,定义一个构造函数，多个结点组合在一起就是一个二叉树。</p>
+<pre><code class="java"> /**
+  * Definition for binary tree
+  */
+ public static class TreeNode {
+   //定义该结点值
+   int val;
+   //定义左结点
+   TreeNode left;
+   //定义右结点
+   TreeNode right;
+
+   //定义一个构造函数
+   TreeNode(int x) { val = x; }
+ }</code></pre>
+<p>例图：以下将以该例图进行解说</p>
+<pre><code class="mermaid">graph TD
+4--&gt;2
+4--&gt;7
+2--&gt;1
+2--&gt;3
+7--&gt;6
+7--&gt;9</code></pre>
+<h3 id="2、遍历二叉树（四种方法）"><a href="#2、遍历二叉树（四种方法）" class="headerlink" title="2、遍历二叉树（四种方法）"></a>2、遍历二叉树（四种方法）</h3><p>遍历二叉树主要有四种方法：①：前序遍历 ②：中序遍历 ③：后序遍历 ④：层序遍历</p>
+</li>
+</ol>
+<p>需要事先说明的就是前三种遍历，就是根节点的访问顺序不同，但是访问左右节点的顺序仍然是先访问左结点，再访问右结点。</p>
+<p>①：前序遍历</p>
 <blockquote>
-<p>Thymeleaf具有针对Spring Framework 3.x和4.x的集成，由两个独立的库分别称为thymeleaf-spring3和提供thymeleaf-spring4。这些库打包在单独的.jar文件（thymeleaf-spring3-{version}.jar和thymeleaf-spring4-{version}.jar）中，需要添加到类路径中，以便在应用程序中使用Thymeleaf的Spring集成<br>。</p>
+<p>1、访问根节点；<br>2、访问当前节点的左子树；<br>3、访问当前节点的右子树；<br>就是先从根节点出发，先访问根节点，然后访问根结点的左子树，若该左子树的根节点上存在左子树，则访问其左子树，否则，访问其右子树，依次类推。</p>
 </blockquote>
-<pre><code class="xml">&lt;!--        thymeleaf--&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.thymeleaf&lt;/groupId&gt;
-    &lt;artifactId&gt;thymeleaf-spring4&lt;/artifactId&gt;
-    &lt;version&gt;3.0.11.RELEASE&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.thymeleaf&lt;/groupId&gt;
-    &lt;artifactId&gt;thymeleaf&lt;/artifactId&gt;
-    &lt;version&gt;3.0.11.RELEASE&lt;/version&gt;
-&lt;/dependency&gt;</code></pre>
-<h2 id="二：设置thymeleaf解析器"><a href="#二：设置thymeleaf解析器" class="headerlink" title="二：设置thymeleaf解析器"></a>二：设置thymeleaf解析器</h2><p>在springmvc配置文件中配置thymeleaf解析器，官方文档中Thymeleaf提供了上述两个接口的实现：</p>
-<pre><code>org.thymeleaf.spring4.view.ThymeleafView
-org.thymeleaf.spring4.view.ThymeleafViewResolver</code></pre><p>不过现在都已经被<code>org.thymeleaf.spring4.view.ThymeleafViewResolver</code>所代替，至于以上配置是否还能够生效，就要靠你来试试了。</p>
-<pre><code class="xml"> &lt;!-- thymeleaf 模板解析器 --&gt;
-    &lt;bean id="templateResolver" class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver"&gt;
-        &lt;property name="prefix" value="/" /&gt;
-        &lt;property name="suffix" value=".html" /&gt;
-        &lt;property name="templateMode" value="HTML" /&gt;
-        &lt;property name="cacheable" value="false" /&gt;
-        &lt;property name="characterEncoding" value="UTF-8"/&gt;
-    &lt;/bean&gt;
-
-    &lt;bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine"&gt;
-        &lt;property name="templateResolver" ref="templateResolver" /&gt;
-    &lt;/bean&gt;
-
-    &lt;!--    视图解析器--&gt;
-    &lt;bean id="viewResolver" class="org.thymeleaf.spring4.view.ThymeleafViewResolver"&gt;
-        &lt;property name="templateEngine" ref="templateEngine" /&gt;
-        &lt;property name="characterEncoding" value="UTF-8"/&gt;
-    &lt;/bean&gt;</code></pre>
-<p>ViewResolvers是负责获取特定操作和语言环境的View对象的对象。通常，控制器要求ViewResolvers转发到具有特定名称的视图（由controller方法返回的String），然后应用程序中的所有视图解析器将按有序链执行，直到其中一个能够解析该视图为止。如果返回了View对象，并且将控件传递给该对象以呈现HTML。</p>
-<p><strong>注：值得注意的是</strong>，如果自己设置了spring的视图解析器，需要将其注释掉，否则thymeleaf解析器可能不会生效，我就是因为这个调试了好久，最后才发现这个问题。</p>
-<pre><code class="xml">    &lt;!--    配置视图解析器 prefix：前缀， suffix：后缀   使用thymeleaf需要将其注释掉--&gt;
-    &lt;bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"&gt;
-        &lt;property name="prefix" value="/"/&gt;
-        &lt;property name="suffix" value=".html"/&gt;
-    &lt;/bean&gt;</code></pre>
-<h2 id="三：编写控制器"><a href="#三：编写控制器" class="headerlink" title="三：编写控制器"></a>三：编写控制器</h2><p>需要从控制层传数据到视图时，我们就会使用model，常用的三种model就是：<strong>Model、ModelMap、ModelAndView</strong>。使用这三种model时，spring框架自动创建实例并作为controller的入参，用户无需自己创建</p>
-<h3 id="1、使用Model"><a href="#1、使用Model" class="headerlink" title="1、使用Model"></a>1、使用Model</h3><pre><code class="java">    /**
-     * 在Model里存入一个用户信息
-     * @return hello页面
+<p>以上图为例，</p>
+<ol>
+<li>先找到根节点，读取4，</li>
+<li>该结点还有左子树，访问其左子树的根节点，读取2，</li>
+<li>结点2，还有左子树，读取1，</li>
+<li>结点1没有左子树也没有右子树，返回上一层，访问结点2的右子树，读取3，</li>
+<li>这时候应该访问3的左右子树，但是没有，返回上一层，此时结点2的左右子树都已经读取完，返回上一层，读取结点4的右子树，读取7，</li>
+<li>访问结点7的左子树，读取6，</li>
+<li>结点6没有左右子树，返回上一层，访问结点7的右子树，读取9，</li>
+<li>结点9没有左右子树，这时候该二叉树已经遍历完成。</li>
+</ol>
+<p>所以访问到的顺序为：<code>4    2    1    3    7    6    9</code>    </p>
+<p>②：中序遍历 </p>
+<blockquote>
+<p>1、访问当前节点的左子树；<br>2、访问根节点；<br>3、访问当前节点的右子树；<br>遍历思想与前序差不多，只不过将读取根节点放在读取左结点之后、右结点之前</p>
+</blockquote>
+<p>③：后序遍历 </p>
+<blockquote>
+<p>1、访问当前节点的左子树；<br>2、访问当前节点的右子树；<br>3、访问根节点；<br>遍历思想与前序差不多，只不过将读取根节点放在读取左结点之后、右结点之后</p>
+</blockquote>
+<p>④：层序遍历</p>
+<blockquote>
+<p>按照二叉树的层级结构从左至右依次遍历结点<br><strong>算法思路</strong>：定义一个队列，从树的根结点开始，依次将其左孩子和右孩子入队。而后每次队列中一个结点出队，都将其左孩子和右孩子入队，直到树中所有结点都出队，出队结点的先后顺序就是层次遍历的最终结果。</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20200415100654515.png#pic_center" alt=""></p>
+<ol>
+<li>根节点4入队，</li>
+<li>根节点4出队，访问结点4的左右结点（2，7），依次入队，</li>
+<li>结点2出队，访问结点2的左右结点（1，3），依次入队，</li>
+<li>结点1出队，无子结点，无需入队，</li>
+<li>结点3出队，无子结点，无需入队，</li>
+<li>结点6出队，无子结点，无需入队，</li>
+<li>结点9出队，无子结点，无需入队，</li>
+<li>队列为空，遍历完成。</li>
+</ol>
+<p>最后访问顺序为：<code>4    2    7    1    3    6    9</code></p>
+<p>代码实现：</p>
+<pre><code class="java">    /**
+     * 先序遍历（递归）
+     * @param node
      */
-    @GetMapping("returnModelAndView")
-    public String returnModelAndView(Model model){
-        model.addAttribute("userInfo",new UserInfo("lomtom","123",new Address("湖南","邵阳")));
-        return "hello";
-    }</code></pre>
-<p>Model是一个接口，<br>Model源码：</p>
-<pre><code class="java">public interface Model {
-    Model addAttribute(String var1, Object var2);
-
-    Model addAttribute(Object var1);
-
-    Model addAllAttributes(Collection&lt;?&gt; var1);
-
-    Model addAllAttributes(Map&lt;String, ?&gt; var1);
-
-    Model mergeAttributes(Map&lt;String, ?&gt; var1);
-
-    boolean containsAttribute(String var1);
-
-    Map&lt;String, Object&gt; asMap();
-}</code></pre>
-<h3 id="2、使用ModelMap"><a href="#2、使用ModelMap" class="headerlink" title="2、使用ModelMap"></a>2、使用ModelMap</h3><p>ModelMap继承LinkedHashMap<br>ModelMap源码：</p>
-<pre><code class="java">public class ModelMap extends LinkedHashMap&lt;String, Object&gt; {
-    public ModelMap() {
+    public void previous(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        System.out.print(node.val+"\t");
+        this.previous(node.left);
+        this.previous(node.right);
+    }
+    /**
+     * 中序遍历（递归）
+     * @param node
+     */
+    public void middle(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        this.middle(node.left);
+        System.out.print(node.val+"\t");
+        this.middle(node.right);
+    }
+    /**
+     * 后序遍历（递归）
+     * @param node
+     */
+    public void next(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        this.next(node.left);
+        this.next(node.right);
+        System.out.print(node.val+"\t");
     }
 
-    public ModelMap(String attributeName, Object attributeValue) {
-        this.addAttribute(attributeName, attributeValue);
-    }
-
-    public ModelMap(Object attributeValue) {
-        this.addAttribute(attributeValue);
-    }
-
-    public ModelMap addAttribute(String attributeName, Object attributeValue) {
-        Assert.notNull(attributeName, "Model attribute name must not be null");
-        this.put(attributeName, attributeValue);
-        return this;
-    }
-
-    public ModelMap addAttribute(Object attributeValue) {
-        Assert.notNull(attributeValue, "Model object must not be null");
-        return attributeValue instanceof Collection &amp;&amp; ((Collection)attributeValue).isEmpty() ? this : this.addAttribute(Conventions.getVariableName(attributeValue), attributeValue);
-    }
-
-    public ModelMap addAllAttributes(Collection&lt;?&gt; attributeValues) {
-        if (attributeValues != null) {
-            Iterator var2 = attributeValues.iterator();
-
-            while(var2.hasNext()) {
-                Object attributeValue = var2.next();
-                this.addAttribute(attributeValue);
+     /**
+     * 遍历二叉树
+     * 层序遍历（非递归）
+     * @param node
+     */
+    public void bfs(TreeNode node){
+        if (node == null) {
+            return;
+        }
+        Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();
+        queue.add(node);
+        while (!queue.isEmpty()){
+            TreeNode current = queue.poll();
+            System.out.print(current.val + "\t");
+            //如果当前节点的左节点不为空入队
+            if(current.left != null)
+            {
+                queue.offer(current.left);
+            }
+            //如果当前节点的右节点不为空，把右节点入队
+            if(current.right != null)
+            {
+                queue.offer(current.right);
             }
         }
-
-        return this;
-    }
-
-    public ModelMap addAllAttributes(Map&lt;String, ?&gt; attributes) {
-        if (attributes != null) {
-            this.putAll(attributes);
+    }</code></pre>
+<pre><code>遍历结果：
+1、前序遍历：4    2    1    3    7    6    9    
+2、中序遍历：1    2    3    4    6    7    9    
+3、后序遍历：1    3    2    6    9    7    4    
+4、层序遍历：4    2    7    1    3    6    9    </code></pre><p>在这里附上前三种方法的非递归方法，感兴趣的小伙伴可以研究研究。<br><strong>附：非递归方法</strong><br>主要实现是依靠<strong>栈</strong>来实现</p>
+<pre><code class="java">    /**
+     * 先序遍历非递归
+     * @param node
+     */
+    public void previous1(TreeNode node) {
+        if (node == null) {
+            return;
         }
-
-        return this;
-    }
-
-    public ModelMap mergeAttributes(Map&lt;String, ?&gt; attributes) {
-        if (attributes != null) {
-            Iterator var2 = attributes.entrySet().iterator();
-
-            while(var2.hasNext()) {
-                Entry&lt;String, ?&gt; entry = (Entry)var2.next();
-                String key = (String)entry.getKey();
-                if (!this.containsKey(key)) {
-                    this.put(key, entry.getValue());
+        Stack&lt;TreeNode&gt; queue = new Stack&lt;&gt;();
+        queue.add(node);
+        while (!queue.isEmpty()) {
+            TreeNode current = queue.pop();
+            while(current!=null) {
+                System.out.print(current.val + "\t");
+                if (current.right!=null){
+                    queue.push(current.right);
                 }
+                current = current.left;
             }
         }
+    } 
 
-        return this;
-    }
 
-    public boolean containsAttribute(String attributeName) {
-        return this.containsKey(attributeName);
-    }
-}
-</code></pre>
-<h3 id="3、使用ModelAndView"><a href="#3、使用ModelAndView" class="headerlink" title="3、使用ModelAndView"></a>3、使用ModelAndView</h3><pre><code class="java">    /**
-     * 在ModelAndView里存入一个用户信息
-     * @return ModelAndView 
+    /**
+     * 中序遍历（非递归）
+     * @param node
      */
-    @GetMapping("returnModelAndView")
-    public ModelAndView returnModelAndView(ModelAndView modelAndView){
-        modelAndView.setViewName("hello");
-        modelAndView.addObject("userInfo",new UserInfo("lomtom","123",new Address("湖南","邵阳")));
-        return modelAndView;
-    }</code></pre>
-<p>ModelAndView顾名思义就是模型和试图的结合。<br>ModelAndView源码：</p>
-<pre><code class="java">public class ModelAndView {
-    private Object view;
-    private ModelMap model;
-    private HttpStatus status;
-    private boolean cleared = false;
+    public void middle1(TreeNode node) {
+        Stack&lt;TreeNode&gt; stack = new Stack&lt;&gt;();
+        while (!stack.isEmpty() || node !=null) {
+            while (node != null){
+                stack.push(node);
+                node = node.left;
+            }
+            node = stack.pop();
+            System.out.print(node.val + "\t");
+            node = node.right;
+        }
+    }
 
-    ......
-}</code></pre>
-<h2 id="四：编写html"><a href="#四：编写html" class="headerlink" title="四：编写html"></a>四：编写html</h2><p>首先，写一个链接，请求<code>returnModelAndView</code>请求。</p>
-<pre><code class="html">&lt;a href="returnModelAndView"&gt;ModelAndView&lt;/a&gt;</code></pre>
-<p>然后，写hello.html页面用于验证</p>
-<pre><code class="html">&lt;h2&gt;你好啊，你成功了&lt;/h2&gt;
-&lt;p th:text="${userInfo.userName}+'来自'+${userInfo.address.province}+${userInfo.address.city}"&gt;&lt;/p&gt;</code></pre>
-<h2 id="五：结果"><a href="#五：结果" class="headerlink" title="五：结果"></a>五：结果</h2><p><img src="https://img-blog.csdnimg.cn/20200401143955232.png" alt=""></p>
-<h2 id="六：记录我遇到的问题"><a href="#六：记录我遇到的问题" class="headerlink" title="六：记录我遇到的问题"></a>六：记录我遇到的问题</h2><p><strong>问题1</strong>：配置好一切后，thymeleaf无法解析，所有关于thymeleaf的显示都无法生效。<br><strong>解决</strong>：由于我配置了spring的视图解析，所以导致thymeleaf的试图解析无法生效，所以去掉spring的视图解析。</p>
+    /**
+     * 后序遍历（非递归）
+     * @param node
+     */
+    public void next1(TreeNode node) {
+        Stack&lt;TreeNode&gt; stack = new Stack&lt;&gt;();
+        Stack&lt;Integer&gt; stack1 = new Stack&lt;&gt;();
+        while (!stack.isEmpty() || node !=null) {
+            while (node != null){
+                stack.push(node);
+                stack1.push(0);
+                node = node.left;
+            }
+            while (!stack.isEmpty() &amp;&amp; stack1.peek() == 1) {
+                stack1.pop();
+                System.out.print(stack.pop().val + "\t");
+            }
+            if (!stack.isEmpty()) {
+                stack1.pop();
+                stack1.push(1);
+                node = stack.peek();
+                node = node.right;
+            }
+        }
+    }
+</code></pre>
+<h2 id="三、小试牛刀"><a href="#三、小试牛刀" class="headerlink" title="三、小试牛刀"></a>三、小试牛刀</h2><h3 id="leetcode题目：反转二叉树"><a href="#leetcode题目：反转二叉树" class="headerlink" title="leetcode题目：反转二叉树"></a>leetcode题目：反转二叉树</h3><p>原来的二叉树：</p>
+<pre><code class="mermaid">graph TD
+4--&gt;2
+4--&gt;7
+2--&gt;1
+2--&gt;3
+7--&gt;6
+7--&gt;9</code></pre>
+<p>经过算法，需要转换为：</p>
+<pre><code class="mermaid">graph TD
+4--&gt;7
+4--&gt;2
+2--&gt;3
+2--&gt;1
+7--&gt;9
+7--&gt;6</code></pre>
+<p><strong>解法：</strong><br>二叉树的遍历有四种方法，那么，该题解法也至少有四种，如果读懂了上面的遍历算法，那么这道题简直轻而易举。</p>
+<p>主要思路：就是遍历某一结点时，也就是在原来输出该节点的操作换成将其结点的左右结点交换位置。</p>
+<pre><code class="java">/**
+     * 反转二叉树
+     * 前序反转
+     * @param node
+     */
+    public void invertTree_previous(TreeNode node){
+        if (node == null){
+            return;
+        }
+        TreeNode node1 = node.left;
+        node.left = node.right;
+        node.right = node1;
+        this.invertTree_previous(node.left);
+        this.invertTree_previous(node.right);
+    }
+
+    /**
+     * 反转二叉树
+     * 中序反转
+     * @param node
+     */
+    public void invertTree_middle(TreeNode node){
+        if (node == null){
+            return;
+        }
+        this.invertTree_middle(node.left);
+        TreeNode node1 = node.left;
+        node.left = node.right;
+        node.right = node1;
+        this.invertTree_middle(node.left);
+    }
+
+    /**
+     * 反转二叉树
+     * 后序序反转
+     * @param node
+     */
+    public void invertTree_next(TreeNode node){
+        if (node == null){
+            return;
+        }
+        this.invertTree_next(node.left);
+        this.invertTree_next(node.right);
+        TreeNode node1 = node.left;
+        node.left = node.right;
+        node.right = node1;
+    }
+
+
+    /**
+     * 反转二叉树
+     * 层序反转
+     * @param node
+     */
+    public void invertTree_bfs(TreeNode node){
+        if (node == null) {
+            return;
+        }
+        Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();
+        queue.add(node);
+        while (!queue.isEmpty()){
+            TreeNode current = queue.poll();
+            TreeNode node1 = current.left;
+            current.left = current.right;
+            current.right = node1;
+            //如果当前节点的左节点不为空入队
+            if(current.left != null)
+            {
+                queue.offer(current.left);
+            }
+            //如果当前节点的右节点不为空，把右节点入队
+            if(current.right != null)
+            {
+                queue.offer(current.right);
+            }
+        }
+    }</code></pre>
+<p>答案：</p>
+<pre><code class="java">1、转换前
+前序遍历：4    2    1    3    7    6    9    
+中序遍历：1    2    3    4    6    7    9    
+后序遍历：1    3    2    6    9    7    4    
+层次遍历：4    2    7    1    3    6    9    
+
+2、转换后
+前序遍历：4    7    9    6    2    3    1    
+中序遍历：9    7    6    4    3    2    1    
+后序遍历：9    6    7    3    1    2    4    
+层次遍历：4    7    2    9    6    3    1    </code></pre>
+<p>源码获取：关注公众号：<strong>博奥思园</strong>，回复：<strong>数据结构二叉树</strong></p>
+<p><strong>你的支持是我前进的最大动力</strong></p>
 <blockquote>
-<p>thmelaf介绍Springmvc的视图解析：<br>快速浏览其属性足以了解其配置方式：</p>
-<ul>
-<li>viewClass建立View实例的类。对于JSP解析器，这是必需的，但是当我们与Thymeleaf合作时，根本不需要。</li>
-<li>prefix与suffixThymeleaf的TemplateResolver对象中相同名称的属性的工作方式相似。</li>
-<li>order 确定在链中查询ViewResolver的顺序。</li>
-<li>viewNames 允许使用此ViewResolver解析视图名称（带通配符）。</li>
-</ul>
+<p>参考：<br>1、 <a href="https://www.cnblogs.com/ysocean/p/8032642.htm" target="_blank" rel="noopener">Java数据结构和算法（十）——二叉树</a><br>2、<a href="https://blog.csdn.net/bingfeilongxin/article/details/88422192" target="_blank" rel="noopener">二叉树的四种遍历算法</a><br>3、<a href="https://www.cnblogs.com/liuyang0/p/6271331.html" target="_blank" rel="noopener">Java实现二叉树的前序、中序、后序、层序遍历（非递归方法）</a></p>
 </blockquote>
-<p><strong>问题2</strong>：前端显示乱码，具体表现为后台传入的不乱码，但是html中原本存在的乱码。<br><strong>解决</strong>：在试图解析器和模板解析器中加入参数：<code>&lt;property name="characterEncoding" value="UTF-8"/&gt;</code></p>
-<h1 id="作者有话"><a href="#作者有话" class="headerlink" title="作者有话"></a>作者有话</h1><p>我写的可能并不怎么详细，详细配置请查看thymeleaf官方介绍：<a href="https://www.thymeleaf.org/doc/tutorials/3.0/thymeleafspring.html#views-and-view-resolvers-in-spring-mvc" target="_blank" rel="noopener">传送门</a>，到最后，看都看完了，如果对你有帮助，请点个赞吧。<br><img src="https://img-blog.csdnimg.cn/20200405094243147.png" alt=""></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -674,7 +839,7 @@ org.thymeleaf.spring4.view.ThymeleafViewResolver</code></pre><p>不过现在都�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.lomtom.top/2020/04/05/springmvc-thymeleaf-springmvc-zheng-he-thymeleaf/">https://blog.lomtom.top/2020/04/05/springmvc-thymeleaf-springmvc-zheng-he-thymeleaf/</a>
+                    <a href="https://blog.lomtom.top/2020/04/17/java-shu-ju-jie-gou-huan-bu-hui-er-cha-shu-yi-pian-gao-ding-er-cha-shu/">https://blog.lomtom.top/2020/04/17/java-shu-ju-jie-gou-huan-bu-hui-er-cha-shu-yi-pian-gao-ding-er-cha-shu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -712,12 +877,8 @@ org.thymeleaf.spring4.view.ThymeleafViewResolver</code></pre><p>不过现在都�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/springmvc/">
-                                    <span class="chip bg-color">springmvc</span>
-                                </a>
-                            
-                                <a href="/tags/thymeleaf/">
-                                    <span class="chip bg-color">thymeleaf</span>
+                                <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                                    <span class="chip bg-color">二叉树</span>
                                 </a>
                             
                         </div>
@@ -885,45 +1046,50 @@ org.thymeleaf.spring4.view.ThymeleafViewResolver</code></pre><p>不过现在都�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2020/04/05/kai-fa-gong-ju-idea-zhi-de-tui-jian-de-15-kuan-idea-cha-jian/">
+                <a href="/2020/04/17/java-shu-ju-jie-gou-huan-bu-hui-er-cha-shu-yi-pian-gao-ding-er-cha-shu/">
                     <div class="card-image">
                         
-                        <img src="https://img-blog.csdnimg.cn/20200406123641715.jpg" class="responsive-img" alt="【开发工具 idea】值得推荐的15款idea插件">
+                        <img src="https://img-blog.csdnimg.cn/20200417095221714.jpg" class="responsive-img" alt="【java 数据结构】还不会二叉树？一篇搞定二叉树">
                         
-                        <span class="card-title">【开发工具 idea】值得推荐的15款idea插件</span>
+                        <span class="card-title">【java 数据结构】还不会二叉树？一篇搞定二叉树</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            概述：对于一个猿来说，工欲善其事，必先利其器，一个好的开发工具就是程序员的左膀右臂，idea作为大部分java猿的开发工具，无疑是最好用的ide了。IntelliJ在业界被公认为最好的java开发工具，尤其在智能代码助手、代码自动提示、重构
+                            二叉树是我们常见的数据结构之一，在学习二叉树之前我们需要知道什么是树，什么是二叉树，本篇主要讲述了二叉树，以及二叉树的遍历。
+你能get到的知识点？1、树的介绍2、二叉树的介绍3、二叉树遍历的四种方法4、牛客题目：反转二叉树
+@[TOC]
+
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    开发工具
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/IntelliJ-idea/">
-                        <span class="chip bg-color">IntelliJ idea</span>
+                    <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                        <span class="chip bg-color">二叉树</span>
                     </a>
                     
                 </div>
@@ -937,31 +1103,33 @@ org.thymeleaf.spring4.view.ThymeleafViewResolver</code></pre><p>不过现在都�
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/29/spring-springmvc-zhe-li-you-ni-xiang-yao-de-springmvc-de-rest-feng-ge-de-si-chong-qing-qiu-fang-shi/">
+                <a href="/2020/04/06/python-ren-lian-shi-bie-shi-yong-opencv-shi-bie-tu-pian-zhong-de-ren-lian/">
                     <div class="card-image">
                         
-                        <img src="https://img-blog.csdnimg.cn/20200329130918103.png" class="responsive-img" alt="【spring springmvc】这里有你想要的SpringMVC的REST风格的四种请求方式">
                         
-                        <span class="card-title">【spring springmvc】这里有你想要的SpringMVC的REST风格的四种请求方式</span>
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="【python人脸识别】使用opencv识别图片中的人脸">
+                        
+                        <span class="card-title">【python人脸识别】使用opencv识别图片中的人脸</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            概述之前的文章springmvc使用注解声明控制器与请求映射有简单提到过控制器与请求映射，这一次就详细讲解一下SpringMVC的REST风格的四种请求方式及其使用方法。
-你能get的知识点1、什么是Rest风格？2、基于springmvc
+                            概述：OpenCV是一个基于BSD许可（开源）发行的跨平台计算机视觉库
+
+为什么有OpenCV？ 计算机视觉市场巨大而且持续增长，且这方面没有标准API，如今的计算机视觉软件大概有以下三种：1、研究代码（慢，不稳定，独立并与其他库不兼容）2
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-06
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/spring/" class="post-category">
-                                    spring
+                            <a href="/categories/python/" class="post-category">
+                                    python
                                 </a>
                             
                             
@@ -971,8 +1139,8 @@ org.thymeleaf.spring4.view.ThymeleafViewResolver</code></pre><p>不过现在都�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/springmvc/">
-                        <span class="chip bg-color">springmvc</span>
+                    <a href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/">
+                        <span class="chip bg-color">人脸识别</span>
                     </a>
                     
                 </div>
